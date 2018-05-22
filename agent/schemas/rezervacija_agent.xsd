@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ft.uns.ac.rs/rezervacija" xmlns:rez="http://ft.uns.ac.rs/rezervacija">
+
+    <xs:element name="rezervacija">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id_smestajne_jedinice" type="xs:int"/>
+                <xs:element name="od" type="xs:date"/>
+                <xs:element name="do" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

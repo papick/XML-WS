@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/klijent" xmlns:kl="http://ftn.uns.ac.rs/klijent">
+    <xs:element name="rezervacija">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id_smestajne_jedinice" type="xs:int"/>
+                <xs:element name="od" type="xs:date"/>
+                <xs:element name="do" type="xs:date"/>
+                <xs:element name="klijent" type="kl:klijent"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="klijent">
+        <xs:sequence>
+            <xs:element name="id_klijenta" type="xs:int"/>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element name="prezime" type="xs:string"/>
+            <xs:element name="telefon" type="xs:int"/>
+            <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

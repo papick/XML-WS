@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/agent" xmlns:ag="http://ftn.uns.ac.rs/agent">
+
+    <xs:element name="Smestajna_jedinica">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tip" type="ag:tip_smestaja"/>
+                <xs:element minOccurs="0" name="opis">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="0"/>
+                            <xs:maxLength value="5000"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element minOccurs="1" name="slika" type="xs:string"/>
+                <xs:element form="qualified" name="kapacitet" type="xs:int"/>
+                <xs:element name="cena" type="xs:double"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="dodatno"
+                    type="ag:dodatne_usluge"/>
+                <xs:element name="id_smestajne_jedinice" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="tip_smestaja">
+        <xs:sequence>
+            <xs:element name="oznaka_ts" type="xs:int"/>
+            <xs:element name="naziv">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="dodatne_usluge">
+        <xs:sequence>
+            <xs:element name="oznaka_du" type="xs:string"/>
+            <xs:element name="naziv_du">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="20"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
