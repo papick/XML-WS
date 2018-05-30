@@ -9,8 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
+@XmlRootElement
 public class Accommodation {
 
 	@Id
@@ -71,6 +74,7 @@ public class Accommodation {
 		this.id = id;
 	}
 
+	@XmlTransient
 	public Place getPlace() {
 		return place;
 	}

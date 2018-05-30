@@ -9,14 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
+@XmlRootElement
 public class Accommodation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@ManyToOne
+	private Place place;
 
 	private String image;
 
@@ -34,18 +39,31 @@ public class Accommodation {
 	@ManyToMany
 	private List<AdditionalService> additionalService;
 
+	@NotNull
+	private Long idAgent;
+
 	public Accommodation() {
 	}
 
-	public Accommodation(String image, String description, int capacity, double price,
-			TypeAccomodation type, List<AdditionalService> additionalService) {
+	public Accommodation(Place place, String image, String description, int capacity, double price,
+			TypeAccomodation type, List<AdditionalService> additionalService, Long idAgent) {
 		super();
+		this.place = place;
 		this.image = image;
 		this.description = description;
 		this.capacity = capacity;
 		this.price = price;
 		this.type = type;
 		this.additionalService = additionalService;
+		this.idAgent = idAgent;
+	}
+
+	public Long getIdAgent() {
+		return idAgent;
+	}
+
+	public void setIdAgent(Long idAgent) {
+		this.idAgent = idAgent;
 	}
 
 	public Long getId() {
@@ -56,7 +74,14 @@ public class Accommodation {
 		this.id = id;
 	}
 
+	@XmlTransient
+	public Place getPlace() {
+		return place;
+	}
 
+	public void setPlace(Place place) {
+		this.place = place;
+	}
 
 	public String getImage() {
 		return image;

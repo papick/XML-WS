@@ -1,22 +1,37 @@
-package XMLWS.model;
+package agent.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class TypeAccomodation {
+public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotNull
+	@Column(unique = true)
 	private String name;
+
+	@ManyToOne
+	private Country country;
+
+	public City(String name, Country country) {
+		super();
+		this.name = name;
+		this.country = country;
+	}
+
+	public City() {
+	}
 
 	public Long getId() {
 		return id;
@@ -34,12 +49,12 @@ public class TypeAccomodation {
 		this.name = name;
 	}
 
-	public TypeAccomodation(String name) {
-		super();
-		this.name = name;
+	public Country getCountry() {
+		return country;
 	}
 
-	public TypeAccomodation() {
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 }

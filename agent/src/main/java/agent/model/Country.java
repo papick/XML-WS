@@ -1,5 +1,6 @@
-package XMLWS.model;
+package agent.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,14 +10,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class TypeAccomodation {
+public class Country {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotNull
+	@Column(unique = true)
 	private String name;
+
+	public Country(String name) {
+		super();
+		this.name = name;
+	}
+
+	public Country() {
+	}
 
 	public Long getId() {
 		return id;
@@ -32,14 +42,6 @@ public class TypeAccomodation {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public TypeAccomodation(String name) {
-		super();
-		this.name = name;
-	}
-
-	public TypeAccomodation() {
 	}
 
 }
