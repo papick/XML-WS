@@ -33,16 +33,16 @@ public class User{
 	private String email;
 	
 	private String type;
+	
+	public User() {
+	}
 
 	public User(String username, String password, String email, String type) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.type=type;
-	}
-
-	public User() {
+		this.type = type;
 	}
 
 	public Long getId() {
