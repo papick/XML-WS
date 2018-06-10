@@ -14,11 +14,11 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String category;
+	private String name;
 
-	public Category(String category) {
+	public Category(String name) {
 		super();
-		this.category = category;
+		this.name = name;
 	}
 
 	public Category() {
@@ -32,12 +32,12 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getName() {
+		return name;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -8,9 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement
@@ -20,17 +20,14 @@ public class Accommodation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@ManyToOne
-	private Place place;
-
 	private String image;
 
 	private String description;
 
-	@NotNull
+	//@NotNull
 	private int capacity;
 
-	@NotNull
+	//@NotNull
 	private double price;
 
 	@ManyToOne
@@ -39,31 +36,89 @@ public class Accommodation {
 	@ManyToMany
 	private List<AdditionalService> additionalService;
 
-	@NotNull
-	private Long idAgent;
+	// podaci za hotel
+
+	//@NotNull
+	private String name;
+
+	@ManyToOne
+	private City city;
+
+	private String address;
+
+	@OneToOne
+	private User agent;
+
+	@ManyToOne
+	private Category category;
+
+	private Long idAccomodationAgent;
 
 	public Accommodation() {
 	}
 
-	public Accommodation(Place place, String image, String description, int capacity, double price,
-			TypeAccomodation type, List<AdditionalService> additionalService, Long idAgent) {
+	public Accommodation(String image, String description, int capacity, double price, TypeAccomodation type,
+			String name, City city, String address, User agent, Category category, Long idAccomodationAgent) {
 		super();
-		this.place = place;
 		this.image = image;
 		this.description = description;
 		this.capacity = capacity;
 		this.price = price;
 		this.type = type;
-		this.additionalService = additionalService;
-		this.idAgent = idAgent;
+		this.name = name;
+		this.city = city;
+		this.address = address;
+		this.agent = agent;
+		this.category = category;
+		this.idAccomodationAgent = idAccomodationAgent;
 	}
 
-	public Long getIdAgent() {
-		return idAgent;
+	public Long getIdAccomodationAgent() {
+		return idAccomodationAgent;
 	}
 
-	public void setIdAgent(Long idAgent) {
-		this.idAgent = idAgent;
+	public void setIdAccomodationAgent(Long idAccomodationAgent) {
+		this.idAccomodationAgent = idAccomodationAgent;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public User getAgent() {
+		return agent;
+	}
+
+	public void setAgent(User agent) {
+		this.agent = agent;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -72,15 +127,6 @@ public class Accommodation {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	@XmlTransient
-	public Place getPlace() {
-		return place;
-	}
-
-	public void setPlace(Place place) {
-		this.place = place;
 	}
 
 	public String getImage() {
