@@ -28,14 +28,14 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public Category addCategory(Category c) {
 		Category newCategory = new Category();
-		newCategory.setCategory(c.getCategory());
+		newCategory.setName(c.getName());
 		return categoryRepo.save(newCategory);
 	}
 
 	@Override
 	public Category modifyCategory(Category c, Long id) {
 		Category updated = categoryRepo.findOne(id);
-		updated.setCategory(c.getCategory());
+		updated.setName(c.getName());
 		return categoryRepo.save(updated);
 	}
 

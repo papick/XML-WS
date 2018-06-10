@@ -7,5 +7,7 @@ import XMLWS.model.Category;
 
 @Repository
 public interface CategoryRepository extends CrudRepository<Category, Long>{
+	
+	Category findOneByName(String name);
 
 }
