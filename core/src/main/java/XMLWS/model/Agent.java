@@ -6,15 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.validator.constraints.Email;
-
 @Entity
-@Table(name = "users")
+@Table(name = "agents")
 @XmlRootElement
-public class User {
+public class Agent {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,35 +21,33 @@ public class User {
 
 	@Size(min = 1, max = 20)
 	@Column(unique = true, nullable = false)
+	@NotNull
 	private String username;
 
-	@Size(min = 3, max = 20)
+	@Size(max = 20)
 	@Column(nullable = false)
+	@NotNull
 	private String password;
 
-	@Column(nullable = false)
-	@Email
-	private String email;
-	
-	private String status;
+	private String name;
 
-	public User() {
+	private String surname;
+
+	private String address;
+
+	private String mbr;
+
+	public Agent() {
 	}
 
-	public User(String username, String password, String email, String status) {
+	public Agent(String username, String password, String name, String surname, String address, String mbr) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.email = email;
-		this.status=status;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+		this.name = name;
+		this.surname = surname;
+		this.address = address;
+		this.mbr = mbr;
 	}
 
 	public Long getId() {
@@ -77,12 +74,36 @@ public class User {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getName() {
+		return name;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getMbr() {
+		return mbr;
+	}
+
+	public void setMbr(String mbr) {
+		this.mbr = mbr;
 	}
 
 }

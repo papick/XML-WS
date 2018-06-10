@@ -18,6 +18,14 @@ public class TypeAccomodation {
 	@NotNull
 	private String name;
 
+	public TypeAccomodation(String name) {
+		super();
+		this.name = name;
+	}
+
+	public TypeAccomodation() {
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -33,13 +41,4 @@ public class TypeAccomodation {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public TypeAccomodation(String name) {
-		super();
-		this.name = name;
-	}
-
-	public TypeAccomodation() {
-	}
-
 }
