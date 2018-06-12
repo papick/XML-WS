@@ -1,0 +1,33 @@
+
+<ul class="ul">
+  <li class="li" (click)="user()"><a>Korisnici</a></li>
+  <li class="li" (click)="agent()"><a>Agenti</a></li>
+  <li class="li" (click)="typeAcc()"><a>Tipovi smeštaja</a></li>
+  <li class="li" (click)="categorization()"><a>Kategorizacija smeštaja</a></li>
+  <li class="li" (click)="additional()"><a>Dodatne usluge</a></li>
+  <li class="li" (click)="comm()"><a>Komentari korisnika</a></li>
+</ul>
+
+<div *ngIf="users==true" style="text-align: center;margin-top: 30px">
+  <app-users></app-users>
+</div>
+
+<div *ngIf="agents==true" style="text-align: center;margin-top: 30px">
+  <app-agents></app-agents>
+</div>
+
+<div *ngIf="typeAccommodation==true" style="text-align: center;margin-top: 30px">
+  <app-type-accommodation></app-type-accommodation>
+</div>
+
+<div *ngIf="category==true" style="text-align: center;margin-top: 30px">
+  <app-category></app-category>
+</div>
+
+<div *ngIf="additionalService==true" style="text-align: center;margin-top: 30px">
+  <app-additional-service></app-additional-service>
+</div>
+
+<div *ngIf="comments==true" style="text-align: center;margin-top: 30px">
+  <app-comments></app-comments>
+</div>

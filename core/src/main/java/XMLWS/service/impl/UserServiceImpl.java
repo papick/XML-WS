@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import XMLWS.model.User;
 import XMLWS.repository.UserRepository;
 import XMLWS.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -77,6 +79,7 @@ public class UserServiceImpl implements UserService {
 
 		for (User u : users) {
 			if (u.getStatus() == "active") {
+				System.out.println(u.toString());
 				activeUsers.add(u);
 			}
 		}

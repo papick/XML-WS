@@ -3,6 +3,7 @@ package XMLWS.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
 import XMLWS.model.User;
 
 @Service
