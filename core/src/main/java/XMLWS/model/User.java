@@ -32,25 +32,25 @@ public class User {
 	@Email
 	private String email;
 	
-	private String status;
+	private boolean active;
 
 	public User() {
 	}
 
-	public User(String username, String password, String email, String status) {
+	public User(String username, String password, String email, boolean active) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.status=status;
+		this.active=active;
 	}
 
-	public String getStatus() {
-		return status;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public Long getId() {
@@ -88,7 +88,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", status="
-				+ status + "]";
+				+ active + "]";
 	}
 
 }

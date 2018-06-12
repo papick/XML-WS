@@ -21,6 +21,7 @@ import {TypeAccommodationService} from '../services/typeAccommodationService';
 import {CategoryService} from '../services/categoryService';
 import {AdditionalServiceService} from '../services/additionalServiceService';
 import {UserService} from '../services/userService';
+import {AgentService} from '../services/agentService';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {UserService} from '../services/userService';
     CategoryService,
     AdditionalServiceService,
     UserService,
+    AgentService,
   ],
   bootstrap: [AppComponent]
 })

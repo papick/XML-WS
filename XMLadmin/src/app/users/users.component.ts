@@ -9,7 +9,7 @@ import {UserService} from '../../services/userService';
 export class UsersComponent implements OnInit {
 
   active = false;
-  korisnici = [];
+  users = [];
 
   constructor(private userService: UserService) {
   }
@@ -20,16 +20,14 @@ export class UsersComponent implements OnInit {
   getAct() {
     this.active = true;
     this.userService.getActiveUsers().subscribe(data => {
-      this.korisnici = data;
-      console.log('kristina');
+      this.users = data;
     });
   }
 
   getBlock() {
     this.active = false;
     this.userService.getBlockedUsers().subscribe(data => {
-      this.korisnici = data;
-      console.log('kristina');
+      this.users = data;
     });
   }
 
