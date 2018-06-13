@@ -51,4 +51,15 @@ public class AccomodationResource {
 		return new ResponseEntity<>(accomodation, HttpStatus.OK);
 	}
 
+	@GetMapping("/get-accomodation/{id}")
+	public ResponseEntity<Accommodation> getAccomodation(@PathVariable Long id) {
+
+		Accommodation accomodation = accomodationRepository.findOne(id);
+		if (accomodation == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<>(accomodation, HttpStatus.OK);
+	}
+
 }

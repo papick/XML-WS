@@ -91,6 +91,18 @@ export class AccomodationComponent implements OnInit {
       this.method_name = 'IZMENI';
       const id = this.route.snapshot.params.id;
 
+      this.accomodationService.getAccomodation(id).subscribe(data => {
+        this.form.controls['name'].setValue(data.name);
+        this.form.controls['category'].setValue(data.category.name);
+        this.form.controls['city'].setValue(data.city.name);
+        this.form.controls['address'].setValue(data.address);
+        this.form.controls['description'].setValue(data.description);
+        this.form.controls['capacity'].setValue(data.capacity);
+        this.form.controls['price'].setValue(data.price);
+        this.form.controls['type'].setValue(data.type.name);
+
+      })
+
 
     } else if (mode == 'add') {
     }

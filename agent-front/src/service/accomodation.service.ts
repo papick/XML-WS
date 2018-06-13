@@ -30,4 +30,9 @@ export class AccomodationService {
     return this.http.post(`${this.BASE_URL}/create/` + id, body, {headers: headers})
   }
 
+  getAccomodation(id): Observable<any> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get(`${this.BASE_URL}/get-accomodation/${id}`, {headers: headers})
+  }
+
 }
