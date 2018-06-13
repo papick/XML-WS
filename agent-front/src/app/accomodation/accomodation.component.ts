@@ -5,6 +5,9 @@ import {CityService} from "../../service/city.service";
 import {CategoryService} from "../../service/category.service";
 import {TypeAccomodationService} from "../../service/typeAccomodation.service";
 import {AditionalServiceService} from "../../service/aditionalService.service";
+import {Bb} from "../../service/bb";
+import {AccomodationModel} from "../../model/accomodation.model";
+import {AccomodationService} from "../../service/accomodation.service";
 
 @Component({
   selector: 'accomodation',
@@ -39,7 +42,8 @@ export class AccomodationComponent implements OnInit {
               private cityService: CityService,
               private categoryService: CategoryService,
               private typeAccomodation: TypeAccomodationService,
-              private aditionalService: AditionalServiceService) {
+              private aditionalService: AditionalServiceService,
+              private accomodationService: AccomodationService) {
     this.form = this.fb.group({
       'name': ['', Validators.compose([Validators.required])],
       'category': [''],
@@ -104,6 +108,25 @@ export class AccomodationComponent implements OnInit {
   }
 
   createAccomodation(): any {
+
+    const accomodation = new AccomodationModel(
+
+      this.description.value,
+      this.type.value,
+      this.name.value,
+      this.city.value,
+      this.address.value,
+      this.category.value,
+   //   this.capacity.value,
+   //   this.price.value,
+
+    );
+
+    this.accomodationService.createAccomodation(accomodation, 1).toPromise()
+      .then(data => {
+        this.router.navigateByUrl('home');
+
+      })
 
   }
 

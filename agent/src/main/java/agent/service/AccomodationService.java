@@ -29,9 +29,9 @@ public class AccomodationService {
 	@Autowired
 	private AccomodationRepository accomodationRepository;
 
-	public Accommodation create(AccommodationDTO accomodationDTO) {
+	public Accommodation create(AccommodationDTO accomodationDTO, Long id) {
 		Accommodation accomodation = new Accommodation();
-		accomodation.setImage(accomodationDTO.getImage());
+		// accomodation.setImage(accomodationDTO.getImage());
 		accomodation.setDescription(accomodationDTO.getDescription());
 		accomodation.setCapacity(accomodationDTO.getCapacity());
 		accomodation.setPrice(accomodationDTO.getPrice());
@@ -40,13 +40,23 @@ public class AccomodationService {
 		accomodation.setName(accomodationDTO.getName());
 		accomodation.setCity(cityRepository.findOneByName(accomodationDTO.getCity()));
 		accomodation.setAddress(accomodationDTO.getAddress());
-		accomodation.setAgent(userRepository.findOne(accomodationDTO.getIdAgent()));
+		accomodation.setAgent(userRepository.findOne(id));
 		accomodation.setCategory(categoryRepository.findOneByName(accomodationDTO.getCategory()));
 
 		accomodationRepository.save(accomodation);
 
-		// accomodationWService.create(accomodation);
+		return accomodation;
+	}
 
+	public Accommodation delete(Long id) {
+
+		Accommodation accomodation = accomodationRepository.findOne(id);
+
+		if (accomodation == null) {
+			throw new IllegalArgumentException("Tried to delete non-existant accomodation");
+		}
+		accomodation.getAdditional().clear();
+		accomodationRepository.delete(accomodation);
 		return accomodation;
 	}
 

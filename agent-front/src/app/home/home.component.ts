@@ -24,12 +24,21 @@ export class HomeComponent implements OnInit {
 
 
     })
-
-
   }
 
 
   addAccomodation() {
     this.router.navigateByUrl('add/accomodation')
+  }
+
+  editAccomodation(id): any  {
+    this.router.navigateByUrl('edit/accomodation/' + id);
+  }
+
+  deleteAccomodation(id): any {
+    this.accomodationService.deleteAccomodation(id).subscribe(data => {
+        this.items = this.items.filter(el => el.id != id);
+
+      })
   }
 }
