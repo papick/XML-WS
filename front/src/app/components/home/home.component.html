@@ -1,0 +1,36 @@
+<p-dataView #dv [value]="accomodations" [paginator]="true" [rows]="8" >
+   <p-header>
+       <div class="ui-helper-clearfix">
+           <div class="ui-g">
+              <!-- <div class="ui-g-12 ui-md-4">
+                   <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+               </div>
+               <div class="ui-g-6 ui-md-4 filter-container">
+                   <div style="position:relative">
+                       <input type="search" pInputText placeholder="Search by brand" (keyup)="dv.filter($event.target.value)">
+                   </div>
+               </div>-->
+           </div>
+       </div>
+   </p-header>
+   <ng-template let-accomodation pTemplate="listItem">
+       <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+           <div class="ui-g-12 ui-md-3" style="text-align:center">
+              <a href="notImplemented"> <img height="250" width="400" src="{{accomodation.image}}"></a>
+           </div>
+           <div class="ui-g-12 ui-md-8 car-details" style="margin: 0px 0px 0px 100px">
+               <div class="ui-g">
+                   <div class="ui-g-2 ui-sm-6">Name: </div>
+                   <div class="ui-g-10 ui-sm-6"><b>{{accomodation.name}}</b></div>
+
+                   <div class="ui-g-2 ui-sm-6">Type: </div>
+                   <div class="ui-g-10 ui-sm-6"><b>{{accomodation.type}}</b></div>
+
+                   <div class="ui-g-2 ui-sm-6">Location: </div>
+                   <div class="ui-g-10 ui-sm-6"><b>{{accomodation.location}}</b></div>
+               </div>
+           </div>
+       </div>
+   </ng-template>
+
+</p-dataView>
