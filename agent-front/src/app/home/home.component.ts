@@ -25,5 +25,11 @@ export class HomeComponent implements OnInit {
 
     })
 
+
+  }
+
+
+  addAccomodation() {
+    this.router.navigateByUrl('add/accomodation')
   }
 }

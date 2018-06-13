@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import agent.model.Accommodation;
-import agent.model.AdditionalService;
+import agent.model.Additional;
 import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
@@ -69,10 +69,10 @@ public class TestData {
 		User user1 = new User("dejan", "dejan", "dejan@gmail.com", "");
 		userRepository.save(user1);
 
-		AdditionalService aditionalService1 = new AdditionalService("TV");
-		AdditionalService aditionalService2 = new AdditionalService("Wi-Fi");
-		AdditionalService aditionalService3 = new AdditionalService("Klima");
-		AdditionalService aditionalService4 = new AdditionalService("Mini kuhinja");
+		Additional aditionalService1 = new Additional("TV");
+		Additional aditionalService2 = new Additional("Wi-Fi");
+		Additional aditionalService3 = new Additional("Klima");
+		Additional aditionalService4 = new Additional("Mini kuhinja");
 
 		aditionalServiceRepository.save(aditionalService1);
 		aditionalServiceRepository.save(aditionalService2);
@@ -90,7 +90,7 @@ public class TestData {
 		accomodation1.setAddress("");
 		accomodation1.setAgent(user1);
 		accomodation1.setCategory(category1);
-		ArrayList<AdditionalService> lista = new ArrayList<AdditionalService>();
+		ArrayList<Additional> lista = new ArrayList<Additional>();
 		lista.add(aditionalService1);
 		lista.add(aditionalService2);
 		lista.add(aditionalService3);
