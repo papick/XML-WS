@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class AdditionalService {
+public class Additional {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,12 +18,12 @@ public class AdditionalService {
 	@NotNull
 	private String name;
 
-	public AdditionalService(String name) {
+	public Additional(String name) {
 		super();
 		this.name = name;
 	}
 
-	public AdditionalService() {
+	public Additional() {
 	}
 
 	public Long getId() {

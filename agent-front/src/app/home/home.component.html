@@ -1,0 +1,41 @@
+<div>
+  <div style=" display: inline-block;">
+    <h1 style="font-size: 50px;margin-left: 50px;margin-bottom: 20px;color: #24478f ">Agent - Booking</h1>
+  </div>
+
+  <div style=" display: inline-block;">
+    <h1 style="font-size: 50px;margin-bottom: 40px;color: #1a8cff">.com </h1>
+  </div>
+
+
+</div>
+
+<ul>
+  <li><a>Smestajne jedinice</a></li>
+  <li><a>Rezervacije</a></li>
+  <li><a>Poruke</a></li>
+
+</ul>
+
+<div style="text-align: center;margin-top: 30px">
+  <button style="border-radius: 12px;background-color: #1a8cff;color: white;height: 45px;width: 250px;font-size: 20px" (click)="addAccomodation()">Dodaj smestajnu jedinicu</button>
+</div>
+<div
+  style="text-align: center; border-style: solid;border-width: 2px;border-color: darkgray;margin-top: 20px;margin-left: 20%;margin-right: 20%">
+  <div *ngFor="let item of items" style="text-align: center">
+    <h1>{{item.name}} {{item.category.name}}</h1>
+    <p style="font-size: 20px">{{item.city.name}},{{item.city.country.name}}</p>
+    <p style="font-size: 20px">{{item.type.name}}</p>
+    <p style="font-size: 20px">{{item.description}}</p>
+    <p style="font-size: 20px">Cena: {{item.price}} eura</p>
+    <p style="font-size: 20px">Kapacitet(osoba): {{item.capacity}}</p>
+    <p style="margin-bottom: 0%;font-size: 20px">Dodatne usluge :</p>
+    <div style="display: inline-block" *ngFor="let a of item.additionalService ">
+      <p style="margin-right: 12px;color: #1a8cff;font-size: 20px">{{a.name}} </p>
+    </div>
+  </div>
+</div>
+
+
+
+
