@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   comments = false;
   typeAccommodation = false;
   users = false;
+  addAgent = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -28,7 +29,9 @@ export class HomeComponent implements OnInit {
       this.category = false;
       this.comments = false;
       this.typeAccommodation = false;
-      this.users = false;
+      this.users = false
+      this.addAgent = false
+
     } else if (click === 'agents') {
       this.additionalService = false;
       this.agents = true;
@@ -36,6 +39,7 @@ export class HomeComponent implements OnInit {
       this.comments = false;
       this.typeAccommodation = false;
       this.users = false;
+      this.addAgent = false;
 
     } else if (click === 'category') {
       this.additionalService = false;
@@ -44,6 +48,7 @@ export class HomeComponent implements OnInit {
       this.comments = false;
       this.typeAccommodation = false;
       this.users = false;
+      this.addAgent = false;
 
     } else if (click === 'comments') {
       this.additionalService = false;
@@ -51,7 +56,8 @@ export class HomeComponent implements OnInit {
       this.category = false;
       this.comments = true;
       this.typeAccommodation = false;
-      this.users = false;
+      this.users = false;;
+      this.addAgent = false;
 
     } else if (click === 'typeAccommodation') {
       this.additionalService = false;
@@ -60,6 +66,7 @@ export class HomeComponent implements OnInit {
       this.comments = false;
       this.typeAccommodation = true;
       this.users = false;
+      this.addAgent = false;
 
     } else if (click === 'users') {
       this.additionalService = false;
@@ -68,6 +75,16 @@ export class HomeComponent implements OnInit {
       this.comments = false;
       this.typeAccommodation = false;
       this.users = true;
+      this.addAgent = false;
+
+    } else if (click === 'agentForm') {
+      this.additionalService = false;
+      this.agents = false;
+      this.category = false;
+      this.comments = false;
+      this.typeAccommodation = false;
+      this.users = false;
+      this.addAgent = true;
 
     }
   }

@@ -5,16 +5,12 @@
 
 <br><br>
 
-<button class="btn btn-lg btn-warning">Dodaj korisnika</button>
-
-<br><br>
-
 <table class="table offset-0 tables" style=" border: 3px solid #008080 ;" *ngIf="!active">
   <tr>
     <th class="th-style">Korisnicko ime</th>
     <th class="th-style">Lozinka</th>
     <th class="th-style">Email</th>
-    <th class="th-style">Izmena</th>
+    <th class="th-style">Uklanjanje</th>
     <th class="th-style">Aktiviranje</th>
   </tr>
 
@@ -22,8 +18,8 @@
     <td> {{item.username}}</td>
     <td> {{item.password}}</td>
     <td> {{item.email}} </td>
-    <td ><button class="btn btn-lg btn-warning">Izmeni</button></td>
-    <td ><button class="btn btn-lg btn-warning">Aktiviraj</button></td>
+    <td ><button class="btn btn-lg btn-warning" (click)="removeUser(item.id)">Ukloni</button></td>
+    <td ><button class="btn btn-lg btn-warning" (click)="activateUser(item.id)">Aktiviraj</button></td>
   </tr>
 
 </table>
@@ -33,7 +29,7 @@
     <th class="th-style">Korisnicko ime</th>
     <th class="th-style">Lozinka</th>
     <th class="th-style">Email</th>
-    <th class="th-style">Izmena</th>
+    <th class="th-style">Uklanjanje</th>
     <th class="th-style">Blokiranje</th>
   </tr>
 
@@ -41,8 +37,8 @@
     <td> {{item.username}}</td>
     <td> {{item.password}}</td>
     <td> {{item.email}} </td>
-    <td ><button class="btn btn-lg btn-warning">Izmeni</button></td>
-    <td ><button class="btn btn-lg btn-warning">Blokiraj</button></td>
+    <td ><button class="btn btn-lg btn-warning" (click)="removeUser(item.id)">Ukloni</button></td>
+    <td ><button class="btn btn-lg btn-warning" (click)="blockUser(item.id)">Blokiraj</button></td>
   </tr>
 
 </table>

@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
 		User u = userRepo.findOne(id);
 		if (u.isActive() == true) {
 			u.setActive(false);
+			userRepo.save(u);
 		}
 	}
 
@@ -68,6 +69,7 @@ public class UserServiceImpl implements UserService {
 		User u = userRepo.findOne(id);
 		if (u.isActive() == false) {
 			u.setActive(true);
+			userRepo.save(u);
 		}
 	}
 

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/userService';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +12,8 @@ export class UsersComponent implements OnInit {
   active = false;
   users = [];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -28,6 +30,24 @@ export class UsersComponent implements OnInit {
     this.active = false;
     this.userService.getBlockedUsers().subscribe(data => {
       this.users = data;
+    });
+  }
+
+  removeUser(id) {
+    this.userService.remove(id).subscribe(data => {
+      location.reload();
+    });
+  }
+
+  activateUser(id) {
+    this.userService.activateUser(id).subscribe(data => {
+      location.reload();
+    });
+  }
+
+  blockUser(id) {
+    this.userService.blockUser(id).subscribe(data => {
+      location.reload();
     });
   }
 

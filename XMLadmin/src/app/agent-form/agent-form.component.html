@@ -1,0 +1,55 @@
+<div class=" offset-4 col-md-4" style="margin-top:60px;background: #F7F7F7;">
+
+  <form [formGroup]="form">
+    <div class="form-group">
+
+      <label style=" font-size: 1.5em;font-weight: bold;margin-top: 30px">Ime:</label>
+      <input name="name" class="form-control margin" id="input-name" style="height: 50px"
+             placeholder="Unesite ime" [formControl]="name">
+      <small class="form-text error" *ngIf="name.errors?.required && name.touched" style="color: red">
+        Ime je obavezno!
+      </small>
+
+      <label style=" font-size: 1.5em;font-weight: bold;margin-top: 30px">Prezime:</label>
+      <input name="surname" class="form-control margin" id="input-surname" style="height: 50px"
+             placeholder="Unesite prezime" [formControl]="surname">
+      <small class="form-text error" *ngIf="surname.errors?.required && surname.touched" style="color: red">
+        Prezime je obavezno!
+      </small>
+
+      <label style=" font-size: 1.5em;font-weight: bold;margin-top: 30px">Korisničko ime:</label>
+      <input name="username" class="form-control margin" id="input-username" style="height: 50px"
+             placeholder="Unesite korisničko ime" [formControl]="username">
+      <small class="form-text error" *ngIf="username.errors?.required && username.touched" style="color: red">
+        Korisnicko ime je obavezno!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Lozinka:</label>
+      <input name="password" class="form-control margin" type="password" id="input-password" style="height: 50px"
+             placeholder="Unesite lozinku" [formControl]="password">
+      <small class="form-text error" *ngIf="password.errors?.required && password.touched" style="color: red">
+        Lozinka je obavezna!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Adresa:</label>
+      <input name="address" class="form-control margin" id="input-address" style="height: 50px"
+             placeholder="Unesite adresu" [formControl]="address">
+      <small class="form-text error" *ngIf="address.errors?.required && address.touched" style="color: red">
+        Adresa je obavezna!
+      </small>
+
+      <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Poslovni maticni broj:</label>
+      <input name="mbr" class="form-control margin" id="input-mbr" style="height: 50px"
+             placeholder="Unesite maticni broj" [formControl]="mbr">
+      <small class="form-text error" *ngIf="mbr.errors?.required && mbr.touched" style="color: red">
+        Maticni broj je obavezan!
+      </small>
+
+      <button class="btn btn-warning" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
+              (click)="add()" [disabled]="!form.valid">Dodaj
+      </button>
+
+    </div>
+  </form>
+</div>
+

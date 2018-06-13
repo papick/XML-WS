@@ -1,4 +1,4 @@
-<button class="btn btn-lg btn-warning">Dodaj agenta</button>
+<button class="btn btn-lg btn-warning" (click)="addAgent()">Dodaj agenta</button>
 
 <br><br>
 
@@ -20,7 +20,7 @@
     <td> {{item.password}}</td>
     <td> {{item.address}} </td>
     <td> {{item.mbr}} </td>
-    <td ><button class="btn btn-lg btn-warning">Obriši</button></td>
+    <td ><button class="btn btn-lg btn-warning" (click)="removeAgent(item.id)">Obriši</button></td>
   </tr>
 
 </table>

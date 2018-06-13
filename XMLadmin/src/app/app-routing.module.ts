@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'log-in', component: LogInComponent},
   {path: 'home', component: HomeComponent},
   {path: 'home/:click', component: HomeComponent},
+  {path: 'home/:click/:mode', component: HomeComponent},
 
 ];
 
