@@ -49,6 +49,7 @@ export class AccomodationComponent implements OnInit {
       'city': [''],
       'address': [''],
       'description': [''],
+      //, Validators.pattern('[0-9]{2}\:[0-9]{2}')
       'capacity': ['', Validators.compose([Validators.required])],
       'price': ['', Validators.compose([Validators.required])],
       'type': [''],
@@ -131,16 +132,28 @@ export class AccomodationComponent implements OnInit {
       this.price.value,
     );
 
-    this.accomodationService.createAccomodation(accomodation, 1).toPromise()
-      .then(data => {
-        this.router.navigateByUrl('home');
+    this.accomodationService.createAccomodation(accomodation, 1).subscribe(data => {
+      this.router.navigateByUrl('home');
 
-      })
+    })
 
   }
 
   editAccomodatin() {
-
+    const accomodation = new AccomodationModel(
+      this.description.value,
+      this.type.value,
+      this.name.value,
+      this.city.value,
+      this.address.value,
+      this.category.value,
+      this.capacity.value,
+      this.price.value,
+    );
+    const id = this.route.snapshot.params.id;
+    this.accomodationService.editAccomodation(accomodation, 1, id).subscribe(data => {
+      this.router.navigateByUrl('home');
+    })
   }
 
   exit() {
