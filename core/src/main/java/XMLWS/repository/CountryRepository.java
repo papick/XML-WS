@@ -8,4 +8,6 @@ import XMLWS.model.Country;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
 
+	
+	Country findOneByName(String name);
 }

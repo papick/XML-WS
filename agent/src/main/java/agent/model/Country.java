@@ -16,6 +16,9 @@ public class Country {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column
+	private String code;
+	
 	@NotNull
 	@Column(unique = true)
 	private String name;
@@ -34,6 +37,15 @@ public class Country {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getName() {
