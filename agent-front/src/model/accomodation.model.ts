@@ -5,6 +5,7 @@ export class AccomodationModel {
               public city: string,
               public address: string,
               public category: string,
-              public capacity: string,) {
+              public capacity: string,
+              public price: string,) {
   }
 }

@@ -109,16 +109,14 @@ export class AccomodationComponent implements OnInit {
   createAccomodation(): any {
 
     const accomodation = new AccomodationModel(
-
       this.description.value,
       this.type.value,
       this.name.value,
       this.city.value,
       this.address.value,
       this.category.value,
-     this.capacity.value,
-   //   this.price.value,
-
+      this.capacity.value,
+      this.price.value,
     );
 
     this.accomodationService.createAccomodation(accomodation, 1).toPromise()

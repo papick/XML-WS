@@ -35,7 +35,8 @@ public class AccomodationService {
 		accomodation.setDescription(accomodationDTO.getDescription());
 		int capacity = Integer.parseInt(accomodationDTO.getCapacity());
 		accomodation.setCapacity(capacity);
-		accomodation.setPrice(accomodationDTO.getPrice());
+		double price = Double.parseDouble(accomodationDTO.getPrice());
+		accomodation.setPrice(price);
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accomodationDTO.getType()));
 		// aditonal service dodati
 		accomodation.setName(accomodationDTO.getName());
