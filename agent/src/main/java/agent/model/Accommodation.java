@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,7 +30,7 @@ public class Accommodation {
 	@NotNull
 	private double price;
 
-	@ManyToOne
+	@OneToOne
 	private TypeAccomodation type;
 
 	@ManyToMany
@@ -42,7 +41,7 @@ public class Accommodation {
 	@NotNull
 	private String name;
 
-	@ManyToOne
+	@OneToOne
 	private City city;
 
 	private String address;
@@ -50,16 +49,15 @@ public class Accommodation {
 	@OneToOne
 	private User agent;
 
-	@ManyToOne
+	@OneToOne
 	private Category category;
 
 	public Accommodation() {
 	}
 
-	public Accommodation(String image, String description, int capacity, double price, TypeAccomodation type,
-			String name, City city, String address, User agent, Category category) {
+	public Accommodation(String description, int capacity, double price, TypeAccomodation type, String name, City city,
+			String address, User agent, Category category) {
 		super();
-		this.image = image;
 		this.description = description;
 		this.capacity = capacity;
 		this.price = price;
