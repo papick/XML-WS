@@ -14,8 +14,6 @@ public class AccommodationDTO {
 
 	// private List<AdditionalService> additionalService;
 
-	private Long idAgent;
-
 	// podaci za hotel
 
 	private String name;
@@ -69,14 +67,6 @@ public class AccommodationDTO {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public Long getIdAgent() {
-		return idAgent;
-	}
-
-	public void setIdAgent(Long idAgent) {
-		this.idAgent = idAgent;
 	}
 
 	public String getName() {

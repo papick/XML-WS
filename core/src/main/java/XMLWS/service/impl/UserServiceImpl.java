@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import XMLWS.model.User;
 import XMLWS.repository.UserRepository;
 import XMLWS.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -30,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		edited.setEmail(user.getEmail());
 		edited.setPassword(user.getPassword());
 		edited.setUsername(user.getUsername());
-		edited.setStatus(user.getStatus());
+		edited.setActive(user.isActive());
 		return userRepo.save(edited);
 	}
 
@@ -49,34 +51,35 @@ public class UserServiceImpl implements UserService {
 		newUser.setEmail(u.getEmail());
 		newUser.setPassword(u.getPassword());
 		newUser.setUsername(u.getUsername());
-		newUser.setStatus("active");
+		newUser.setActive(true);
 		return userRepo.save(newUser);
 	}
 
 	@Override
 	public void blockUser(Long id) {
 		User u = userRepo.findOne(id);
-		if (u.getStatus() == "active") {
-			u.setStatus("blocked");
+		if (u.isActive() == true) {
+			u.setActive(false);
+			userRepo.save(u);
 		}
 	}
 
 	@Override
 	public void activateUser(Long id) {
 		User u = userRepo.findOne(id);
-		if (u.getStatus() == "blocked") {
-			u.setStatus("active");
-
+		if (u.isActive() == false) {
+			u.setActive(true);
+			userRepo.save(u);
 		}
 	}
 
 	@Override
 	public List<User> getActive() {
-		List<User> activeUsers = new ArrayList<>();
+		List<User> activeUsers = new ArrayList<User>();
 		List<User> users = this.getAllUsers();
 
 		for (User u : users) {
-			if (u.getStatus() == "active") {
+			if (u.isActive() == true) {
 				activeUsers.add(u);
 			}
 		}
@@ -86,11 +89,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getBlocked() {
-		List<User> blockedUsers = new ArrayList<>();
+		List<User> blockedUsers = new ArrayList<User>();
 		List<User> users = this.getAllUsers();
 
 		for (User u : users) {
-			if (u.getStatus() == "blocked") {
+			if (u.isActive() == false) {
 				blockedUsers.add(u);
 			}
 		}

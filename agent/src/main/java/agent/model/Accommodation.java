@@ -7,9 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,18 +29,18 @@ public class Accommodation {
 	@NotNull
 	private double price;
 
-	@ManyToOne
+	@OneToOne
 	private TypeAccomodation type;
 
 	@ManyToMany
-	private List<AdditionalService> additionalService;
+	private List<Additional> additional;
 
 	// podaci za hotel
 
 	@NotNull
 	private String name;
 
-	@ManyToOne
+	@OneToOne
 	private City city;
 
 	private String address;
@@ -50,16 +48,15 @@ public class Accommodation {
 	@OneToOne
 	private User agent;
 
-	@ManyToOne
+	@OneToOne
 	private Category category;
 
 	public Accommodation() {
 	}
 
-	public Accommodation(String image, String description, int capacity, double price, TypeAccomodation type,
-			String name, City city, String address, User agent, Category category) {
+	public Accommodation(String description, int capacity, double price, TypeAccomodation type, String name, City city,
+			String address, User agent, Category category) {
 		super();
-		this.image = image;
 		this.description = description;
 		this.capacity = capacity;
 		this.price = price;
@@ -159,12 +156,12 @@ public class Accommodation {
 		this.type = type;
 	}
 
-	public List<AdditionalService> getAdditionalService() {
-		return additionalService;
+	public List<Additional> getAdditional() {
+		return additional;
 	}
 
-	public void setAdditionalService(List<AdditionalService> additionalService) {
-		this.additionalService = additionalService;
+	public void setAdditional(List<Additional> additional) {
+		this.additional = additional;
 	}
 
 }
