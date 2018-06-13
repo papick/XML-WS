@@ -22,6 +22,10 @@ import {CategoryService} from '../services/categoryService';
 import {AdditionalServiceService} from '../services/additionalServiceService';
 import {UserService} from '../services/userService';
 import {AgentService} from '../services/agentService';
+import { AgentFormComponent } from './agent-form/agent-form.component';
+import { TypeAccomodationFormComponent } from './type-accomodation-form/type-accomodation-form.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
+import { AdditionalServiceFormComponent } from './additional-service-form/additional-service-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,10 @@ import {AgentService} from '../services/agentService';
     CategoryComponent,
     AdditionalServiceComponent,
     CommentsComponent,
+    AgentFormComponent,
+    TypeAccomodationFormComponent,
+    CategoryFormComponent,
+    AdditionalServiceFormComponent,
   ],
   imports: [
     BrowserModule,

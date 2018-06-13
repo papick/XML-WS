@@ -64,5 +64,15 @@ public class UserController {
 	public void deleteUser(@PathVariable Long id) {
 		us.deleteUser(id);
 	}
+	
+	@PutMapping("/activate-user/{id}")
+	public void activateUser(@PathVariable Long id) {
+		us.activateUser(id);
+	}
+	
+	@PutMapping("/block-user/{id}")
+	public void blockUser(@PathVariable Long id) {
+		us.blockUser(id);
+	}
 
 }
