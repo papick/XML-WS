@@ -116,7 +116,7 @@ export class AccomodationComponent implements OnInit {
       this.city.value,
       this.address.value,
       this.category.value,
-   //   this.capacity.value,
+     this.capacity.value,
    //   this.price.value,
 
     );
