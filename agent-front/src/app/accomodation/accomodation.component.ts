@@ -5,7 +5,6 @@ import {CityService} from "../../service/city.service";
 import {CategoryService} from "../../service/category.service";
 import {TypeAccomodationService} from "../../service/typeAccomodation.service";
 import {AditionalServiceService} from "../../service/aditionalService.service";
-import {Bb} from "../../service/bb";
 import {AccomodationModel} from "../../model/accomodation.model";
 import {AccomodationService} from "../../service/accomodation.service";
 

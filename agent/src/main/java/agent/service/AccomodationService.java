@@ -33,7 +33,7 @@ public class AccomodationService {
 		Accommodation accomodation = new Accommodation();
 		// accomodation.setImage(accomodationDTO.getImage());
 		accomodation.setDescription(accomodationDTO.getDescription());
-		accomodation.setCapacity(accomodationDTO.getCapacity());
+		//accomodation.setCapacity(accomodationDTO.getCapacity());
 		accomodation.setPrice(accomodationDTO.getPrice());
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accomodationDTO.getType()));
 		// aditonal service dodati

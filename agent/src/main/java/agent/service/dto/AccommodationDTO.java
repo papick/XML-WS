@@ -6,7 +6,7 @@ public class AccommodationDTO {
 
 	private String description;
 
-	private int capacity;
+	private String capacity;
 
 	private double price;
 
@@ -45,11 +45,11 @@ public class AccommodationDTO {
 		this.description = description;
 	}
 
-	public int getCapacity() {
+	public String getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(int capacity) {
+	public void setCapacity(String capacity) {
 		this.capacity = capacity;
 	}
 
