@@ -48,7 +48,21 @@
     </xs:element>
     
     
+    <xs:element name="getCountriesRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="name" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
     
+    <xs:element name="getCountriesResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="country" type="tns:country" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
     
 	
      	 

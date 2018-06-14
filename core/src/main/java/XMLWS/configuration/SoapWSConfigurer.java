@@ -12,10 +12,12 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+
 @EnableWs
-@Configuration
+@Configuration 
 public class SoapWSConfigurer extends WsConfigurerAdapter {
 
+	
 	@Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context){
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -39,5 +41,5 @@ public class SoapWSConfigurer extends WsConfigurerAdapter {
         definition.setServiceName("AccomodationService");
         
         return definition;
-    }
+    } 
 }

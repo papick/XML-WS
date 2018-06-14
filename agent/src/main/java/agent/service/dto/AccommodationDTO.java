@@ -8,7 +8,7 @@ public class AccommodationDTO {
 
 	private String capacity;
 
-	private double price;
+	private String price;
 
 	private String type;
 
@@ -53,11 +53,11 @@ public class AccommodationDTO {
 		this.capacity = capacity;
 	}
 
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

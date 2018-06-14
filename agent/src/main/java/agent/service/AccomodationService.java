@@ -33,8 +33,10 @@ public class AccomodationService {
 		Accommodation accomodation = new Accommodation();
 		// accomodation.setImage(accomodationDTO.getImage());
 		accomodation.setDescription(accomodationDTO.getDescription());
-		//accomodation.setCapacity(accomodationDTO.getCapacity());
-		accomodation.setPrice(accomodationDTO.getPrice());
+		int capacity = Integer.parseInt(accomodationDTO.getCapacity());
+		accomodation.setCapacity(capacity);
+		double price = Double.parseDouble(accomodationDTO.getPrice());
+		accomodation.setPrice(price);
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accomodationDTO.getType()));
 		// aditonal service dodati
 		accomodation.setName(accomodationDTO.getName());
@@ -58,6 +60,31 @@ public class AccomodationService {
 		accomodation.getAdditional().clear();
 		accomodationRepository.delete(accomodation);
 		return accomodation;
+	}
+	
+	public Accommodation edit(Long idAgent,Long id, AccommodationDTO accDTO) {
+
+		Accommodation accomodation = accomodationRepository.findOne(id);
+
+		// accomodation.setImage(accomodationDTO.getImage());
+		accomodation.setDescription(accDTO.getDescription());
+		int capacity = Integer.parseInt(accDTO.getCapacity());
+		accomodation.setCapacity(capacity);
+		double price = Double.parseDouble(accDTO.getPrice());
+		accomodation.setPrice(price);
+		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accDTO.getType()));
+		// aditonal service dodati
+		accomodation.setName(accDTO.getName());
+		accomodation.setCity(cityRepository.findOneByName(accDTO.getCity()));
+		accomodation.setAddress(accDTO.getAddress());
+		accomodation.setAgent(userRepository.findOne(idAgent));
+		accomodation.setCategory(categoryRepository.findOneByName(accDTO.getCategory()));
+
+
+		accomodationRepository.save(accomodation);
+
+		return null;
+
 	}
 
 }

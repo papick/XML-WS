@@ -1,5 +1,7 @@
 package XMLWS.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +22,13 @@ public class CountryService {
 		countryRepository.save(country);
 	}
 	
+	
+	
+	public List<Country> getAll() {
+		
+		List<Country> countries = countryRepository.findAll();
+		
+		return countries;
+		
+	}
 }
