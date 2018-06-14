@@ -8,7 +8,7 @@ import XMLWS.model.Reservation;
 
 @Service
 public interface ReservationService {
-	public void addReservation(Reservation reservation);
+	public Reservation addReservation(Reservation reservation);
 	public void removeReservation(Long id);
 	public void updateReservation(Reservation reservation);
 	public Reservation getReservation(Long id);

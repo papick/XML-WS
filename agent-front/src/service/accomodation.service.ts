@@ -30,4 +30,15 @@ export class AccomodationService {
     return this.http.post(`${this.BASE_URL}/create/` + id, body, {headers: headers})
   }
 
+  getAccomodation(id): Observable<any> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get(`${this.BASE_URL}/get-accomodation/${id}`, {headers: headers})
+  }
+
+  editAccomodation(accomodation: AccomodationModel, idAgent: any, id: any): Observable<any> {
+    const body = JSON.stringify(accomodation);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put(`${this.BASE_URL}/edit-accomodation/${idAgent}/${id}`, body, {headers: headers})
+  }
+
 }

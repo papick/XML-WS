@@ -3,14 +3,44 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
+import { routes } from './app.router';
+
+import {GrowlModule} from 'primeng/growl';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {PanelModule} from 'primeng/panel';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ButtonModule} from 'primeng/button';
+import {MenubarModule} from 'primeng/menubar';
+import {InputTextModule} from 'primeng/inputtext';
+import {DataViewModule} from 'primeng/dataview';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
-    BrowserModule
+    routes,
+    BrowserModule,
+    BrowserAnimationsModule,
+    GrowlModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PanelModule,
+    ButtonModule,
+    MenubarModule,
+    InputTextModule,
+    DataViewModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
