@@ -72,17 +72,28 @@
         Cena je obavezna!
       </small>
 
+      <div>
 
-      <label style="margin-top:20px">Dodatne usluge:</label>
-      <select class="form-control margin " [formControl]="aditional"
-              style="margin-bottom: 30px;width: 100%;display: inline-block">
-        <option></option>
-        <option *ngFor="let s of services ">{{s.name}}</option>
+        <div style=" display: inline-block; width: 50%;margin-top: 20px">
+          <div *ngFor="let s of services ">
+            <button style="margin-right: 15px;height: 30px;width: 70px;border-radius: 12px;background-color: #1a8cff;color: white;" (click)="addService(s.name )" >Dodaj</button>
+            <button style="height: 30px;width: 70px;border-radius: 12px;background-color: #ff6666;color: white;" (click)="removeService(s.name )" >Ukloni</button>
 
-      </select>
+            <label style="margin-left: 15px;font-size: 18px">{{s.name}}</label>
+          </div>
+        </div>
+
+        <div style=" display: inline-block;width: 50%;height: 100%">
+          <label style="margin-top:20px">Dodatne usluge:</label>
+          <textarea style=" height: 110px;width: 100%" >{{values}}</textarea>
+        </div>
 
 
-      <button class="btn btn-success" style="width: 100%" (click)="confirmClick()" [disabled]="!form.valid">
+
+      </div>
+
+      <button class="btn btn-success" style="width: 100%;margin-top: 30px" (click)="confirmClick()"
+              [disabled]="!form.valid">
         {{method_name}}
       </button>
       <button class="btn btn-success" style="width: 100% ; margin-top: 20px" (click)="exit()">ZATVORI</button>
