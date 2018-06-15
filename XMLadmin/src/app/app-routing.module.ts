@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'home/:click', component: HomeComponent},
   {path: 'home/:click/:mode', component: HomeComponent},
+  {path: 'home/:click/:mode/:id', component: HomeComponent},
 
 ];
 

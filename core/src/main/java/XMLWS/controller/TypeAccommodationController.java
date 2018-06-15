@@ -32,6 +32,14 @@ public class TypeAccommodationController {
 		return new ResponseEntity<List<TypeAccomodation>>(t, HttpStatus.OK);
 	}
 	
+	@GetMapping("/get-type/{id}")
+	public ResponseEntity<TypeAccomodation> getType(@PathVariable Long id) {
+		
+		TypeAccomodation t = tas.getType(id);
+
+		return new ResponseEntity<TypeAccomodation>(t, HttpStatus.OK);
+	}
+	
 	@PostMapping("/add-type")
 	public ResponseEntity<TypeAccomodation> addType(@RequestBody TypeAccomodation ta) {
 

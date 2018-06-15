@@ -31,6 +31,14 @@ public class AdditionalServiceController {
 
 		return new ResponseEntity<List<AdditionalService>>(as, HttpStatus.OK);
 	}
+	
+	@GetMapping("/get-additional-service/{id}")
+	public ResponseEntity<AdditionalService> getAdditionalService(@PathVariable Long id) {
+
+		AdditionalService a = ass.getAService(id);
+
+		return new ResponseEntity<AdditionalService>(a, HttpStatus.OK);
+	}
 
 	@PostMapping("/add-additional-service")
 	public ResponseEntity<AdditionalService> addAdditionalService(@RequestBody AdditionalService as) {

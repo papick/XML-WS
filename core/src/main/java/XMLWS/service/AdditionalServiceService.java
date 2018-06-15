@@ -11,6 +11,8 @@ public interface AdditionalServiceService {
 	
 	public List<AdditionalService> getAllServices();
 	
+	public AdditionalService getAService(Long id);
+	
 	public AdditionalService addService(AdditionalService as);
 	
 	public AdditionalService modifyAdditionalService(AdditionalService as,Long id);

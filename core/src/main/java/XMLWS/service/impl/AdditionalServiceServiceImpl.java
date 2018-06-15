@@ -43,4 +43,9 @@ public class AdditionalServiceServiceImpl implements AdditionalServiceService {
 		asRepo.delete(serviceForDelete);
 	}
 
+	@Override
+	public AdditionalService getAService(Long id) {
+		return asRepo.findOne(id);
+	}
+
 }
