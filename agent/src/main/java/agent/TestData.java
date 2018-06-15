@@ -48,10 +48,12 @@ public class TestData {
 
 	@PostConstruct
 	private void init() {
-		Country country1 = new Country("Srbija");
+		Country country1 = new Country();
+		country1.setName("Serbia");
 		countryRepository.save(country1);
 
-		Country country2 = new Country("Grcka");
+		Country country2 = new Country();
+		country2.setName("United States");
 		countryRepository.save(country2);
 
 		City city1 = new City("Novi Sad", country1);
@@ -96,9 +98,32 @@ public class TestData {
 		lista.add(aditionalService3);
 		lista.add(aditionalService4);
 
-		accomodation1.setAdditionalService(lista);
+		accomodation1.setAdditional(lista);
 
 		accomodationRepository.save(accomodation1);
+		
+		
+		
+		Accommodation accomodation2 = new Accommodation();
+		accomodation2.setImage("");
+		accomodation2.setDescription("Nalazi se u samom centru Novog Sada.");
+		accomodation2.setCapacity(3);
+		accomodation2.setPrice(50.0);
+		accomodation2.setType(typeAccomodation1);
+		accomodation2.setName("Hotel Centar");
+		accomodation2.setCity(city1);
+		accomodation2.setAddress("");
+		accomodation2.setAgent(user1);
+		accomodation2.setCategory(category1);
+		ArrayList<Additional> lista2 = new ArrayList<Additional>();
+		lista2.add(aditionalService1);
+		lista2.add(aditionalService2);
+		lista2.add(aditionalService3);
+
+
+		accomodation2.setAdditional(lista2);
+
+		accomodationRepository.save(accomodation2);
 
 	}
 }

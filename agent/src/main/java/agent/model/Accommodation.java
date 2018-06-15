@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,7 +33,7 @@ public class Accommodation {
 	private TypeAccomodation type;
 
 	@ManyToMany
-	private List<Additional> additionalService;
+	private List<Additional> additional;
 
 	// podaci za hotel
 
@@ -157,12 +156,12 @@ public class Accommodation {
 		this.type = type;
 	}
 
-	public List<Additional> getAdditionalService() {
-		return additionalService;
+	public List<Additional> getAdditional() {
+		return additional;
 	}
 
-	public void setAdditionalService(List<Additional> additionalService) {
-		this.additionalService = additionalService;
+	public void setAdditional(List<Additional> additional) {
+		this.additional = additional;
 	}
 
 }

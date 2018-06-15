@@ -15,6 +15,9 @@ public class CategoryService {
 	private CategoryRepository categoryRepository;
 
 	public ArrayList<Category> findAllCategories() {
+		
+		System.out.println("TEST");
+		
 		return (ArrayList<Category>) categoryRepository.findAll();
 	}
 

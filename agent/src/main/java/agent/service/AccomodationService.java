@@ -1,10 +1,14 @@
 package agent.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import agent.model.Accommodation;
+import agent.model.Additional;
 import agent.repository.AccomodationRepository;
+import agent.repository.AditionalServiceRepository;
 import agent.repository.CategoryRepository;
 import agent.repository.CityRepository;
 import agent.repository.TypeAccomodationRepository;
@@ -29,25 +33,85 @@ public class AccomodationService {
 	@Autowired
 	private AccomodationRepository accomodationRepository;
 
-	public Accommodation create(AccommodationDTO accomodationDTO) {
+	@Autowired
+	private AditionalServiceRepository aditionalServiceRepositroy;
+
+	public Accommodation create(AccommodationDTO accomodationDTO, Long id) {
 		Accommodation accomodation = new Accommodation();
-		accomodation.setImage(accomodationDTO.getImage());
+		// accomodation.setImage(accomodationDTO.getImage());
 		accomodation.setDescription(accomodationDTO.getDescription());
-		accomodation.setCapacity(accomodationDTO.getCapacity());
-		accomodation.setPrice(accomodationDTO.getPrice());
+		int capacity = Integer.parseInt(accomodationDTO.getCapacity());
+		accomodation.setCapacity(capacity);
+		double price = Double.parseDouble(accomodationDTO.getPrice());
+		accomodation.setPrice(price);
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accomodationDTO.getType()));
-		// aditonal service dodati
+		// aditonal service
+		ArrayList<Additional> aditionals = new ArrayList<Additional>();
+		if (accomodationDTO.getList().isEmpty() == false) {
+			for (int i = 0; i < accomodationDTO.getList().size(); i++) {
+				Additional aditional = aditionalServiceRepositroy.findOneByName(accomodationDTO.getList().get(i));
+				aditionals.add(aditional);
+
+			}
+			accomodation.setAdditional(aditionals);
+		}
+
 		accomodation.setName(accomodationDTO.getName());
 		accomodation.setCity(cityRepository.findOneByName(accomodationDTO.getCity()));
 		accomodation.setAddress(accomodationDTO.getAddress());
-		accomodation.setAgent(userRepository.findOne(accomodationDTO.getIdAgent()));
+		accomodation.setAgent(userRepository.findOne(id));
 		accomodation.setCategory(categoryRepository.findOneByName(accomodationDTO.getCategory()));
 
 		accomodationRepository.save(accomodation);
 
-		// accomodationWService.create(accomodation);
-
 		return accomodation;
+	}
+
+	public Accommodation delete(Long id) {
+
+		Accommodation accomodation = accomodationRepository.findOne(id);
+
+		if (accomodation == null) {
+			throw new IllegalArgumentException("Tried to delete non-existant accomodation");
+		}
+		accomodation.getAdditional().clear();
+		accomodationRepository.delete(accomodation);
+		return accomodation;
+	}
+
+	public Accommodation edit(Long idAgent, Long id, AccommodationDTO accDTO) {
+
+		Accommodation accomodation = accomodationRepository.findOne(id);
+
+		// accomodation.setImage(accomodationDTO.getImage());
+		accomodation.setDescription(accDTO.getDescription());
+		int capacity = Integer.parseInt(accDTO.getCapacity());
+		accomodation.setCapacity(capacity);
+		double price = Double.parseDouble(accDTO.getPrice());
+		accomodation.setPrice(price);
+		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accDTO.getType()));
+		// aditonal service
+		ArrayList<Additional> aditionals = new ArrayList<Additional>();
+		accomodation.getAdditional().clear();
+		if (accDTO.getList().isEmpty() == false) {
+			for (int i = 0; i < accDTO.getList().size(); i++) {
+				Additional aditional = aditionalServiceRepositroy.findOneByName(accDTO.getList().get(i));
+				aditionals.add(aditional);
+
+			}
+			accomodation.setAdditional(aditionals);
+		}
+
+		accomodation.setName(accDTO.getName());
+		accomodation.setCity(cityRepository.findOneByName(accDTO.getCity()));
+		accomodation.setAddress(accDTO.getAddress());
+		accomodation.setAgent(userRepository.findOne(idAgent));
+		accomodation.setCategory(categoryRepository.findOneByName(accDTO.getCategory()));
+
+		accomodationRepository.save(accomodation);
+
+		return null;
+
 	}
 
 }

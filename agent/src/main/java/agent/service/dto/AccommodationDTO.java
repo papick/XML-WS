@@ -1,22 +1,18 @@
 package agent.service.dto;
 
+import java.util.ArrayList;
+
 public class AccommodationDTO {
 
 	private String image;
 
 	private String description;
 
-	private int capacity;
+	private String capacity;
 
-	private double price;
+	private String price;
 
 	private String type;
-
-	// private List<AdditionalService> additionalService;
-
-	private Long idAgent;
-
-	// podaci za hotel
 
 	private String name;
 
@@ -25,6 +21,16 @@ public class AccommodationDTO {
 	private String address;
 
 	private String category;
+
+	private ArrayList<String> list;
+
+	public ArrayList<String> getList() {
+		return list;
+	}
+
+	public void setList(ArrayList<String> list) {
+		this.list = list;
+	}
 
 	public AccommodationDTO() {
 		super();
@@ -47,19 +53,19 @@ public class AccommodationDTO {
 		this.description = description;
 	}
 
-	public int getCapacity() {
+	public String getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(int capacity) {
+	public void setCapacity(String capacity) {
 		this.capacity = capacity;
 	}
 
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
@@ -69,14 +75,6 @@ public class AccommodationDTO {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public Long getIdAgent() {
-		return idAgent;
-	}
-
-	public void setIdAgent(Long idAgent) {
-		this.idAgent = idAgent;
 	}
 
 	public String getName() {
