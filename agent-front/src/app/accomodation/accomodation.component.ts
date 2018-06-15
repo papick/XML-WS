@@ -107,6 +107,11 @@ export class AccomodationComponent implements OnInit {
         this.form.controls['price'].setValue(data.price);
         this.form.controls['type'].setValue(data.type.name);
 
+        for (var i = 0; i < data.additional.length; i++) {
+          this.listAditionalService.push(data.additional[i].name);
+          this.values += data.additional[i].name + '    ';
+        }
+
       })
 
 
@@ -135,10 +140,10 @@ export class AccomodationComponent implements OnInit {
       this.category.value,
       this.capacity.value,
       this.price.value,
+      this.listAditionalService,
     );
 
     this.accomodationService.createAccomodation(accomodation, 1).subscribe(data => {
-      console.log(document.getElementById('TV').getAttribute('TV'))
       this.router.navigateByUrl('home');
 
     })
@@ -155,6 +160,7 @@ export class AccomodationComponent implements OnInit {
       this.category.value,
       this.capacity.value,
       this.price.value,
+      this.listAditionalService,
     );
     const id = this.route.snapshot.params.id;
     this.accomodationService.editAccomodation(accomodation, 1, id).subscribe(data => {
@@ -176,7 +182,7 @@ export class AccomodationComponent implements OnInit {
 
     if (this.listAditionalService.length === 0) {
       this.listAditionalService.push(service);
-      this.values += service + '  ,  ';
+      this.values += service + '    ';
     } else {
 
 
@@ -190,7 +196,7 @@ export class AccomodationComponent implements OnInit {
 
       if (this.check == false) {
         this.listAditionalService.push(service);
-        this.values += service + '  ,  ';
+        this.values += service + '    ';
 
       }
 
@@ -211,7 +217,7 @@ export class AccomodationComponent implements OnInit {
     }
     this.values = '';
     for (var i = 0; i < this.listAditionalService.length; i++) {
-      this.values += this.listAditionalService[i] + '  ,  ';
+      this.values += this.listAditionalService[i] + '    ';
     }
 
 

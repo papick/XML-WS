@@ -8,4 +8,5 @@ import agent.model.Additional;
 @Repository
 public interface AditionalServiceRepository extends JpaRepository<Additional, Long> {
 
+	Additional findOneByName(String name);
 }

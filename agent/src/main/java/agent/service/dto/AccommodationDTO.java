@@ -1,5 +1,7 @@
 package agent.service.dto;
 
+import java.util.ArrayList;
+
 public class AccommodationDTO {
 
 	private String image;
@@ -12,10 +14,6 @@ public class AccommodationDTO {
 
 	private String type;
 
-	// private List<AdditionalService> additionalService;
-
-	// podaci za hotel
-
 	private String name;
 
 	private String city;
@@ -23,6 +21,16 @@ public class AccommodationDTO {
 	private String address;
 
 	private String category;
+
+	private ArrayList<String> list;
+
+	public ArrayList<String> getList() {
+		return list;
+	}
+
+	public void setList(ArrayList<String> list) {
+		this.list = list;
+	}
 
 	public AccommodationDTO() {
 		super();
