@@ -49,7 +49,12 @@ public class TestData {
 
 		Country country1 = new Country("Serbia");
 		countryRepository.save(country1);
-
+		
+		Country country2 = new Country();
+		country2.setCode("USA");
+		country2.setName("United States of America");
+		countryRepository.save(country2);
+				
 		City city1 = new City("Novi Sad", country1);
 		cityRepository.save(city1);
 

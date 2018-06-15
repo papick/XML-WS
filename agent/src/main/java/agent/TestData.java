@@ -48,10 +48,12 @@ public class TestData {
 
 	@PostConstruct
 	private void init() {
-		Country country1 = new Country("Srbija");
+		Country country1 = new Country();
+		country1.setName("Serbia");
 		countryRepository.save(country1);
 
-		Country country2 = new Country("Grcka");
+		Country country2 = new Country();
+		country2.setName("United States");
 		countryRepository.save(country2);
 
 		City city1 = new City("Novi Sad", country1);
