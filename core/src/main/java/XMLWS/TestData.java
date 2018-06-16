@@ -5,17 +5,21 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import XMLWS.model.Accommodation;
 import XMLWS.model.AdditionalService;
 import XMLWS.model.Agent;
 import XMLWS.model.Category;
 import XMLWS.model.City;
+import XMLWS.model.Comment;
 import XMLWS.model.Country;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.model.User;
+import XMLWS.repository.AccomodationRepository;
 import XMLWS.repository.AdditionalServiceRepository;
 import XMLWS.repository.AgentRepository;
 import XMLWS.repository.CategoryRepository;
 import XMLWS.repository.CityRepository;
+import XMLWS.repository.CommentRepository;
 import XMLWS.repository.CountryRepository;
 import XMLWS.repository.TypeAccomodationRepository;
 import XMLWS.repository.UserRepository;
@@ -40,9 +44,15 @@ public class TestData {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private AgentRepository agentRepo;
+	
+	@Autowired
+	private AccomodationRepository accomodationRepository;
+	
+	@Autowired
+	private CommentRepository commRepo;
 
 	@PostConstruct
 	private void init() {
@@ -111,6 +121,24 @@ public class TestData {
 		
 		Agent agent2=new Agent("hilton","hilton","Jovan","Jovanovic","Beograd","mbr2");
 		agentRepo.save(agent2);
+		
+		Accommodation a1= new Accommodation("", "", 2, 20, typeAccomodation1,"naziv",city1, "", user1,category4,agent1.getId());
+		accomodationRepository.save(a1);
+		
+		Comment comm1=new Comment("Odlican smestaj!", "Kristina", a1, false);
+		commRepo.save(comm1);
+		
+		Comment comm2=new Comment("Los smestaj!", "Milica", a1, false);
+		commRepo.save(comm2);
+		
+		Comment comm3=new Comment("Lep smestaj!", "Dejan", a1, false);
+		commRepo.save(comm3);
+		
+		Comment comm4=new Comment("Psovka", "Kristina", a1, false);
+		commRepo.save(comm4);
+		
+		Comment comm5=new Comment("Bla bla", "Sinisa", a1, true);
+		commRepo.save(comm5);
 
 	}
 }

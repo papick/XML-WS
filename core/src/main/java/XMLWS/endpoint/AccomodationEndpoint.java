@@ -37,7 +37,7 @@ public class AccomodationEndpoint {
 		List<Country> countries = countryService.getAll();
 	
 		for(Country country : countries) {
-			response.getCountry().add(country);
+			//response.getCountry().add(country);
 		}
 		
 		return response;

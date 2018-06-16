@@ -1,4 +1,4 @@
-<button class="btn btn-lg btn-warning" (click)="add()">Dodaj tip smeštaja</button><br><br>
+<button class="btn btn-lg btn-dark" (click)="add()">Dodaj tip smeštaja</button><br><br>
 
 <table class="table offset-0 tables" style=" border: 3px solid #008080 ;">
   <tr>
@@ -9,8 +9,8 @@
 
   <tr *ngFor="let item of typesAccomodation;">
     <td> {{item.name}}</td>
-    <td><button class="btn btn-lg btn-warning" (click)="edit(item.id)">Izmeni</button></td>
-    <td ><button class="btn btn-lg btn-warning">Obriši</button></td>
+    <td><button class="btn btn-lg btn-dark" (click)="edit(item.id)">Izmeni</button></td>
+    <td ><button class="btn btn-lg btn-dark">Obriši</button></td>
   </tr>
 
 </table>

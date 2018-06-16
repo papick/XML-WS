@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   addTypeAccomodation = false;
   addCategory = false;
   addAdditionalService = false;
+  imageRoute = '../../../assets/images/admin.jpg';
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {

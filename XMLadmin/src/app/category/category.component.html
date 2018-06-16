@@ -1,4 +1,4 @@
-<button class="btn btn-lg btn-warning" (click)="add()">Dodaj kategoriju</button><br><br>
+<button class="btn btn-lg btn-dark" (click)="add()">Dodaj kategoriju</button><br><br>
 
 <table class="table offset-0 tables" style=" border: 3px solid #008080 ;">
   <tr>
@@ -9,8 +9,8 @@
 
   <tr *ngFor="let c of categories;">
     <td> {{c.name}}</td>
-    <td><button class="btn btn-lg btn-warning" (click)="edit(c.id)">Izmeni</button></td>
-    <td ><button class="btn btn-lg btn-warning" (click)="remove(c.id)">Obriši</button></td>
+    <td><button class="btn btn-lg btn-dark" (click)="edit(c.id)">Izmeni</button></td>
+    <td ><button class="btn btn-lg btn-dark" (click)="remove(c.id)">Obriši</button></td>
   </tr>
 
 </table>

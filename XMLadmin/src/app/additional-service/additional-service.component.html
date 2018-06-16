@@ -1,4 +1,4 @@
-<button class="btn btn-lg btn-warning" (click)="add()">Dodaj dodatnu uslugu</button><br><br>
+<button class="btn btn-lg btn-dark" (click)="add()">Dodaj dodatnu uslugu</button><br><br>
 
 <table class="table offset-0 tables" style=" border: 3px solid #008080 ;">
   <tr>
@@ -9,8 +9,8 @@
 
   <tr *ngFor="let item of additionalservices;">
     <td> {{item.name}}</td>
-    <td><button class="btn btn-lg btn-warning" (click)="edit(item.id)">Izmeni</button></td>
-    <td ><button class="btn btn-lg btn-warning" (click)="removeAS(item.id)">Obriši</button></td>
+    <td><button class="btn btn-lg btn-dark" (click)="edit(item.id)">Izmeni</button></td>
+    <td ><button class="btn btn-lg btn-dark" (click)="removeAS(item.id)">Obriši</button></td>
   </tr>
 
 </table>

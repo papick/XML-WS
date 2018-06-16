@@ -26,6 +26,7 @@ import { AgentFormComponent } from './agent-form/agent-form.component';
 import { TypeAccomodationFormComponent } from './type-accomodation-form/type-accomodation-form.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { AdditionalServiceFormComponent } from './additional-service-form/additional-service-form.component';
+import {CommentsService} from '../services/commentsService';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AdditionalServiceFormComponent } from './additional-service-form/additi
     AdditionalServiceService,
     UserService,
     AgentService,
+    CommentsService
   ],
   bootstrap: [AppComponent]
 })
