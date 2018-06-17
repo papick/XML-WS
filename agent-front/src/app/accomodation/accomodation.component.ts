@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CityService} from "../../service/city.service";
@@ -33,6 +33,10 @@ export class AccomodationComponent implements OnInit {
   cities = []
   types = []
   services = []
+
+
+  listAditionalService = [];
+  values = '';
 
 
   constructor(protected router: Router,
@@ -88,6 +92,7 @@ export class AccomodationComponent implements OnInit {
       this.types = data.types;
     })
 
+
     if (mode == 'edit') {
       this.method_name = 'IZMENI';
       const id = this.route.snapshot.params.id;
@@ -101,6 +106,11 @@ export class AccomodationComponent implements OnInit {
         this.form.controls['capacity'].setValue(data.capacity);
         this.form.controls['price'].setValue(data.price);
         this.form.controls['type'].setValue(data.type.name);
+
+        for (var i = 0; i < data.additional.length; i++) {
+          this.listAditionalService.push(data.additional[i].name);
+          this.values += data.additional[i].name + '    ';
+        }
 
       })
 
@@ -130,6 +140,7 @@ export class AccomodationComponent implements OnInit {
       this.category.value,
       this.capacity.value,
       this.price.value,
+      this.listAditionalService,
     );
 
     this.accomodationService.createAccomodation(accomodation, 1).subscribe(data => {
@@ -149,6 +160,7 @@ export class AccomodationComponent implements OnInit {
       this.category.value,
       this.capacity.value,
       this.price.value,
+      this.listAditionalService,
     );
     const id = this.route.snapshot.params.id;
     this.accomodationService.editAccomodation(accomodation, 1, id).subscribe(data => {
@@ -160,5 +172,56 @@ export class AccomodationComponent implements OnInit {
     const idBank = this.route.snapshot.params.idBank;
     this.router.navigateByUrl('home');
 
+
   }
+
+  public check = false;
+
+  addService(service: any) {
+    this.check = false;
+
+    if (this.listAditionalService.length === 0) {
+      this.listAditionalService.push(service);
+      this.values += service + '    ';
+    } else {
+
+
+      for (var i = 0; i < this.listAditionalService.length; i++) {
+
+        if (this.listAditionalService[i] == service) {
+          this.check = true;
+          break;
+        }
+      }
+
+      if (this.check == false) {
+        this.listAditionalService.push(service);
+        this.values += service + '    ';
+
+      }
+
+    }
+    console.log(this.listAditionalService)
+  }
+
+  removeService(service: any) {
+    this.check = false;
+
+
+    for (var i = 0; i < this.listAditionalService.length; i++) {
+
+      if (this.listAditionalService[i] == service) {
+        this.listAditionalService = this.listAditionalService.filter(item => item != service);
+        break;
+      }
+    }
+    this.values = '';
+    for (var i = 0; i < this.listAditionalService.length; i++) {
+      this.values += this.listAditionalService[i] + '    ';
+    }
+
+
+  }
+
+
 }

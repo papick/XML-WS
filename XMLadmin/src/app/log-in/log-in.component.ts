@@ -13,6 +13,8 @@ export class LogInComponent implements OnInit {
   public username: AbstractControl;
   public password: AbstractControl;
 
+  imageRoute = '../../../assets/images/login.jpg';
+
   constructor(protected router: Router,
               private fb: FormBuilder) {
     this.form = this.fb.group({

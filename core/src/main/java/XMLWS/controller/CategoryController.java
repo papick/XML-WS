@@ -31,6 +31,14 @@ public class CategoryController {
 
 		return new ResponseEntity<List<Category>>(c, HttpStatus.OK);
 	}
+	
+	@GetMapping("/get-category/{id}")
+	public ResponseEntity<Category> getCategory(@PathVariable Long id) {
+
+		Category c = cs.getCategory(id);
+
+		return new ResponseEntity<Category>(c, HttpStatus.OK);
+	}
 
 	@PostMapping("/add-category")
 	public ResponseEntity<Category> addCategory(@RequestBody Category c) {

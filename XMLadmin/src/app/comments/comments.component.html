@@ -1,3 +1,19 @@
-<p>
-  comments works!
-</p>
+
+<table class="table offset-0 tables" style=" border: 3px solid #008080 ;">
+  <tr>
+    <th class="th-style">Tekst komentara</th>
+    <th class="th-style">Korisnik</th>
+    <th class="th-style">Smeštaj</th>
+    <th class="th-style">Objavljivanje</th>
+    <th class="th-style">Odbijanje</th>
+  </tr>
+
+  <tr *ngFor="let item of comments;">
+    <td> {{item.text}}</td>
+    <td> {{item.nameOfUser}}</td>
+    <td> {{item.accommodation.name}}</td>
+    <td><button class="btn btn-lg btn-dark" (click)="publish(item.id)">Objavi</button></td>
+    <td ><button class="btn btn-lg btn-dark" (click)="refuse(item.id)">Odbij</button></td>
+  </tr>
+
+</table>

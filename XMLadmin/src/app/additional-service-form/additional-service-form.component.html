@@ -1,3 +1,20 @@
-<p>
-  additional-service-form works!
-</p>
+<div class=" offset-4 col-md-4" style="margin-top:60px;background: #F7F7F7;">
+
+  <form [formGroup]="form">
+    <div class="form-group">
+
+      <label style=" font-size: 1.5em;font-weight: bold;margin-top: 30px">Naziv</label>
+      <input name="name" class="form-control margin" id="input-name" style="height: 50px"
+             placeholder="Unesite naziv" [formControl]="name">
+      <small class="form-text error" *ngIf="name.errors?.required && name.touched" style="color: red">
+        Naziv je obavezan!
+      </small>
+
+      <button class="btn btn-dark" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
+              (click)="confirmClick()" [disabled]="!form.valid">{{methodName}}
+      </button>
+
+    </div>
+  </form>
+</div>
+

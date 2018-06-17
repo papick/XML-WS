@@ -1,6 +1,6 @@
-<br>
-<br>
-
+<div class="offset-1">
+  <img src="{{imageRoute}}" class="img" style="height: 200px; margin-left: 500px">
+</div>
 
 <div class=" offset-4 col-md-4" style="margin-top:60px;background: #F7F7F7;">
 
@@ -10,7 +10,7 @@
       <input name="username" class="form-control margin" id="input-username" style="height: 50px"
              placeholder="Unesite korisničko ime" [formControl]="username">
       <small class="form-text error" *ngIf="username.errors?.required && username.touched" style="color: red">
-        Korisnicko ime je obavezano!
+        Korisnicko ime je obavezno!
       </small>
 
       <label style="margin-top:20px; font-size: 1.5em;font-weight: bold;">Lozinka:</label>
@@ -18,11 +18,11 @@
       <input name="password" class="form-control margin" type="password" id="input-password" style="height: 50px"
              placeholder="Unesite lozinku" [formControl]="password">
       <small class="form-text error" *ngIf="password.errors?.required && password.touched" style="color: red">
-        Lozinka je obavezana!
+        Lozinka je obavezna!
       </small>
 
       <br>
-      <button class="btn btn-default" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
+      <button class="btn btn" style="width: 100%;margin-top: 20px; font-size: 1.5em;margin-bottom: 30px"
               (click)="confirmClick()" [disabled]="!form.valid">Prijavi se
       </button>
 

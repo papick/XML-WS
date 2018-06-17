@@ -11,7 +11,11 @@ public interface AdditionalServiceService {
 	
 	public List<Addition> getAllServices();
 	
+
 	public Addition addService(Addition as);
+
+	public Addition getAService(Long id);
+
 	
 	public Addition modifyAdditionalService(Addition as,Long id);
 	

@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
   typeAccommodation = false;
   users = false;
   addAgent = false;
+  addTypeAccomodation = false;
+  addCategory = false;
+  addAdditionalService = false;
+  imageRoute = '../../../assets/images/admin.jpg';
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -29,8 +33,11 @@ export class HomeComponent implements OnInit {
       this.category = false;
       this.comments = false;
       this.typeAccommodation = false;
-      this.users = false
-      this.addAgent = false
+      this.users = false;
+      this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = false;
 
     } else if (click === 'agents') {
       this.additionalService = false;
@@ -40,6 +47,9 @@ export class HomeComponent implements OnInit {
       this.typeAccommodation = false;
       this.users = false;
       this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = false;
 
     } else if (click === 'category') {
       this.additionalService = false;
@@ -49,6 +59,9 @@ export class HomeComponent implements OnInit {
       this.typeAccommodation = false;
       this.users = false;
       this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = false;
 
     } else if (click === 'comments') {
       this.additionalService = false;
@@ -56,8 +69,12 @@ export class HomeComponent implements OnInit {
       this.category = false;
       this.comments = true;
       this.typeAccommodation = false;
-      this.users = false;;
+      this.users = false;
+      ;
       this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = false;
 
     } else if (click === 'typeAccommodation') {
       this.additionalService = false;
@@ -67,6 +84,9 @@ export class HomeComponent implements OnInit {
       this.typeAccommodation = true;
       this.users = false;
       this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = false;
 
     } else if (click === 'users') {
       this.additionalService = false;
@@ -76,6 +96,9 @@ export class HomeComponent implements OnInit {
       this.typeAccommodation = false;
       this.users = true;
       this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = false;
 
     } else if (click === 'agentForm') {
       this.additionalService = false;
@@ -85,6 +108,45 @@ export class HomeComponent implements OnInit {
       this.typeAccommodation = false;
       this.users = false;
       this.addAgent = true;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = false;
+
+    } else if (click === 'typeAccomodationForm') {
+      this.additionalService = false;
+      this.agents = false;
+      this.category = false;
+      this.comments = false;
+      this.typeAccommodation = false;
+      this.users = false;
+      this.addAgent = false;
+      this.addTypeAccomodation = true;
+      this.addCategory = false;
+      this.addAdditionalService = false;
+    }
+    else if (click === 'categoryForm') {
+      this.additionalService = false;
+      this.agents = false;
+      this.category = false;
+      this.comments = false;
+      this.typeAccommodation = false;
+      this.users = false;
+      this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = true;
+      this.addAdditionalService = false;
+
+    } else if (click === 'additionalServiceForm') {
+      this.additionalService = false;
+      this.agents = false;
+      this.category = false;
+      this.comments = false;
+      this.typeAccommodation = false;
+      this.users = false;
+      this.addAgent = false;
+      this.addTypeAccomodation = false;
+      this.addCategory = false;
+      this.addAdditionalService = true;
 
     }
   }

@@ -9,6 +9,7 @@ import XMLWS.model.Addition;
 import XMLWS.repository.AdditionalServiceRepository;
 import XMLWS.service.AdditionalServiceService;
 
+
 @Service
 public class AdditionalServiceServiceImpl implements AdditionalServiceService {
 
@@ -41,6 +42,11 @@ public class AdditionalServiceServiceImpl implements AdditionalServiceService {
 			throw new IllegalArgumentException("Tried to delete non-existant additional service");
 		}
 		asRepo.delete(serviceForDelete);
+	}
+
+	@Override
+	public Addition getAService(Long id) {
+		return asRepo.findOne(id);
 	}
 
 }

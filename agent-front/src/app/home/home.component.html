@@ -30,10 +30,9 @@
     <p style="font-size: 20px">Cena: {{item.price}} eura</p>
     <p style="font-size: 20px">Kapacitet(osoba): {{item.capacity}}</p>
     <p style="margin-bottom: 0%;font-size: 20px">Dodatne usluge :</p>
-    <div style="display: inline-block" *ngFor="let a of item.additionalService ">
+    <div style="display: inline-block" *ngFor="let a of item.additional ">
       <p style="margin-right: 12px;color: #1a8cff;font-size: 20px">{{a.name}} </p>
     </div>
-
     <div style="margin-bottom: 20px">
       <button style="border-radius: 12px;background-color: #1a8cff;color: white;height: 45px;width: 110px;font-size: 20px;margin-right: 20px" (click)="editAccomodation(item.id)">Izmeni</button>
       <button style="border-radius: 12px;background-color: #1a8cff;color: white;height: 45px;width: 110px;font-size: 20px" (click)="deleteAccomodation(item.id)">Obrisi</button>
