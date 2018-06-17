@@ -30,6 +30,7 @@ public class AccomodationService {
 	private AccomodationRepository accomodationRepository;
 
 	public Accommodation create(AccommodationDTO accomodationDTO, Long id) {
+		
 		Accommodation accomodation = new Accommodation();
 		// accomodation.setImage(accomodationDTO.getImage());
 		accomodation.setDescription(accomodationDTO.getDescription());

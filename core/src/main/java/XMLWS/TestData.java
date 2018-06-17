@@ -5,7 +5,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import XMLWS.model.AdditionalService;
+import XMLWS.model.Addition;
 import XMLWS.model.Agent;
 import XMLWS.model.Category;
 import XMLWS.model.City;
@@ -79,13 +79,13 @@ public class TestData {
 		TypeAccomodation typeAccomodation2 = new TypeAccomodation("Apartman");
 		typeAccomodationRepository.save(typeAccomodation2);
 
-		AdditionalService additionalService1 = new AdditionalService("Klima");
+		Addition additionalService1 = new Addition("Klima");
 		additionalServiceRepo.save(additionalService1);
 
-		AdditionalService additionalService2 = new AdditionalService("Parking");
+		Addition additionalService2 = new Addition("Parking");
 		additionalServiceRepo.save(additionalService2);
 
-		AdditionalService additionalService3 = new AdditionalService("Spa");
+		Addition additionalService3 = new Addition("Spa");
 		additionalServiceRepo.save(additionalService3);
 
 		User user1 = new User("dejan", "dejan", "dejan@gmail.com", false);

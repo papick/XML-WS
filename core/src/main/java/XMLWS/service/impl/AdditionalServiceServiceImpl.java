@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import XMLWS.model.AdditionalService;
+import XMLWS.model.Addition;
 import XMLWS.repository.AdditionalServiceRepository;
 import XMLWS.service.AdditionalServiceService;
 
@@ -16,27 +16,27 @@ public class AdditionalServiceServiceImpl implements AdditionalServiceService {
 	private AdditionalServiceRepository asRepo;
 
 	@Override
-	public List<AdditionalService> getAllServices() {
-		return (List<AdditionalService>) asRepo.findAll();
+	public List<Addition> getAllServices() {
+		return (List<Addition>) asRepo.findAll();
 	}
 
 	@Override
-	public AdditionalService addService(AdditionalService as) {
-		AdditionalService newAS = new AdditionalService();
+	public Addition addService(Addition as) {
+		Addition newAS = new Addition();
 		newAS.setName(as.getName());
 		return asRepo.save(newAS);
 	}
 
 	@Override
-	public AdditionalService modifyAdditionalService(AdditionalService as, Long id) {
-		AdditionalService updated = asRepo.findOne(id);
+	public Addition modifyAdditionalService(Addition as, Long id) {
+		Addition updated = asRepo.findOne(id);
 		updated.setName(as.getName());
 		return asRepo.save(updated);
 	}
 
 	@Override
 	public void deleteService(Long id) {
-		AdditionalService serviceForDelete = asRepo.findOne(id);
+		Addition serviceForDelete = asRepo.findOne(id);
 		if (serviceForDelete == null) {
 			throw new IllegalArgumentException("Tried to delete non-existant additional service");
 		}

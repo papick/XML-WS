@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import XMLWS.model.AdditionalService;
+import XMLWS.model.Addition;
 
 @Service
 public interface AdditionalServiceService {
 	
-	public List<AdditionalService> getAllServices();
+	public List<Addition> getAllServices();
 	
-	public AdditionalService addService(AdditionalService as);
+	public Addition addService(Addition as);
 	
-	public AdditionalService modifyAdditionalService(AdditionalService as,Long id);
+	public Addition modifyAdditionalService(Addition as,Long id);
 	
 	public void deleteService(Long id);
 

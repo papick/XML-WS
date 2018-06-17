@@ -33,7 +33,7 @@ public class Accommodation {
 	private TypeAccomodation type;
 
 	@ManyToMany
-	private List<Additional> additional;
+	private List<Additional> additions;
 
 	// podaci za hotel
 
@@ -157,11 +157,11 @@ public class Accommodation {
 	}
 
 	public List<Additional> getAdditional() {
-		return additional;
+		return additions;
 	}
 
 	public void setAdditional(List<Additional> additional) {
-		this.additional = additional;
+		this.additions = additional;
 	}
 
 }

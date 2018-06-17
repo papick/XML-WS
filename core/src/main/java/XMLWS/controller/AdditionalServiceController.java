@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import XMLWS.model.AdditionalService;
+import XMLWS.model.Addition;
 import XMLWS.service.AdditionalServiceService;
 
 @RestController
@@ -25,24 +25,24 @@ public class AdditionalServiceController {
 	private AdditionalServiceService ass;
 
 	@GetMapping("/get-additional-services")
-	public ResponseEntity<List<AdditionalService>> getAdditionalServices() {
+	public ResponseEntity<List<Addition>> getAdditionalServices() {
 
-		List<AdditionalService> as = ass.getAllServices();
+		List<Addition> as = ass.getAllServices();
 
-		return new ResponseEntity<List<AdditionalService>>(as, HttpStatus.OK);
+		return new ResponseEntity<List<Addition>>(as, HttpStatus.OK);
 	}
 
 	@PostMapping("/add-additional-service")
-	public ResponseEntity<AdditionalService> addAdditionalService(@RequestBody AdditionalService as) {
+	public ResponseEntity<Addition> addAdditionalService(@RequestBody Addition as) {
 
-		AdditionalService asForAdd = ass.addService(as);
-		return new ResponseEntity<AdditionalService>(asForAdd, HttpStatus.OK);
+		Addition asForAdd = ass.addService(as);
+		return new ResponseEntity<Addition>(asForAdd, HttpStatus.OK);
 	}
 
 	@PutMapping("/edit-additional-service/{id}")
-	public ResponseEntity<AdditionalService> editAdditionalService(@PathVariable Long id,
-			@RequestBody AdditionalService as) {
-		return new ResponseEntity<AdditionalService>(ass.modifyAdditionalService(as, id), HttpStatus.OK);
+	public ResponseEntity<Addition> editAdditionalService(@PathVariable Long id,
+			@RequestBody Addition as) {
+		return new ResponseEntity<Addition>(ass.modifyAdditionalService(as, id), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete-additional-service/{id}")

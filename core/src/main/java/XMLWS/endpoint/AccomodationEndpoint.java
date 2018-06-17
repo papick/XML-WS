@@ -17,8 +17,6 @@ import XMLWS.model.Country;
 import XMLWS.service.CountryService;
 
 
-
-
 @Endpoint
 public class AccomodationEndpoint {
 	

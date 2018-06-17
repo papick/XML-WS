@@ -25,6 +25,7 @@ public class Comment {
 
 	@ManyToOne
 	private Accommodation accommodation;
+	
 
 	private boolean approved;
 

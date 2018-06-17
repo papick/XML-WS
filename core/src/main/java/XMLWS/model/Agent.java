@@ -35,7 +35,7 @@ public class Agent {
 
 	private String address;
 
-	private String mbr;
+	private String email;
 
 	public Agent() {
 	}
@@ -47,7 +47,7 @@ public class Agent {
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
-		this.mbr = mbr;
+		this.email = mbr;
 	}
 
 	public Long getId() {
@@ -99,11 +99,11 @@ public class Agent {
 	}
 
 	public String getMbr() {
-		return mbr;
+		return email;
 	}
 
 	public void setMbr(String mbr) {
-		this.mbr = mbr;
+		this.email = mbr;
 	}
 
 }

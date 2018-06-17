@@ -6,6 +6,8 @@
 
 
 
+	 <!--  *****  MODEL ***** -->
+
 	  <xs:complexType name="country">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
@@ -13,6 +15,97 @@
             <xs:element name="code" type="xs:string"/>      
         </xs:sequence>
     </xs:complexType>           
+    
+    
+     <xs:complexType name="city">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="country" type="tns:country"/>      
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="active" type="xs:boolean"/>           
+        </xs:sequence>
+    </xs:complexType>   
+    
+    
+     <xs:complexType name="typeAccomodation">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>        
+        </xs:sequence>
+    </xs:complexType>   
+       
+       
+       
+    <xs:complexType name="category">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>        
+        </xs:sequence>
+    </xs:complexType>  
+    
+    
+     <xs:complexType name="addition">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>        
+        </xs:sequence>
+    </xs:complexType>  
+    
+    
+     <xs:complexType name="agent">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="username" type="xs:string"/> 
+            <xs:element name="password" type="xs:string"/>  
+            <xs:element name="name" type="xs:string"/>  
+            <xs:element name="surname" type="xs:string"/>  
+            <xs:element name="address" type="xs:string"/>                 
+        </xs:sequence>
+    </xs:complexType>  
+    
+    
+     <xs:complexType name="accomodation">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/> 
+            <xs:element name="image" type="xs:string"/>  
+            <xs:element name="description" type="xs:string"/>  
+            <xs:element name="capacity" type="xs:int"/>  
+            <xs:element name="price" type="xs:double"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="additions" type="tns:addition" minOccurs="0" maxOccurs="unbounded"></xs:element>
+            <xs:element name="city" type="tns:city"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="agent" type="tns:agent"/>
+            <xs:element name="category" type="tns:category"/>                  
+        </xs:sequence>
+    </xs:complexType>  
+    
+    
+    <xs:complexType name="period">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="from" type="xs:date"/>
+            <xs:element name="to" type="xs:date"/>
+            <xs:element name="accomodation" type="tns:accomodation"/>                    
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    
+    
+    <!--  *****  **** ***** -->
+    
     
     
     <xs:element name="getCountryRequest">
