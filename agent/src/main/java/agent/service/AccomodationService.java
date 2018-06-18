@@ -54,7 +54,7 @@ public class AccomodationService {
 				aditionals.add(aditional);
 
 			}
-			accomodation.setAdditional(aditionals);
+			accomodation.setAdditionalService(aditionals);
 		}
 
 		accomodation.setName(accomodationDTO.getName());
@@ -75,7 +75,7 @@ public class AccomodationService {
 		if (accomodation == null) {
 			throw new IllegalArgumentException("Tried to delete non-existant accomodation");
 		}
-		accomodation.getAdditional().clear();
+		accomodation.getAdditionalService().clear();
 		accomodationRepository.delete(accomodation);
 		return accomodation;
 	}
@@ -93,14 +93,14 @@ public class AccomodationService {
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accDTO.getType()));
 		// aditonal service
 		ArrayList<Addition> aditionals = new ArrayList<Addition>();
-		accomodation.getAdditional().clear();
+		accomodation.getAdditionalService().clear();
 		if (accDTO.getList().isEmpty() == false) {
 			for (int i = 0; i < accDTO.getList().size(); i++) {
 				Addition aditional = aditionalServiceRepositroy.findOneByName(accDTO.getList().get(i));
 				aditionals.add(aditional);
 
 			}
-			accomodation.setAdditional(aditionals);
+			accomodation.setAdditionalService(aditionals);
 		}
 
 		accomodation.setName(accDTO.getName());

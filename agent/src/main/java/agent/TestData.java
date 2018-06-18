@@ -98,7 +98,7 @@ public class TestData {
 		lista.add(aditionalService3);
 		lista.add(aditionalService4);
 
-		accomodation1.setAdditional(lista);
+		accomodation1.setAdditionalService(lista);
 
 		accomodationRepository.save(accomodation1);
 		
@@ -121,7 +121,7 @@ public class TestData {
 		lista2.add(aditionalService3);
 
 
-		accomodation2.setAdditional(lista2);
+		accomodation2.setAdditionalService(lista2);
 
 		accomodationRepository.save(accomodation2);
 

@@ -1,13 +1,18 @@
 package XMLWS.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 @Entity
 @XmlRootElement
@@ -15,13 +20,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "availability")
 public class Availability {
 	
+		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		private Long id;
 	
 		@XmlElement(required = true)
+		@ManyToOne
 	    private Accommodation accomodation;
 		
 	    @XmlElement(required = true)
 	    @XmlSchemaType(name = "date")
-	    private XMLGregorianCalendar date;
+	    private Date date;
 	    
 	    
 	    public Availability() {
@@ -29,7 +38,7 @@ public class Availability {
 		}
 
 
-		public Availability(Accommodation accomodation, XMLGregorianCalendar date) {
+		public Availability(Accommodation accomodation, Date date) {
 			super();
 			this.accomodation = accomodation;
 			this.date = date;
@@ -46,12 +55,12 @@ public class Availability {
 		}
 
 
-		public XMLGregorianCalendar getDate() {
+		public Date getDate() {
 			return date;
 		}
 
 
-		public void setDate(XMLGregorianCalendar date) {
+		public void setDate(Date date) {
 			this.date = date;
 		}
 	    

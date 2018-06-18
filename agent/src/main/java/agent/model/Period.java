@@ -8,10 +8,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import agent.model.Accommodation;
 
 @Entity
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "period")
 public class Period {
 
 	@Id
@@ -27,14 +34,16 @@ public class Period {
 	@ManyToOne
 	private Accommodation accomodation;
 
-	public Period(Date from, Date to, Accommodation accomodation) {
+	public Period() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Period(Long id, Date from, Date to, Accommodation accomodation) {
 		super();
+		this.id = id;
 		this.from = from;
 		this.to = to;
 		this.accomodation = accomodation;
-	}
-
-	public Period() {
 	}
 
 	public Long getId() {
@@ -68,5 +77,7 @@ public class Period {
 	public void setAccomodation(Accommodation accomodation) {
 		this.accomodation = accomodation;
 	}
+	
+	
 
 }

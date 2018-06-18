@@ -25,10 +25,10 @@ public class Period {
 	private Long id;
 
 	@NotNull
-	private XMLGregorianCalendar from;
+	private Date from;
 
 	@NotNull
-	private XMLGregorianCalendar to;
+	private Date to;
 
 	@ManyToOne
 	private Accommodation accomodation;
@@ -37,7 +37,7 @@ public class Period {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Period(Long id, XMLGregorianCalendar from, XMLGregorianCalendar to, Accommodation accomodation) {
+	public Period(Long id, Date from, Date to, Accommodation accomodation) {
 		super();
 		this.id = id;
 		this.from = from;
@@ -53,19 +53,19 @@ public class Period {
 		this.id = id;
 	}
 
-	public XMLGregorianCalendar getFrom() {
+	public Date getFrom() {
 		return from;
 	}
 
-	public void setFrom(XMLGregorianCalendar from) {
+	public void setFrom(Date from) {
 		this.from = from;
 	}
 
-	public XMLGregorianCalendar getTo() {
+	public Date getTo() {
 		return to;
 	}
 
-	public void setTo(XMLGregorianCalendar to) {
+	public void setTo(Date to) {
 		this.to = to;
 	}
 

@@ -10,10 +10,13 @@ package com.bookingws.soap;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import XMLWS.model.TypeAccomodation;
 
 
 /**
@@ -42,7 +45,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "getTypesAccomodationResponse")
 public class GetTypesAccomodationResponse {
 
-    protected List<TypeAccomodation> country;
+    protected List<TypeAccomodation> typesAccomodation;
 
     /**
      * Gets the value of the country property.
@@ -66,11 +69,11 @@ public class GetTypesAccomodationResponse {
      * 
      * 
      */
-    public List<TypeAccomodation> getCountry() {
-        if (country == null) {
-            country = new ArrayList<TypeAccomodation>();
+    public List<TypeAccomodation> getTypesAccomodation() {
+        if (typesAccomodation == null) {
+            typesAccomodation = new ArrayList<TypeAccomodation>();
         }
-        return this.country;
+        return this.typesAccomodation;
     }
 
 }

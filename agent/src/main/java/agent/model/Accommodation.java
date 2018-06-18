@@ -2,11 +2,13 @@ package agent.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,54 +16,61 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import agent.model.*;
+
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "accommodaion")
+@XmlType(name = "accomodation")
 public class Accommodation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column
+	private String name;
+	
+	@Column
 	private String image;
 
+	@Column
 	private String description;
 
-	@NotNull
+	@Column
 	private int capacity;
 
-	@NotNull
+	@Column
 	private double price;
 
-	@OneToOne
+	@ManyToOne
 	private TypeAccomodation type;
 
 	@ManyToMany
 	private List<Addition> additions;
-
-	// podaci za hotel
-
-	@NotNull
-	private String name;
-
-	@OneToOne
+	
+	@ManyToOne
 	private City city;
 
+	@Column
 	private String address;
 
 	@OneToOne
 	private User agent;
 
-	@OneToOne
+	@ManyToOne
 	private Category category;
+
+	@Column
+	private Long idAccomodationAgent;
 
 	public Accommodation() {
 	}
 
-	public Accommodation(String description, int capacity, double price, TypeAccomodation type, String name, City city,
-			String address, User agent, Category category) {
+	public Accommodation(String image, String description, int capacity, double price, TypeAccomodation type,
+			String name, City city, String address, User agent, Category category, Long idAccomodationAgent) {
 		super();
+		this.image = image;
 		this.description = description;
 		this.capacity = capacity;
 		this.price = price;
@@ -71,6 +80,15 @@ public class Accommodation {
 		this.address = address;
 		this.agent = agent;
 		this.category = category;
+		this.idAccomodationAgent = idAccomodationAgent;
+	}
+
+	public Long getIdAccomodationAgent() {
+		return idAccomodationAgent;
+	}
+
+	public void setIdAccomodationAgent(Long idAccomodationAgent) {
+		this.idAccomodationAgent = idAccomodationAgent;
 	}
 
 	public String getName() {
@@ -161,12 +179,12 @@ public class Accommodation {
 		this.type = type;
 	}
 
-	public List<Addition> getAdditional() {
+	public List<Addition> getAdditionalService() {
 		return additions;
 	}
 
-	public void setAdditional(List<Addition> additional) {
-		this.additions = additional;
+	public void setAdditionalService(List<Addition> additionalService) {
+		this.additions = additionalService;
 	}
 
 }

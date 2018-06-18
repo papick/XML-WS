@@ -1,9 +1,12 @@
 package XMLWS.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -14,9 +17,11 @@ import javax.xml.bind.annotation.XmlType;
 public class Price {
 	
 	
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
    
+	@ManyToOne
     private Accommodation accomodation;
 
     private String month;

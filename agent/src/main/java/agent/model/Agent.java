@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -48,19 +50,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "agent")
-
 public class Agent {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    protected long id;
-	
-	@Column
-    private String username;
+	private Long id;
 
-	@Column
-    private String password;
+	@Size(min = 1, max = 20)
+	@Column(unique = true, nullable = false)
+	@NotNull
+	private String username;
+
+	@Size(max = 20)
+	@Column(nullable = false)
+	@NotNull
+	private String password;
 
 	@Column
     private String name;
@@ -70,14 +74,12 @@ public class Agent {
 
 	@Column
     private String address;
-    
-    public Agent() {
-		// TODO Auto-generated constructor stub
+
+	public Agent() {
 	}
 
-	public Agent(long id, String username, String password, String name, String surname, String address) {
+	public Agent(String username, String password, String name, String surname, String addressr) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.name = name;
@@ -85,11 +87,11 @@ public class Agent {
 		this.address = address;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

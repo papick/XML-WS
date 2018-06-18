@@ -37,6 +37,18 @@ public interface AccomodationServicePort {
 
     /**
      * 
+     * @param getTypesAccomodationRequest
+     * @return
+     *     returns com.bookingws.soap.GetTypesAccomodationResponse
+     */
+    @WebMethod
+    @WebResult(name = "getTypesAccomodationResponse", targetNamespace = "http://bookingws.com/soap", partName = "getTypesAccomodationResponse")
+    public GetTypesAccomodationResponse getTypesAccomodation(
+        @WebParam(name = "getTypesAccomodationRequest", targetNamespace = "http://bookingws.com/soap", partName = "getTypesAccomodationRequest")
+        GetTypesAccomodationRequest getTypesAccomodationRequest);
+
+    /**
+     * 
      * @param setCountryRequest
      * @return
      *     returns com.bookingws.soap.SetCountryResponse
@@ -49,6 +61,18 @@ public interface AccomodationServicePort {
 
     /**
      * 
+     * @param getCitiesRequest
+     * @return
+     *     returns com.bookingws.soap.GetCitiesResponse
+     */
+    @WebMethod
+    @WebResult(name = "getCitiesResponse", targetNamespace = "http://bookingws.com/soap", partName = "getCitiesResponse")
+    public GetCitiesResponse getCities(
+        @WebParam(name = "getCitiesRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCitiesRequest")
+        GetCitiesRequest getCitiesRequest);
+
+    /**
+     * 
      * @param getCountryRequest
      * @return
      *     returns com.bookingws.soap.GetCountryResponse
@@ -58,5 +82,17 @@ public interface AccomodationServicePort {
     public GetCountryResponse getCountry(
         @WebParam(name = "getCountryRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCountryRequest")
         GetCountryRequest getCountryRequest);
+
+    /**
+     * 
+     * @param getCategoriesRequest
+     * @return
+     *     returns com.bookingws.soap.GetCategoriesResponse
+     */
+    @WebMethod
+    @WebResult(name = "getCategoriesResponse", targetNamespace = "http://bookingws.com/soap", partName = "getCategoriesResponse")
+    public GetCategoriesResponse getCategories(
+        @WebParam(name = "getCategoriesRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCategoriesRequest")
+        GetCategoriesRequest getCategoriesRequest);
 
 }

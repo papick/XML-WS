@@ -107,8 +107,8 @@
     <xs:complexType name="period">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
-            <xs:element name="from" type="xs:date"/>
-            <xs:element name="to" type="xs:date"/>
+            <xs:element name="from" type="xs:dateTime"/>
+            <xs:element name="to" type="xs:dateTime"/>
             <xs:element name="accomodation" type="tns:accommodation"/>                    
         </xs:sequence>
     </xs:complexType>
@@ -117,7 +117,7 @@
     <xs:complexType name="availability">
         <xs:sequence>
         	<xs:element name="accomodation" type="tns:accommodation"/>    
-            <xs:element name="date" type="xs:date"/>                    
+            <xs:element name="date" type="xs:dateTime"/>                    
         </xs:sequence>
     </xs:complexType>
    
@@ -225,7 +225,7 @@
     <xs:element name="getTypesAccomodationResponse">
     	<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="country" type="tns:typeAccomodation" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    			<xs:element name="typesAccomodation" type="tns:typeAccomodation" minOccurs="0" maxOccurs="unbounded"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>

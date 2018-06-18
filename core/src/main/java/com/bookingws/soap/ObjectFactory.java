@@ -19,6 +19,7 @@ import XMLWS.model.City;
 import XMLWS.model.Country;
 import XMLWS.model.Period;
 import XMLWS.model.Price;
+import XMLWS.model.TypeAccomodation;
 import XMLWS.model.User;
 
 

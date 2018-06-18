@@ -3,7 +3,17 @@ package com.bookingws.soap;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
+import agent.model.Accommodation;
+import agent.model.Addition;
+import agent.model.Agent;
+import agent.model.Availability;
+import agent.model.Category;
+import agent.model.City;
 import agent.model.Country;
+import agent.model.Period;
+import agent.model.Price;
+import agent.model.TypeAccomodation;
+import agent.model.User;
 
 
 /**
@@ -85,6 +95,134 @@ public class ObjectFactory {
      */
     public GetCountriesResponse createGetCountriesResponse() {
         return new GetCountriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCitiesRequest }
+     * 
+     */
+    public GetCitiesRequest createGetCitiesRequest() {
+        return new GetCitiesRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetCitiesResponse }
+     * 
+     */
+    public GetCitiesResponse createGetCitiesResponse() {
+        return new GetCitiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link City }
+     * 
+     */
+    public City createCity() {
+        return new City();
+    }
+
+    /**
+     * Create an instance of {@link GetCategoriesRequest }
+     * 
+     */
+    public GetCategoriesRequest createGetCategoriesRequest() {
+        return new GetCategoriesRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetCategoriesResponse }
+     * 
+     */
+    public GetCategoriesResponse createGetCategoriesResponse() {
+        return new GetCategoriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link Category }
+     * 
+     */
+    public Category createCategory() {
+        return new Category();
+    }
+
+    /**
+     * Create an instance of {@link GetTypesAccomodationRequest }
+     * 
+     */
+    public GetTypesAccomodationRequest createGetTypesAccomodationRequest() {
+        return new GetTypesAccomodationRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetTypesAccomodationResponse }
+     * 
+     */
+    public GetTypesAccomodationResponse createGetTypesAccomodationResponse() {
+        return new GetTypesAccomodationResponse();
+    }
+
+    /**
+     * Create an instance of {@link TypeAccomodation }
+     * 
+     */
+    public TypeAccomodation createTypeAccomodation() {
+        return new TypeAccomodation();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
+    }
+
+    /**
+     * Create an instance of {@link Addition }
+     * 
+     */
+    public Addition createAddition() {
+        return new Addition();
+    }
+
+    /**
+     * Create an instance of {@link Agent }
+     * 
+     */
+    public Agent createAgent() {
+        return new Agent();
+    }
+
+    /**
+     * Create an instance of {@link Accommodation }
+     * 
+     */
+    public Accommodation createAccommodation() {
+        return new Accommodation();
+    }
+
+    /**
+     * Create an instance of {@link Price }
+     * 
+     */
+    public Price createPrice() {
+        return new Price();
+    }
+
+    /**
+     * Create an instance of {@link Period }
+     * 
+     */
+    public Period createPeriod() {
+        return new Period();
+    }
+
+    /**
+     * Create an instance of {@link Availability }
+     * 
+     */
+    public Availability createAvailability() {
+        return new Availability();
     }
 
 }

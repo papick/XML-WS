@@ -36,26 +36,38 @@ public class Country implements Serializable {
 	@XmlElement(name="name", required=true)
 	private String name;
 	
-
+	
 	public Country() {
 	}
 
+
+	public Country(String name) {
+		super();
+		this.name = name;
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
 
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	
+
 	public String getCode() {
 		return code;
 	}
 
+
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
+	
 
 	public String getName() {
 		return name;
