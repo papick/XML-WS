@@ -9,10 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "accommodaion")
 public class Accommodation {
 
 	@Id
@@ -33,7 +38,7 @@ public class Accommodation {
 	private TypeAccomodation type;
 
 	@ManyToMany
-	private List<Additional> additions;
+	private List<Addition> additions;
 
 	// podaci za hotel
 
@@ -156,11 +161,11 @@ public class Accommodation {
 		this.type = type;
 	}
 
-	public List<Additional> getAdditional() {
+	public List<Addition> getAdditional() {
 		return additions;
 	}
 
-	public void setAdditional(List<Additional> additional) {
+	public void setAdditional(List<Addition> additional) {
 		this.additions = additional;
 	}
 

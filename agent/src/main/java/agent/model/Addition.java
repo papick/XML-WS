@@ -5,11 +5,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @XmlRootElement
-public class Additional {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "addition")
+public class Addition {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,12 +23,12 @@ public class Additional {
 	@NotNull
 	private String name;
 
-	public Additional(String name) {
+	public Addition(String name) {
 		super();
 		this.name = name;
 	}
 
-	public Additional() {
+	public Addition() {
 	}
 
 	public Long getId() {

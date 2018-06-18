@@ -7,13 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import org.hibernate.validator.constraints.Email;
 
 @Entity
-@Table(name = "users")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "user")
 public class User {
 
 	@Id
@@ -29,7 +33,6 @@ public class User {
 	private String password;
 
 	@Column(nullable = false)
-	@Email
 	private String email;
 	
 	private boolean active;

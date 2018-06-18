@@ -2,27 +2,27 @@ package agent.resource.response;
 
 import java.util.ArrayList;
 
-import agent.model.Additional;
+import agent.model.Addition;
 
 public class ResponseAditionalServices {
 
-	private ArrayList<Additional> services;
+	private ArrayList<Addition> services;
 
 	public ResponseAditionalServices() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ResponseAditionalServices(ArrayList<Additional> services) {
+	public ResponseAditionalServices(ArrayList<Addition> services) {
 		super();
 		this.services = services;
 	}
 
-	public ArrayList<Additional> getServices() {
+	public ArrayList<Addition> getServices() {
 		return services;
 	}
 
-	public void setServices(ArrayList<Additional> services) {
+	public void setServices(ArrayList<Addition> services) {
 		this.services = services;
 	}
 

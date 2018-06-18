@@ -2,6 +2,7 @@ package XMLWS.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,25 +10,34 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "accomodation")
 public class Accommodation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column
+	private String name;
+	
+	@Column
 	private String image;
 
+	@Column
 	private String description;
 
-	//@NotNull
+	@Column
 	private int capacity;
 
-	//@NotNull
+	@Column
 	private double price;
 
 	@ManyToOne
@@ -35,15 +45,11 @@ public class Accommodation {
 
 	@ManyToMany
 	private List<Addition> additions;
-
-	// podaci za hotel
-
-	//@NotNull
-	private String name;
-
+	
 	@ManyToOne
 	private City city;
 
+	@Column
 	private String address;
 
 	@OneToOne
@@ -52,6 +58,7 @@ public class Accommodation {
 	@ManyToOne
 	private Category category;
 
+	@Column
 	private Long idAccomodationAgent;
 
 	public Accommodation() {

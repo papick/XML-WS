@@ -8,11 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
-@Table(name = "agents")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "agent")
 public class Agent {
 
 	@Id
@@ -29,25 +33,25 @@ public class Agent {
 	@NotNull
 	private String password;
 
-	private String name;
+	@Column
+    private String name;
 
-	private String surname;
+	@Column
+    private String surname;
 
-	private String address;
-
-	private String email;
+	@Column
+    private String address;
 
 	public Agent() {
 	}
 
-	public Agent(String username, String password, String name, String surname, String address, String mbr) {
+	public Agent(String username, String password, String name, String surname, String addressr) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
-		this.email = mbr;
 	}
 
 	public Long getId() {
@@ -98,12 +102,6 @@ public class Agent {
 		this.address = address;
 	}
 
-	public String getMbr() {
-		return email;
-	}
-
-	public void setMbr(String mbr) {
-		this.email = mbr;
-	}
+	
 
 }

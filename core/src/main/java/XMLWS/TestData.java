@@ -116,10 +116,10 @@ public class TestData {
 		User blocked = new User("luka", "luka", "luka@gmail.com", false);
 		userRepository.save(blocked);
 		
-		Agent agent1=new Agent("sheraton","sheraton","Marko","Markovic","Novi Sad","mbr1");
+		Agent agent1=new Agent("sheraton","sheraton","Marko","Markovic","Novi Sad");
 		agentRepo.save(agent1);
 		
-		Agent agent2=new Agent("hilton","hilton","Jovan","Jovanovic","Beograd","mbr2");
+		Agent agent2=new Agent("hilton","hilton","Jovan","Jovanovic","Beograd");
 		agentRepo.save(agent2);
 		
 		Accommodation a1= new Accommodation("", "", 2, 20, typeAccomodation1,"naziv",city1, "", user1,category4,agent1.getId());

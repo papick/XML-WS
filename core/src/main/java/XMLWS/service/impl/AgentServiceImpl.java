@@ -24,7 +24,6 @@ public class AgentServiceImpl implements AgentService {
 	public Agent addAgent(Agent a) {
 		Agent newA = new Agent();
 		newA.setAddress(a.getAddress());
-		newA.setMbr(a.getMbr());
 		newA.setName(a.getName());
 		newA.setPassword(a.getPassword());
 		newA.setSurname(a.getSurname());
@@ -36,7 +35,6 @@ public class AgentServiceImpl implements AgentService {
 	public Agent modifyAgent(Agent a, Long id) {
 		Agent updated = agentRepo.findOne(id);
 		updated.setAddress(a.getAddress());
-		updated.setMbr(a.getMbr());
 		updated.setName(a.getName());
 		updated.setPassword(a.getPassword());
 		updated.setSurname(a.getSurname());

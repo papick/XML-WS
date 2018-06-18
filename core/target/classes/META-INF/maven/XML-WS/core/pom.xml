@@ -75,6 +75,7 @@
 			</plugin>
 		
 		 
+		<!--  
 			
 		<plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -94,6 +95,8 @@
                     <clearOutputDir>false</clearOutputDir>
                 </configuration>
             </plugin>
+       
+     -->
        
 		</plugins>
 		

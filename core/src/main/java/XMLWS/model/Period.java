@@ -8,10 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 @Entity
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "period")
 public class Period {
 
 	@Id
@@ -19,22 +25,24 @@ public class Period {
 	private Long id;
 
 	@NotNull
-	private Date from;
+	private XMLGregorianCalendar from;
 
 	@NotNull
-	private Date to;
+	private XMLGregorianCalendar to;
 
 	@ManyToOne
 	private Accommodation accomodation;
 
-	public Period(Date from, Date to, Accommodation accomodation) {
+	public Period() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Period(Long id, XMLGregorianCalendar from, XMLGregorianCalendar to, Accommodation accomodation) {
 		super();
+		this.id = id;
 		this.from = from;
 		this.to = to;
 		this.accomodation = accomodation;
-	}
-
-	public Period() {
 	}
 
 	public Long getId() {
@@ -45,19 +53,19 @@ public class Period {
 		this.id = id;
 	}
 
-	public Date getFrom() {
+	public XMLGregorianCalendar getFrom() {
 		return from;
 	}
 
-	public void setFrom(Date from) {
+	public void setFrom(XMLGregorianCalendar from) {
 		this.from = from;
 	}
 
-	public Date getTo() {
+	public XMLGregorianCalendar getTo() {
 		return to;
 	}
 
-	public void setTo(Date to) {
+	public void setTo(XMLGregorianCalendar to) {
 		this.to = to;
 	}
 
@@ -68,5 +76,9 @@ public class Period {
 	public void setAccomodation(Accommodation accomodation) {
 		this.accomodation = accomodation;
 	}
+	
+	
+	
+	
 
 }

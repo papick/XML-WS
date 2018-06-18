@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import agent.model.Accommodation;
-import agent.model.Additional;
+import agent.model.Addition;
 import agent.repository.AccomodationRepository;
 import agent.repository.AditionalServiceRepository;
 import agent.repository.CategoryRepository;
@@ -47,10 +47,10 @@ public class AccomodationService {
 		accomodation.setPrice(price);
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accomodationDTO.getType()));
 		// aditonal service
-		ArrayList<Additional> aditionals = new ArrayList<Additional>();
+		ArrayList<Addition> aditionals = new ArrayList<Addition>();
 		if (accomodationDTO.getList().isEmpty() == false) {
 			for (int i = 0; i < accomodationDTO.getList().size(); i++) {
-				Additional aditional = aditionalServiceRepositroy.findOneByName(accomodationDTO.getList().get(i));
+				Addition aditional = aditionalServiceRepositroy.findOneByName(accomodationDTO.getList().get(i));
 				aditionals.add(aditional);
 
 			}
@@ -92,11 +92,11 @@ public class AccomodationService {
 		accomodation.setPrice(price);
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accDTO.getType()));
 		// aditonal service
-		ArrayList<Additional> aditionals = new ArrayList<Additional>();
+		ArrayList<Addition> aditionals = new ArrayList<Addition>();
 		accomodation.getAdditional().clear();
 		if (accDTO.getList().isEmpty() == false) {
 			for (int i = 0; i < accDTO.getList().size(); i++) {
-				Additional aditional = aditionalServiceRepositroy.findOneByName(accDTO.getList().get(i));
+				Addition aditional = aditionalServiceRepositroy.findOneByName(accDTO.getList().get(i));
 				aditionals.add(aditional);
 
 			}

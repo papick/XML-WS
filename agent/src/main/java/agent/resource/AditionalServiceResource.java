@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import agent.model.Additional;
+import agent.model.Addition;
 import agent.resource.response.ResponseAditionalServices;
 import agent.service.AditionalService;
 
@@ -23,7 +23,7 @@ public class AditionalServiceResource {
 	@GetMapping("/all-aditional-services")
 	public ResponseEntity<ResponseAditionalServices> getAditionalSevices() {
 
-		ArrayList<Additional> services = aditionalService.getAllAditionalServices();
+		ArrayList<Addition> services = aditionalService.getAllAditionalServices();
 
 		return new ResponseEntity<>(new ResponseAditionalServices(services), HttpStatus.OK);
 	}

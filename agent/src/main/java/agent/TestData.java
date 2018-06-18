@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import agent.model.Accommodation;
-import agent.model.Additional;
+import agent.model.Addition;
 import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
@@ -71,10 +71,10 @@ public class TestData {
 		User user1 = new User("dejan", "dejan", "dejan@gmail.com", "");
 		userRepository.save(user1);
 
-		Additional aditionalService1 = new Additional("TV");
-		Additional aditionalService2 = new Additional("Wi-Fi");
-		Additional aditionalService3 = new Additional("Klima");
-		Additional aditionalService4 = new Additional("Mini kuhinja");
+		Addition aditionalService1 = new Addition("TV");
+		Addition aditionalService2 = new Addition("Wi-Fi");
+		Addition aditionalService3 = new Addition("Klima");
+		Addition aditionalService4 = new Addition("Mini kuhinja");
 
 		aditionalServiceRepository.save(aditionalService1);
 		aditionalServiceRepository.save(aditionalService2);
@@ -92,7 +92,7 @@ public class TestData {
 		accomodation1.setAddress("");
 		accomodation1.setAgent(user1);
 		accomodation1.setCategory(category1);
-		ArrayList<Additional> lista = new ArrayList<Additional>();
+		ArrayList<Addition> lista = new ArrayList<Addition>();
 		lista.add(aditionalService1);
 		lista.add(aditionalService2);
 		lista.add(aditionalService3);
@@ -115,7 +115,7 @@ public class TestData {
 		accomodation2.setAddress("");
 		accomodation2.setAgent(user1);
 		accomodation2.setCategory(category1);
-		ArrayList<Additional> lista2 = new ArrayList<Additional>();
+		ArrayList<Addition> lista2 = new ArrayList<Addition>();
 		lista2.add(aditionalService1);
 		lista2.add(aditionalService2);
 		lista2.add(aditionalService3);
