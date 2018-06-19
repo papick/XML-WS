@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlRegistry;
 import agent.model.Accommodation;
 import agent.model.Addition;
 import agent.model.Agent;
-import agent.model.Availability;
 import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
@@ -170,6 +169,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddAccomodationRequest }
+     * 
+     */
+    public AddAccomodationRequest createAddAccomodationRequest() {
+        return new AddAccomodationRequest();
+    }
+
+    /**
+     * Create an instance of {@link Accommodation }
+     * 
+     */
+    public Accommodation createAccommodation() {
+        return new Accommodation();
+    }
+
+    /**
+     * Create an instance of {@link AddAccomodationResponse }
+     * 
+     */
+    public AddAccomodationResponse createAddAccomodationResponse() {
+        return new AddAccomodationResponse();
+    }
+
+    /**
      * Create an instance of {@link User }
      * 
      */
@@ -194,14 +217,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Accommodation }
-     * 
-     */
-    public Accommodation createAccommodation() {
-        return new Accommodation();
-    }
-
-    /**
      * Create an instance of {@link Price }
      * 
      */
@@ -215,14 +230,6 @@ public class ObjectFactory {
      */
     public Period createPeriod() {
         return new Period();
-    }
-
-    /**
-     * Create an instance of {@link Availability }
-     * 
-     */
-    public Availability createAvailability() {
-        return new Availability();
     }
 
 }

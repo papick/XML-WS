@@ -27,7 +27,7 @@ public class CountryResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Country>> getCountries() {
 		
-		Country country = new Country();
+		// Country country = new Country();
 		
 		AccomodationService accomodationService = new AccomodationService();
 		AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();

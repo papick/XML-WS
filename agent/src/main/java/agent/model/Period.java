@@ -26,10 +26,10 @@ public class Period {
 	private Long id;
 
 	@NotNull
-	private Date from;
+	private String from;
 
 	@NotNull
-	private Date to;
+	private String to;
 
 	@ManyToOne
 	private Accommodation accomodation;
@@ -38,7 +38,7 @@ public class Period {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Period(Long id, Date from, Date to, Accommodation accomodation) {
+	public Period(Long id, String from, String to, Accommodation accomodation) {
 		super();
 		this.id = id;
 		this.from = from;
@@ -54,19 +54,19 @@ public class Period {
 		this.id = id;
 	}
 
-	public Date getFrom() {
+	public String getFrom() {
 		return from;
 	}
 
-	public void setFrom(Date from) {
+	public void setFrom(String from) {
 		this.from = from;
 	}
 
-	public Date getTo() {
+	public String getTo() {
 		return to;
 	}
 
-	public void setTo(Date to) {
+	public void setTo(String to) {
 		this.to = to;
 	}
 
@@ -77,6 +77,8 @@ public class Period {
 	public void setAccomodation(Accommodation accomodation) {
 		this.accomodation = accomodation;
 	}
+
+	
 	
 	
 

@@ -14,6 +14,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import XMLWS.model.Accommodation;
+
 
 /**
  * <p>Java class for anonymous complex type.
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="accomodation" type="{http://bookingws.com/soap}accommodation"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +38,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name"
+    "accomodation"
 })
-@XmlRootElement(name = "getCategoriesRequest")
-public class GetCategoriesRequest {
+@XmlRootElement(name = "addAccomodationRequest")
+public class AddAccomodationRequest {
 
     @XmlElement(required = true)
-    protected String name;
+    protected Accommodation accomodation;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the accomodation property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Accommodation }
      *     
      */
-    public String getName() {
-        return name;
+    public Accommodation getAccomodation() {
+        return accomodation;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the accomodation property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Accommodation }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setAccomodation(Accommodation value) {
+        this.accomodation = value;
     }
 
 }

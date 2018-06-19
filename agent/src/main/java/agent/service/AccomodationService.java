@@ -9,6 +9,7 @@ import agent.model.Accommodation;
 import agent.model.Addition;
 import agent.repository.AccomodationRepository;
 import agent.repository.AditionalServiceRepository;
+import agent.repository.AgentRepository;
 import agent.repository.CategoryRepository;
 import agent.repository.CityRepository;
 import agent.repository.TypeAccomodationRepository;
@@ -29,6 +30,9 @@ public class AccomodationService {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private AgentRepository agentRepository;
 
 	@Autowired
 	private AccomodationRepository accomodationRepository;
@@ -42,9 +46,7 @@ public class AccomodationService {
 		// accomodation.setImage(accomodationDTO.getImage());
 		accomodation.setDescription(accomodationDTO.getDescription());
 		int capacity = Integer.parseInt(accomodationDTO.getCapacity());
-		accomodation.setCapacity(capacity);
-		double price = Double.parseDouble(accomodationDTO.getPrice());
-		accomodation.setPrice(price);
+		accomodation.setCapacity(capacity);	
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accomodationDTO.getType()));
 		// aditonal service
 		ArrayList<Addition> aditionals = new ArrayList<Addition>();
@@ -54,13 +56,13 @@ public class AccomodationService {
 				aditionals.add(aditional);
 
 			}
-			accomodation.setAdditionalService(aditionals);
+			accomodation.setAdditions(aditionals);
 		}
 
 		accomodation.setName(accomodationDTO.getName());
 		accomodation.setCity(cityRepository.findOneByName(accomodationDTO.getCity()));
 		accomodation.setAddress(accomodationDTO.getAddress());
-		accomodation.setAgent(userRepository.findOne(id));
+		accomodation.setAgent(agentRepository.findOne(id));
 		accomodation.setCategory(categoryRepository.findOneByName(accomodationDTO.getCategory()));
 
 		accomodationRepository.save(accomodation);
@@ -75,7 +77,7 @@ public class AccomodationService {
 		if (accomodation == null) {
 			throw new IllegalArgumentException("Tried to delete non-existant accomodation");
 		}
-		accomodation.getAdditionalService().clear();
+		accomodation.getAdditions().clear();
 		accomodationRepository.delete(accomodation);
 		return accomodation;
 	}
@@ -88,25 +90,24 @@ public class AccomodationService {
 		accomodation.setDescription(accDTO.getDescription());
 		int capacity = Integer.parseInt(accDTO.getCapacity());
 		accomodation.setCapacity(capacity);
-		double price = Double.parseDouble(accDTO.getPrice());
-		accomodation.setPrice(price);
+		
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accDTO.getType()));
 		// aditonal service
 		ArrayList<Addition> aditionals = new ArrayList<Addition>();
-		accomodation.getAdditionalService().clear();
+		accomodation.getAdditions().clear();
 		if (accDTO.getList().isEmpty() == false) {
 			for (int i = 0; i < accDTO.getList().size(); i++) {
 				Addition aditional = aditionalServiceRepositroy.findOneByName(accDTO.getList().get(i));
 				aditionals.add(aditional);
 
 			}
-			accomodation.setAdditionalService(aditionals);
+			accomodation.setAdditions(aditionals);
 		}
 
 		accomodation.setName(accDTO.getName());
 		accomodation.setCity(cityRepository.findOneByName(accDTO.getCity()));
 		accomodation.setAddress(accDTO.getAddress());
-		accomodation.setAgent(userRepository.findOne(idAgent));
+		accomodation.setAgent(agentRepository.findOne(idAgent));
 		accomodation.setCategory(categoryRepository.findOneByName(accDTO.getCategory()));
 
 		accomodationRepository.save(accomodation);

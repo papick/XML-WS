@@ -58,6 +58,7 @@ public class AccomodationEndpoint {
 	
 		for(Country country : countries) {
 			response.getCountry().add(country);
+			System.out.println(country.getName());
 		}
 		
 		return response;
@@ -90,6 +91,7 @@ public class AccomodationEndpoint {
 		
 		for(Category category : categories){
 			response.getCategory().add(category);
+			System.out.println(category.getName());
 		}
 		
 		return response;

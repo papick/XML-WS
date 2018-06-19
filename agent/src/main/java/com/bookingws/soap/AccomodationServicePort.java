@@ -25,30 +25,6 @@ public interface AccomodationServicePort {
 
     /**
      * 
-     * @param getCountriesRequest
-     * @return
-     *     returns com.bookingws.soap.GetCountriesResponse
-     */
-    @WebMethod
-    @WebResult(name = "getCountriesResponse", targetNamespace = "http://bookingws.com/soap", partName = "getCountriesResponse")
-    public GetCountriesResponse getCountries(
-        @WebParam(name = "getCountriesRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCountriesRequest")
-        GetCountriesRequest getCountriesRequest);
-
-    /**
-     * 
-     * @param getTypesAccomodationRequest
-     * @return
-     *     returns com.bookingws.soap.GetTypesAccomodationResponse
-     */
-    @WebMethod
-    @WebResult(name = "getTypesAccomodationResponse", targetNamespace = "http://bookingws.com/soap", partName = "getTypesAccomodationResponse")
-    public GetTypesAccomodationResponse getTypesAccomodation(
-        @WebParam(name = "getTypesAccomodationRequest", targetNamespace = "http://bookingws.com/soap", partName = "getTypesAccomodationRequest")
-        GetTypesAccomodationRequest getTypesAccomodationRequest);
-
-    /**
-     * 
      * @param setCountryRequest
      * @return
      *     returns com.bookingws.soap.SetCountryResponse
@@ -61,15 +37,15 @@ public interface AccomodationServicePort {
 
     /**
      * 
-     * @param getCitiesRequest
+     * @param getCountriesRequest
      * @return
-     *     returns com.bookingws.soap.GetCitiesResponse
+     *     returns com.bookingws.soap.GetCountriesResponse
      */
     @WebMethod
-    @WebResult(name = "getCitiesResponse", targetNamespace = "http://bookingws.com/soap", partName = "getCitiesResponse")
-    public GetCitiesResponse getCities(
-        @WebParam(name = "getCitiesRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCitiesRequest")
-        GetCitiesRequest getCitiesRequest);
+    @WebResult(name = "getCountriesResponse", targetNamespace = "http://bookingws.com/soap", partName = "getCountriesResponse")
+    public GetCountriesResponse getCountries(
+        @WebParam(name = "getCountriesRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCountriesRequest")
+        GetCountriesRequest getCountriesRequest);
 
     /**
      * 
@@ -94,5 +70,41 @@ public interface AccomodationServicePort {
     public GetCategoriesResponse getCategories(
         @WebParam(name = "getCategoriesRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCategoriesRequest")
         GetCategoriesRequest getCategoriesRequest);
+
+    /**
+     * 
+     * @param addAccomodationRequest
+     * @return
+     *     returns com.bookingws.soap.AddAccomodationResponse
+     */
+    @WebMethod
+    @WebResult(name = "addAccomodationResponse", targetNamespace = "http://bookingws.com/soap", partName = "addAccomodationResponse")
+    public AddAccomodationResponse addAccomodation(
+        @WebParam(name = "addAccomodationRequest", targetNamespace = "http://bookingws.com/soap", partName = "addAccomodationRequest")
+        AddAccomodationRequest addAccomodationRequest);
+
+    /**
+     * 
+     * @param getTypesAccomodationRequest
+     * @return
+     *     returns com.bookingws.soap.GetTypesAccomodationResponse
+     */
+    @WebMethod
+    @WebResult(name = "getTypesAccomodationResponse", targetNamespace = "http://bookingws.com/soap", partName = "getTypesAccomodationResponse")
+    public GetTypesAccomodationResponse getTypesAccomodation(
+        @WebParam(name = "getTypesAccomodationRequest", targetNamespace = "http://bookingws.com/soap", partName = "getTypesAccomodationRequest")
+        GetTypesAccomodationRequest getTypesAccomodationRequest);
+
+    /**
+     * 
+     * @param getCitiesRequest
+     * @return
+     *     returns com.bookingws.soap.GetCitiesResponse
+     */
+    @WebMethod
+    @WebResult(name = "getCitiesResponse", targetNamespace = "http://bookingws.com/soap", partName = "getCitiesResponse")
+    public GetCitiesResponse getCities(
+        @WebParam(name = "getCitiesRequest", targetNamespace = "http://bookingws.com/soap", partName = "getCitiesRequest")
+        GetCitiesRequest getCitiesRequest);
 
 }

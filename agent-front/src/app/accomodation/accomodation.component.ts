@@ -23,7 +23,6 @@ export class AccomodationComponent implements OnInit {
   public address: AbstractControl;
   public description: AbstractControl;
   public capacity: AbstractControl;
-  public price: AbstractControl;
   public type: AbstractControl;
   public aditional: AbstractControl;
 
@@ -55,14 +54,12 @@ export class AccomodationComponent implements OnInit {
       'description': [''],
       //, Validators.pattern('[0-9]{2}\:[0-9]{2}')
       'capacity': ['', Validators.compose([Validators.required])],
-      'price': ['', Validators.compose([Validators.required])],
       'type': [''],
       'aditional': [''],
 
     })
     this.name = this.form.controls['name'];
     this.category = this.form.controls['category'];
-    this.price = this.form.controls['price'];
     this.address = this.form.controls['address'];
     this.description = this.form.controls['description'];
     this.capacity = this.form.controls['capacity'];
@@ -104,7 +101,6 @@ export class AccomodationComponent implements OnInit {
         this.form.controls['address'].setValue(data.address);
         this.form.controls['description'].setValue(data.description);
         this.form.controls['capacity'].setValue(data.capacity);
-        this.form.controls['price'].setValue(data.price);
         this.form.controls['type'].setValue(data.type.name);
 
         for (var i = 0; i < data.additional.length; i++) {
@@ -139,7 +135,6 @@ export class AccomodationComponent implements OnInit {
       this.address.value,
       this.category.value,
       this.capacity.value,
-      this.price.value,
       this.listAditionalService,
     );
 
@@ -159,7 +154,6 @@ export class AccomodationComponent implements OnInit {
       this.address.value,
       this.category.value,
       this.capacity.value,
-      this.price.value,
       this.listAditionalService,
     );
     const id = this.route.snapshot.params.id;

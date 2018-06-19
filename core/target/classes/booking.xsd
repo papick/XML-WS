@@ -44,7 +44,7 @@
         </xs:sequence>
     </xs:complexType>   
        
-       
+   
        
     <xs:complexType name="category">
         <xs:sequence>
@@ -82,14 +82,13 @@
             <xs:element name="image" type="xs:string"/>  
             <xs:element name="description" type="xs:string"/>  
             <xs:element name="capacity" type="xs:int"/>  
-            <xs:element name="price" type="xs:double"/>
             <xs:element name="type" type="tns:typeAccomodation"/>
             <xs:element name="additions" type="tns:addition" minOccurs="0" maxOccurs="unbounded"></xs:element>
             <xs:element name="city" type="tns:city"/>
             <xs:element name="address" type="xs:string"/>
             <xs:element name="agent" type="tns:agent"/>
             <xs:element name="category" type="tns:category"/>
-            <xs:element name="idAccomodationAgent" type="xs:long"/>                  
+            <xs:element name="idAgentApp" type="xs:long"/>               
         </xs:sequence>
     </xs:complexType>  
     
@@ -107,19 +106,12 @@
     <xs:complexType name="period">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
-            <xs:element name="from" type="xs:dateTime"/>
-            <xs:element name="to" type="xs:dateTime"/>
+            <xs:element name="from" type="xs:string"/>
+            <xs:element name="to" type="xs:string"/>
             <xs:element name="accomodation" type="tns:accommodation"/>                    
         </xs:sequence>
     </xs:complexType>
        
-    
-    <xs:complexType name="availability">
-        <xs:sequence>
-        	<xs:element name="accomodation" type="tns:accommodation"/>    
-            <xs:element name="date" type="xs:dateTime"/>                    
-        </xs:sequence>
-    </xs:complexType>
    
     
     
@@ -226,6 +218,24 @@
     	<xs:complexType>
     		<xs:sequence>
     			<xs:element name="typesAccomodation" type="tns:typeAccomodation" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+	
+	
+	
+     <xs:element name="addAccomodationRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="accomodation" type="tns:accommodation"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="addAccomodationResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="message" type="xs:string"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>

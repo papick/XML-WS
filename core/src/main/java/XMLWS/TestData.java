@@ -122,7 +122,7 @@ public class TestData {
 		Agent agent2=new Agent("hilton","hilton","Jovan","Jovanovic","Beograd");
 		agentRepo.save(agent2);
 		
-		Accommodation a1= new Accommodation("", "", 2, 20, typeAccomodation1,"naziv",city1, "", user1,category4,agent1.getId());
+		Accommodation a1= new Accommodation("", "", 2, typeAccomodation1,"naziv",city1, "", agent1,category4);
 		accomodationRepository.save(a1);
 		
 		Comment comm1=new Comment("Odlican smestaj!", "Kristina", a1, false);

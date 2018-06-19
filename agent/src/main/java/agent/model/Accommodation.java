@@ -40,95 +40,45 @@ public class Accommodation {
 	@Column
 	private int capacity;
 
-	@Column
-	private double price;
-
-	@ManyToOne
+	@OneToOne
 	private TypeAccomodation type;
 
 	@ManyToMany
 	private List<Addition> additions;
 	
-	@ManyToOne
+	@OneToOne
 	private City city;
 
 	@Column
 	private String address;
 
 	@OneToOne
-	private User agent;
+	private Agent agent;
 
-	@ManyToOne
+	@OneToOne
 	private Category category;
-
+	
+	
 	@Column
-	private Long idAccomodationAgent;
+	private Long idAgentApp;
+
 
 	public Accommodation() {
 	}
 
-	public Accommodation(String image, String description, int capacity, double price, TypeAccomodation type,
-			String name, City city, String address, User agent, Category category, Long idAccomodationAgent) {
+	public Accommodation(String image, String description, int capacity,  TypeAccomodation type,
+			String name, City city, String address, Agent agent, Category category) {
 		super();
 		this.image = image;
 		this.description = description;
 		this.capacity = capacity;
-		this.price = price;
 		this.type = type;
 		this.name = name;
 		this.city = city;
 		this.address = address;
 		this.agent = agent;
 		this.category = category;
-		this.idAccomodationAgent = idAccomodationAgent;
-	}
-
-	public Long getIdAccomodationAgent() {
-		return idAccomodationAgent;
-	}
-
-	public void setIdAccomodationAgent(Long idAccomodationAgent) {
-		this.idAccomodationAgent = idAccomodationAgent;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public User getAgent() {
-		return agent;
-	}
-
-	public void setAgent(User agent) {
-		this.agent = agent;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
+		
 	}
 
 	public Long getId() {
@@ -137,6 +87,25 @@ public class Accommodation {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	
+	
+
+	public Long getIdAgentApp() {
+		return idAgentApp;
+	}
+
+	public void setIdAgentApp(Long idAgentApp) {
+		this.idAgentApp = idAgentApp;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getImage() {
@@ -163,13 +132,7 @@ public class Accommodation {
 		this.capacity = capacity;
 	}
 
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
+	
 
 	public TypeAccomodation getType() {
 		return type;
@@ -179,12 +142,46 @@ public class Accommodation {
 		this.type = type;
 	}
 
-	public List<Addition> getAdditionalService() {
+	public List<Addition> getAdditions() {
 		return additions;
 	}
 
-	public void setAdditionalService(List<Addition> additionalService) {
-		this.additions = additionalService;
+	public void setAdditions(List<Addition> additions) {
+		this.additions = additions;
 	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	
 
 }

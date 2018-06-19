@@ -28,9 +28,6 @@ public class TypeAccomodation {
 		this.name = name;
 	}
 
-	public TypeAccomodation() {
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -46,4 +43,8 @@ public class TypeAccomodation {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public TypeAccomodation() {
+	}
+
 }

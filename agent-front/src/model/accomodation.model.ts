@@ -6,7 +6,6 @@ export class AccomodationModel {
               public address: string,
               public category: string,
               public capacity: string,
-              public price: string,
               public list: any,
            ) {
   }
