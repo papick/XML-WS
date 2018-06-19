@@ -13,12 +13,15 @@ import {CityService} from "../service/city.service";
 import {CategoryService} from "../service/category.service";
 import {TypeAccomodationService} from "../service/typeAccomodation.service";
 import {AditionalServiceService} from "../service/aditionalService.service";
+import {LogInComponent} from './log-in/log-in.component';
+import {LogInService} from "../service/logInService";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AccomodationComponent,
+    LogInComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import {AditionalServiceService} from "../service/aditionalService.service";
     CategoryService,
     TypeAccomodationService,
     AditionalServiceService,
+    LogInService,
   ],
   bootstrap: [AppComponent]
 })
