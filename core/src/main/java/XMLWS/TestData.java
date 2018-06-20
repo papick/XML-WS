@@ -56,7 +56,9 @@ public class TestData {
 
 	@PostConstruct
 	private void init() {
-
+		
+		
+		
 		Country country1 = new Country("Serbia");
 		countryRepository.save(country1);
 		
@@ -96,7 +98,7 @@ public class TestData {
 		additionalServiceRepo.save(additionalService2);
 
 		Addition additionalService3 = new Addition("Spa");
-		additionalServiceRepo.save(additionalService3);
+		additionalServiceRepo.save(additionalService3); 
 
 		User user1 = new User("dejan", "dejan", "dejan@gmail.com", false);
 		userRepository.save(user1);
@@ -122,8 +124,9 @@ public class TestData {
 		Agent agent2=new Agent("hilton","hilton","Jovan","Jovanovic","Beograd");
 		agentRepo.save(agent2);
 		
+		
 		Accommodation a1= new Accommodation("", "", 2, typeAccomodation1,"naziv",city1, "", agent1,category4);
-		accomodationRepository.save(a1);
+		accomodationRepository.save(a1); 
 		
 		Comment comm1=new Comment("Odlican smestaj!", "Kristina", a1, false);
 		commRepo.save(comm1);
@@ -138,7 +141,7 @@ public class TestData {
 		commRepo.save(comm4);
 		
 		Comment comm5=new Comment("Bla bla", "Sinisa", a1, true);
-		commRepo.save(comm5);
+		commRepo.save(comm5); 
 
 	}
 }

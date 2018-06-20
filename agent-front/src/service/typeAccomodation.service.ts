@@ -15,6 +15,6 @@ export class TypeAccomodationService {
   }
 
   getTypeAccomodations(): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/all-type-accomodations`, httpOptions);
+    return this.http.get(`${this.BASE_URL}/get-types`, httpOptions);
   }
 }

@@ -1,29 +1,35 @@
 package agent.resource.response;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import agent.model.Addition;
 
 public class ResponseAditionalServices {
 
-	private ArrayList<Addition> services;
+	private List<Addition> services;
 
 	public ResponseAditionalServices() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ResponseAditionalServices(ArrayList<Addition> services) {
+	
+	
+	public ResponseAditionalServices(List<Addition> services) {
 		super();
 		this.services = services;
 	}
 
-	public ArrayList<Addition> getServices() {
+
+
+	public List<Addition> getServices() {
 		return services;
 	}
 
-	public void setServices(ArrayList<Addition> services) {
+	public void setServices(List<Addition> services) {
 		this.services = services;
 	}
+
+	
 
 }

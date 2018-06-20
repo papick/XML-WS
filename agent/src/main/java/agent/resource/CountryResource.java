@@ -1,8 +1,8 @@
 package agent.resource;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +16,15 @@ import com.bookingws.soap.GetCountriesRequest;
 import com.bookingws.soap.GetCountriesResponse;
 
 import agent.model.Country;
+import agent.repository.CountryRepository;
 
 @RestController
 @RequestMapping(value = "/api/country")
 public class CountryResource {
 	
+	
+	@Autowired
+	private CountryRepository countryRepository;
 
 	@RequestMapping(method = RequestMethod.GET,
             value = "/get-countries",
@@ -37,6 +41,9 @@ public class CountryResource {
 		GetCountriesResponse response = accomodationServicePort.getCountries(request);
 		List<Country> countries = response.getCountry();
 		
+		for(Country c : countries) {
+			countryRepository.save(c);
+		}
 		
 		return new ResponseEntity<>(countries, HttpStatus.OK);
 	}

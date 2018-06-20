@@ -53,6 +53,9 @@ public class TestData {
 
 	@PostConstruct
 	private void init() {
+		
+		/*
+		
 		Country country1 = new Country();
 		country1.setName("Serbia");
 		countryRepository.save(country1);
@@ -71,7 +74,7 @@ public class TestData {
 		categoryRepository.save(category1);
 
 		TypeAccomodation typeAccomodation1 = new TypeAccomodation("Apartman");
-		typeAccomodationRepository.save(typeAccomodation1);
+		typeAccomodationRepository.save(typeAccomodation1); */
 
 		User user1 = new User("dejan", "dejan", "dejan@gmail.com", "");
 		userRepository.save(user1);
@@ -80,6 +83,7 @@ public class TestData {
 		Agent agent1 = new Agent("marko","marko","marko","markovic","Narodnog Fronta 3");
 		agentRepository.save(agent1);
 		
+		/*
 
 		Addition aditionalService1 = new Addition("TV");
 		Addition aditionalService2 = new Addition("Wi-Fi");
@@ -133,7 +137,7 @@ public class TestData {
 
 		accomodation2.setAdditions(lista2);
 
-		accomodationRepository.save(accomodation2);
+		accomodationRepository.save(accomodation2); */
 
 	}
 }

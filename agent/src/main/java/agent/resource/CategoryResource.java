@@ -16,13 +16,15 @@ import com.bookingws.soap.GetCategoriesRequest;
 import com.bookingws.soap.GetCategoriesResponse;
 
 import agent.model.Category;
+import agent.repository.CategoryRepository;
 
 
 @RestController
 @RequestMapping(value = "/api/category")
 public class CategoryResource {
 
-	
+	@Autowired
+	private CategoryRepository categoryRepository;
 
 	@RequestMapping(method = RequestMethod.GET,
             value = "/get-categories",
@@ -38,6 +40,10 @@ public class CategoryResource {
 		request.setName("all");
 		GetCategoriesResponse response = accomodationServicePort.getCategories(request);
 		List<Category> categories = response.getCategory();
+		
+		for(Category c : categories) {
+			categoryRepository.save(c);
+		}
 		
 		
 		return new ResponseEntity<>(categories, HttpStatus.OK);

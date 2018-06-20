@@ -15,8 +15,8 @@ import com.bookingws.soap.AccomodationServicePort;
 import com.bookingws.soap.GetTypesAccomodationRequest;
 import com.bookingws.soap.GetTypesAccomodationResponse;
 
-import agent.model.Country;
 import agent.model.TypeAccomodation;
+import agent.repository.TypeAccomodationRepository;
 import agent.service.TypeAccomodationService;
 
 @RestController
@@ -25,6 +25,9 @@ public class TypeAccomodationResource {
 
 	@Autowired
 	private TypeAccomodationService typeAccomodationService;
+	
+	@Autowired
+	private TypeAccomodationRepository typeAccomodationRepository;
 
 	@RequestMapping(method = RequestMethod.GET,
             value = "/get-types",
@@ -40,6 +43,12 @@ public class TypeAccomodationResource {
 		request.setName("all");;
 		GetTypesAccomodationResponse response = accomodationServicePort.getTypesAccomodation(request);
 		List<TypeAccomodation> types = response.getTypesAccomodation();
+		
+		
+		for(TypeAccomodation type : types) {
+			typeAccomodationRepository.save(type);
+		}
+		
 		
 		
 		return new ResponseEntity<>(types, HttpStatus.OK);

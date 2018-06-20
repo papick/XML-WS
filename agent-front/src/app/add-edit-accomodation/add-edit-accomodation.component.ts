@@ -86,7 +86,7 @@ export class AddEditAccomodationComponent implements OnInit {
     })
 
     this.typeAccomodation.getTypeAccomodations().subscribe(data => {
-      this.types = data.types;
+      this.types = data;
     })
 
 

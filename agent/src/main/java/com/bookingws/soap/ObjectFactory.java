@@ -12,9 +12,10 @@ import agent.model.Country;
 import agent.model.Message;
 import agent.model.Period;
 import agent.model.Price;
+import agent.model.Reservation;
+import agent.model.Response;
 import agent.model.TypeAccomodation;
 import agent.model.User;
-import agent.model.Response;
 
 
 /**

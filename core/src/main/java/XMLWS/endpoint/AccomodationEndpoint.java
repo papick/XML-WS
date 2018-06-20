@@ -10,6 +10,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.bookingws.soap.AddAccomodationRequest;
 import com.bookingws.soap.AddAccomodationResponse;
+import com.bookingws.soap.GetAdditionsRequest;
+import com.bookingws.soap.GetAdditionsResponse;
 import com.bookingws.soap.GetCategoriesRequest;
 import com.bookingws.soap.GetCategoriesResponse;
 import com.bookingws.soap.GetCitiesRequest;
@@ -22,11 +24,13 @@ import com.bookingws.soap.SetCountryRequest;
 import com.bookingws.soap.SetCountryResponse;
 
 import XMLWS.model.Accommodation;
+import XMLWS.model.Addition;
 import XMLWS.model.Category;
 import XMLWS.model.City;
 import XMLWS.model.Country;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.repository.AccomodationRepository;
+import XMLWS.service.AdditionalServiceService;
 import XMLWS.service.CategoryService;
 import XMLWS.service.CityService;
 import XMLWS.service.CountryService;
@@ -53,6 +57,10 @@ public class AccomodationEndpoint {
 	
 	@Autowired
 	private AccomodationRepository accomodationRepository;
+	
+	
+	@Autowired
+	private AdditionalServiceService additionalServiceService;
 	
 	
 	
@@ -123,6 +131,25 @@ public class AccomodationEndpoint {
 	}
 	
 	
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getAdditionsRequest")
+    @ResponsePayload
+    public GetAdditionsResponse getAdditionsRequest(@RequestPayload GetAdditionsRequest getAdditionsRequest) {
+		
+		GetAdditionsResponse response = new GetAdditionsResponse();
+		
+		List<Addition> additions = additionalServiceService.getAllServices();
+		
+		for(Addition addition : additions) {
+			response.getAdditions().add(addition);
+		}
+		
+		return response;
+	}
+	
+	
+	
+	
+	
 	
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "addAccomodationRequest")
     @ResponsePayload
@@ -150,6 +177,7 @@ public class AccomodationEndpoint {
 		
 		return response;
 	}
+	
 	
 	
 	
