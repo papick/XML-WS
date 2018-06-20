@@ -18,12 +18,12 @@ import {LogInService} from "../service/logInService";
 import {AccomodationsComponent} from "./accomodations/accomodations.component";
 
 import {NgbdDatepickerPopup} from "./datepicker-popup/datepicker-popup";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {AddReservationComponent} from "./add-reservation/add-reservation.component";
 import {ReservationService} from "../service/reservation.service";
-
+import {PeriodService} from "../service/period.service";
 
 
 @NgModule({
@@ -56,6 +56,7 @@ import {ReservationService} from "../service/reservation.service";
     AditionalServiceService,
     LogInService,
     ReservationService,
+    PeriodService,
   ],
   bootstrap: [AppComponent]
 })

@@ -21,6 +21,11 @@ export class ReservationService {
     return this.http.post(`${this.BASE_URL}/create-reservation `, body, {headers: headers});
   }
 
+  getReservations(): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/all-reservations`, httpOptions);
+  }
+
+
 }
 
 

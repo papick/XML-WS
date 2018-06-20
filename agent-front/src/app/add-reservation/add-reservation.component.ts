@@ -42,8 +42,6 @@ export class AddReservationComponent implements OnInit {
   }
 
   reservation(): any {
-    console.log(document.getElementById('date_picker_from').getAttribute('date')
-    document.getElementById('date_picker_to').getAttribute('date') )
 
     const reservation = new ReservationModel(
       this.accomodation.value,

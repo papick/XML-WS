@@ -3,6 +3,7 @@ package agent.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import agent.model.Accommodation;
 import agent.model.Period;
+import agent.model.Reservation;
 import agent.repository.AccomodationRepository;
 import agent.repository.PeriodRepository;
+import agent.repository.ReservationRepository;
 import agent.service.dto.ReservationDTO;
 
 @Transactional
@@ -24,6 +27,9 @@ public class ReservationService {
 	@Autowired
 	private AccomodationRepository accomodationRepository;
 
+	@Autowired
+	private ReservationRepository reservationRepository;
+
 	public void create(ReservationDTO reservationDTO) throws ParseException {
 
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
@@ -31,8 +37,14 @@ public class ReservationService {
 
 		java.util.Date toDate = date.parse(reservationDTO.getTo());
 
-		ArrayList<Period> periods = (ArrayList<Period>) periodRepository.findAll();
+		String[] parse = reservationDTO.getAccomodation().split("/");
+		String accomodationIdString = parse[0];
+		Long accomodationId = Long.parseLong(accomodationIdString);
+		Accommodation accomodation = accomodationRepository.findOne(accomodationId);
 
+		ArrayList<Period> periods = (ArrayList<Period>) periodRepository.findByAccomodation(accomodation);
+
+		boolean stop = false;
 		for (int i = 0; i < periods.size(); i++) {
 
 			java.util.Date fromPeriod = date.parse(periods.get(i).getFromDate());
@@ -42,21 +54,17 @@ public class ReservationService {
 				throw new IllegalArgumentException("Period is busy !!!");
 			} else if (toDate.after(fromPeriod) && toDate.before(toPeriod)) {
 				throw new IllegalArgumentException("Period is busy !!!");
-			} else {
+			} else if (stop == false) {
 
 				Period period = new Period();
 
 				period.setFromDate(reservationDTO.getFrom());
 				period.setToDate(reservationDTO.getTo());
 
-				String[] parse = reservationDTO.getAccomodation().split("/");
-				String accomodationIdString = parse[0];
-				Long accomodationId = Long.parseLong(accomodationIdString);
-
-				Accommodation accomodation = accomodationRepository.findOne(accomodationId);
 				period.setAccomodation(accomodation);
 
 				periodRepository.save(period);
+				stop = true;
 
 			}
 		}
@@ -69,16 +77,15 @@ public class ReservationService {
 			period.setFromDate(reservationDTO.getFrom());
 			period.setToDate(reservationDTO.getTo());
 
-			String[] parse = reservationDTO.getAccomodation().split("/");
-			String accomodationIdString = parse[0];
-			Long accomodationId = Long.parseLong(accomodationIdString);
-
-			Accommodation accomodation = accomodationRepository.findOne(accomodationId);
 			period.setAccomodation(accomodation);
 
 			periodRepository.save(period);
 
 		}
+	}
+
+	public List<Reservation> getAllReservations() {
+		return reservationRepository.findAll();
 	}
 
 }
