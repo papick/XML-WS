@@ -7,7 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,24 +26,24 @@ public class Period {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotNull
-	private String from;
+	@Size(min = 1, max = 20)
+	private String fromDate;
 
-	@NotNull
-	private String to;
+	@Size(min = 1, max = 20)
+	private String toDate;
 
-	@ManyToOne
+	@OneToOne
 	private Accommodation accomodation;
 
 	public Period() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Period(Long id, String from, String to, Accommodation accomodation) {
+	public Period(Long id, String fromDate, String toDate, Accommodation accomodation) {
 		super();
 		this.id = id;
-		this.from = from;
-		this.to = to;
+		this.fromDate = fromDate;
+		this.toDate = toDate;
 		this.accomodation = accomodation;
 	}
 
@@ -53,20 +55,20 @@ public class Period {
 		this.id = id;
 	}
 
-	public String getFrom() {
-		return from;
+	public String getFromDate() {
+		return fromDate;
 	}
 
-	public void setFrom(String from) {
-		this.from = from;
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
 	}
 
-	public String getTo() {
-		return to;
+	public String getToDate() {
+		return toDate;
 	}
 
-	public void setTo(String to) {
-		this.to = to;
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
 	}
 
 	public Accommodation getAccomodation() {
@@ -77,6 +79,8 @@ public class Period {
 		this.accomodation = accomodation;
 	}
 
+	
+	
 	
 	
 	
