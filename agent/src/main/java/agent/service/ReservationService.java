@@ -38,8 +38,11 @@ public class ReservationService {
 			java.util.Date fromPeriod = date.parse(periods.get(i).getFromDate());
 			java.util.Date toPeriod = date.parse(periods.get(i).getToDate());
 
-			if ((fromDate.before(fromPeriod) || fromDate.after(toPeriod)) &&( toDate.before(fromPeriod)
-					|| toDate.after(toPeriod))) {
+			if (fromDate.after(fromPeriod) && fromDate.before(toPeriod)) {
+				throw new IllegalArgumentException("Period is busy !!!");
+			} else if (toDate.after(fromPeriod) && toDate.before(toPeriod)) {
+				throw new IllegalArgumentException("Period is busy !!!");
+			} else {
 
 				Period period = new Period();
 
@@ -58,7 +61,9 @@ public class ReservationService {
 			}
 		}
 
-		if (periods.isEmpty() == true) {
+		if (periods.isEmpty() == true)
+
+		{
 			Period period = new Period();
 
 			period.setFromDate(reservationDTO.getFrom());
