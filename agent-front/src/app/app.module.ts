@@ -24,6 +24,7 @@ import {ReservationsComponent} from "./reservations/reservations.component";
 import {AddReservationComponent} from "./add-reservation/add-reservation.component";
 import {ReservationService} from "../service/reservation.service";
 import {PeriodService} from "../service/period.service";
+import {MessageComponent} from "./message/message.component";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {PeriodService} from "../service/period.service";
     NgbdDatepickerPopup,
     ReservationsComponent,
     AddReservationComponent,
+    MessageComponent,
 
   ],
   imports: [
