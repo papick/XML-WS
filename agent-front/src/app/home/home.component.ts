@@ -28,11 +28,13 @@ export class HomeComponent implements OnInit {
 
 
   addAccomodation() {
-    this.router.navigateByUrl('add/accomodation')
+    const username = this.route.snapshot.params.username;
+    this.router.navigateByUrl(username+'/add/accomodation')
   }
 
   editAccomodation(id): any  {
-    this.router.navigateByUrl('edit/accomodation/' + id);
+    const username = this.route.snapshot.params.username;
+    this.router.navigateByUrl(username+'/edit/accomodation/' + id);
   }
 
   deleteAccomodation(id): any {
