@@ -10,11 +10,11 @@ import {AccomodationService} from "../../service/accomodation.service";
 
 @Component({
   selector: 'accomodation',
-  templateUrl: './accomodation.component.html',
+  templateUrl: './add-edit-accomodation.component.html',
 
 })
 
-export class AccomodationComponent implements OnInit {
+export class AddEditAccomodationComponent implements OnInit {
 
   public form: FormGroup;
   public name: AbstractControl;
@@ -78,7 +78,7 @@ export class AccomodationComponent implements OnInit {
     })
 
     this.categoryService.getCategories().subscribe(data => {
-      this.categories = data.categories;
+      this.categories = data;
     })
 
     this.aditionalService.getAditionalServices().subscribe(data => {

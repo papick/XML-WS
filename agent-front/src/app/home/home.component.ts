@@ -9,38 +9,33 @@ import {AccomodationService} from "../../service/accomodation.service";
 })
 
 export class HomeComponent implements OnInit {
-  items = []
 
+  accomodations = false;
+  reservations = false;
 
-  constructor(protected router: Router,
-              private  accomodationService: AccomodationService,
-              private route: ActivatedRoute) {
+  constructor(protected route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
+    const click = this.route.snapshot.params.click;
+    if (click === 'home') {
+      this.accomodations = true;
+      this.reservations = false;
+    } else if (click === 'reservations') {
+      this.accomodations = false;
+      this.reservations = true;
+    }
 
-    this.accomodationService.getAccomodations().subscribe(data => {
-      this.items = data.accomodations;
-
-
-    })
   }
 
-
-  addAccomodation() {
-    const username = this.route.snapshot.params.username;
-    this.router.navigateByUrl(username+'/add/accomodation')
+  accomodationsClick() {
+    this.accomodations = true;
+    this.reservations = false;
   }
 
-  editAccomodation(id): any  {
-    const username = this.route.snapshot.params.username;
-    this.router.navigateByUrl(username+'/edit/accomodation/' + id);
-  }
-
-  deleteAccomodation(id): any {
-    this.accomodationService.deleteAccomodation(id).subscribe(data => {
-        this.items = this.items.filter(el => el.id != id);
-
-      })
+  reservationsClick(){
+    this.accomodations = false;
+    this.reservations = true;
   }
 }

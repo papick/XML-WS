@@ -8,20 +8,22 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomeComponent} from "./home/home.component";
 import {AccomodationService} from "../service/accomodation.service";
-import {AccomodationComponent} from "./accomodation/accomodation.component";
+import {AddEditAccomodationComponent} from "./add-edit-accomodation/add-edit-accomodation.component";
 import {CityService} from "../service/city.service";
 import {CategoryService} from "../service/category.service";
 import {TypeAccomodationService} from "../service/typeAccomodation.service";
 import {AditionalServiceService} from "../service/aditionalService.service";
 import {LogInComponent} from './log-in/log-in.component';
 import {LogInService} from "../service/logInService";
+import {AccomodationsComponent} from "./accomodations/accomodations.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AccomodationComponent,
+    AddEditAccomodationComponent,
     LogInComponent,
+    AccomodationsComponent,
   ],
   imports: [
     BrowserModule,
