@@ -16,8 +16,13 @@ import {AditionalServiceService} from "../service/aditionalService.service";
 import {LogInComponent} from './log-in/log-in.component';
 import {LogInService} from "../service/logInService";
 import {AccomodationsComponent} from "./accomodations/accomodations.component";
+
+import {NgbdDatepickerPopup} from "./datepicker-popup/datepicker-popup";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {AddReservationComponent} from "./add-reservation/add-reservation.component";
+
 
 
 @NgModule({
@@ -27,6 +32,9 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
     AddEditAccomodationComponent,
     LogInComponent,
     AccomodationsComponent,
+
+    NgbdDatepickerPopup,
+
     ReservationsComponent,
     AddReservationComponent,
 
@@ -38,6 +46,7 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule.forRoot(),
 
   ],
   providers: [
