@@ -40,7 +40,7 @@ export class LogInComponent {
         alert('Pogresna lozinka! Pokusajte ponovo.');
         this.form.controls['password'].setValue('');
       } else {
-        this.router.navigateByUrl(this.agent.id +'/home');
+        this.router.navigateByUrl(this.agent.username +'/home');
       }
     })
   }

@@ -103,9 +103,9 @@ export class AccomodationComponent implements OnInit {
         this.form.controls['capacity'].setValue(data.capacity);
         this.form.controls['type'].setValue(data.type.name);
 
-        for (var i = 0; i < data.additional.length; i++) {
-          this.listAditionalService.push(data.additional[i].name);
-          this.values += data.additional[i].name + '    ';
+        for (var i = 0; i < data.additions.length; i++) {
+          this.listAditionalService.push(data.additions[i].name);
+          this.values += data.additions[i].name + '    ';
         }
 
       })
@@ -139,7 +139,8 @@ export class AccomodationComponent implements OnInit {
     );
 
     this.accomodationService.createAccomodation(accomodation, 1).subscribe(data => {
-      this.router.navigateByUrl('home');
+      const username = this.route.snapshot.params.username;
+      this.router.navigateByUrl(username + '/home');
 
     })
 
@@ -158,13 +159,14 @@ export class AccomodationComponent implements OnInit {
     );
     const id = this.route.snapshot.params.id;
     this.accomodationService.editAccomodation(accomodation, 1, id).subscribe(data => {
-      this.router.navigateByUrl('home');
+      const username = this.route.snapshot.params.username;
+      this.router.navigateByUrl(username + '/home');
     })
   }
 
   exit() {
-    const idBank = this.route.snapshot.params.idBank;
-    this.router.navigateByUrl('home');
+    const username = this.route.snapshot.params.username;
+    this.router.navigateByUrl(username+'/home');
 
 
   }
