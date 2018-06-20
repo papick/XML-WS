@@ -25,6 +25,7 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
 import {ReservationService} from "../service/reservation.service";
 import {PeriodService} from "../service/period.service";
 import {MessageComponent} from "./message/message.component";
+import {MessageService} from "../service/message.service";
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {MessageComponent} from "./message/message.component";
     LogInService,
     ReservationService,
     PeriodService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

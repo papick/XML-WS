@@ -1,8 +1,11 @@
+<div *ngIf="empty==true">
+  <h2 style="text-align: center;margin-top: 30px">Nema poruka</h2>
+</div>
 <div>
-  <div
+  <div *ngFor="let m of messages"
     style="margin-left: 15%;margin-right: 15%; text-align: left;margin-bottom: 20px ;border-style: solid;border-width: 2px;border-color: darkgray;margin-top: 20px;">
-    <p style="margin-top: 10px;margin-left: 15px">Od: </p>
-    <textarea style="width: 94%;margin-left: 3%;margin-right: 3%;height: 100px" disabled="true"></textarea>
+    <p style="margin-top: 10px;margin-left: 15px">Od: {{m.sender.username}} </p>
+    <textarea style="width: 94%;margin-left: 3%;margin-right: 3%;height: 100px" disabled="true">{{m.text}}</textarea>
     <div style="text-align: right;margin-right: 3%">
       <button
         style="margin-top: 15px;text-align: center;border-radius: 12px;background-color: #1a8cff;color: white;height: 45px;width: 100px"
