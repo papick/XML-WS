@@ -16,6 +16,8 @@ import {AditionalServiceService} from "../service/aditionalService.service";
 import {LogInComponent} from './log-in/log-in.component';
 import {LogInService} from "../service/logInService";
 import {AccomodationsComponent} from "./accomodations/accomodations.component";
+import {NgbdDatepickerPopup} from "./datepicker-popup/datepicker-popup";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import {AccomodationsComponent} from "./accomodations/accomodations.component";
     AddEditAccomodationComponent,
     LogInComponent,
     AccomodationsComponent,
+    NgbdDatepickerPopup,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import {AccomodationsComponent} from "./accomodations/accomodations.component";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule.forRoot(),
 
   ],
   providers: [

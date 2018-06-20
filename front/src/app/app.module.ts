@@ -18,6 +18,8 @@ import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {DataViewModule} from 'primeng/dataview';
+import {NgbdDatepickerPopup} from "./components/datepicker-popup/datepicker-popup";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {DataViewModule} from 'primeng/dataview';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    NgbdDatepickerPopup,
+
   ],
   imports: [
     routes,
@@ -39,7 +43,8 @@ import {DataViewModule} from 'primeng/dataview';
     ButtonModule,
     MenubarModule,
     InputTextModule,
-    DataViewModule
+    DataViewModule,
+    NgbModule.forRoot(),
 
   ],
   providers: [],
