@@ -1,29 +1,31 @@
 package agent.resource.response;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import agent.model.City;
 
 public class ResponseCities {
 
-	private ArrayList<City> cities;
+	private List<City> cities;
 
 	public ResponseCities() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ResponseCities(ArrayList<City> cities) {
+	public ResponseCities(List<City> cities) {
 		super();
 		this.cities = cities;
 	}
 
-	public ArrayList<City> getCities() {
+	public List<City> getCities() {
 		return cities;
 	}
 
-	public void setCities(ArrayList<City> cities) {
+	public void setCities(List<City> cities) {
 		this.cities = cities;
 	}
+
+	
 
 }
