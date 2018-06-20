@@ -10,7 +10,6 @@ import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
 import agent.model.Message;
-import agent.model.Period;
 import agent.model.Price;
 import agent.model.Reservation;
 import agent.model.Response;
@@ -359,17 +358,7 @@ public class ObjectFactory {
      * Create an instance of {@link AddPeriodRequest }
      * 
      */
-    public AddPeriodRequest createAddPeriodRequest() {
-        return new AddPeriodRequest();
-    }
 
-    /**
-     * Create an instance of {@link Period }
-     * 
-     */
-    public Period createPeriod() {
-        return new Period();
-    }
 
     /**
      * Create an instance of {@link AddPeriodResponse }

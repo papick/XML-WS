@@ -77,11 +77,6 @@ public interface AccomodationServicePort {
      * @return
      *     returns com.bookingws.soap.AddPeriodResponse
      */
-    @WebMethod
-    @WebResult(name = "addPeriodResponse", targetNamespace = "http://bookingws.com/soap", partName = "addPeriodResponse")
-    public AddPeriodResponse addPeriod(
-        @WebParam(name = "addPeriodRequest", targetNamespace = "http://bookingws.com/soap", partName = "addPeriodRequest")
-        AddPeriodRequest addPeriodRequest);
 
     /**
      * 

@@ -1,25 +1,24 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {LogInModel} from "../model/logIn.model";
 import {Observable} from "rxjs/index";
-
+import {ReservationModel} from "../model/reservation.model";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'}),
 };
 
 @Injectable()
-export class LogInService {
+export class ReservationService {
 
-  private BASE_URL = 'http://localhost:8090/api/agent';
+  private BASE_URL = 'http://localhost:8090/api/reservation';
 
   constructor(private http: HttpClient) {
   }
 
-  logIn(user: LogInModel): Observable<any> {
-    const body = JSON.stringify(user);
+  createReservation(reservation: ReservationModel): Observable<any> {
+    const body = JSON.stringify(reservation);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.put(`${this.BASE_URL}/log-in `, body, {headers: headers});
+    return this.http.post(`${this.BASE_URL}/create-reservation `, body, {headers: headers});
   }
 
 }

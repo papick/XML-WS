@@ -12,8 +12,7 @@ export class ReservationsComponent implements OnInit {
 
 
   constructor(protected route: ActivatedRoute,
-              private router: Router,
-              private accomodationService: AccomodationService) {
+              private router: Router) {
   }
 
   ngOnInit() {

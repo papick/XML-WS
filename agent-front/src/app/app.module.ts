@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {AddReservationComponent} from "./add-reservation/add-reservation.component";
+import {ReservationService} from "../service/reservation.service";
 
 
 
@@ -32,9 +33,7 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
     AddEditAccomodationComponent,
     LogInComponent,
     AccomodationsComponent,
-
     NgbdDatepickerPopup,
-
     ReservationsComponent,
     AddReservationComponent,
 
@@ -56,6 +55,7 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
     TypeAccomodationService,
     AditionalServiceService,
     LogInService,
+    ReservationService,
   ],
   bootstrap: [AppComponent]
 })
