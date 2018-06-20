@@ -1,0 +1,48 @@
+<div>
+  <div style=" display: inline-block;">
+    <h1 style="font-size: 50px;margin-left: 50px;margin-bottom: 20px;color: #24478f ">Agent - Booking</h1>
+  </div>
+
+  <div style=" display: inline-block;">
+    <h1 style="font-size: 50px;margin-bottom: 40px;color: #1a8cff">.com </h1>
+  </div>
+
+
+</div>
+
+<div style="background-color: #24478f;text-align: center">
+  <p style="color: white;font-size:50px ">Nova rezervacija</p>
+</div>
+
+<div style="margin-bottom:50px;margin-right: 30%;margin-left: 30%">
+
+  <form [formGroup]="form">
+
+    <div class="form-group">
+
+      <label style="margin-top:20px">Smestaj:</label>
+      <select class="form-control margin " [formControl]="accomodation"
+              style="width: 100%;display: inline-block">
+        <option></option>
+        <option *ngFor="let acc of accomodations ">{{acc.name}}</option>
+
+      </select>
+
+      <label style="margin-top:20px">Od: ( yyyy-mm-dd )</label>
+      <input name="from" class="form-control margin" id="input-from"
+             [formControl]="from" style="">
+
+      <label style="margin-top:20px">Do: ( yyyy-mm-dd )</label>
+      <input name="to" class="form-control margin" id="input-to"
+             [formControl]="to" style="">
+
+
+      <button class="btn btn-success" style="width: 100%;margin-top: 30px" (click)="confirmClick()">
+        REZERVISI
+      </button>
+      <button class="btn btn-success" style="width: 100% ; margin-top: 20px" (click)="exit()">ZATVORI</button>
+
+    </div>
+
+  </form>
+</div>

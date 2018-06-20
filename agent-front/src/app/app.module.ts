@@ -16,6 +16,9 @@ import {AditionalServiceService} from "../service/aditionalService.service";
 import {LogInComponent} from './log-in/log-in.component';
 import {LogInService} from "../service/logInService";
 import {AccomodationsComponent} from "./accomodations/accomodations.component";
+import {ReservationsComponent} from "./reservations/reservations.component";
+import {AddReservationComponent} from "./add-reservation/add-reservation.component";
+
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import {AccomodationsComponent} from "./accomodations/accomodations.component";
     AddEditAccomodationComponent,
     LogInComponent,
     AccomodationsComponent,
+    ReservationsComponent,
+    AddReservationComponent,
+
   ],
   imports: [
     BrowserModule,
