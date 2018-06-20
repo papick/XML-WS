@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import agent.model.Accommodation;
 import agent.repository.AccomodationRepository;
 import agent.resource.response.ResponseAccomodations;
-import agent.service.AccomodationService;
+import agent.service.AccomodationService2;
 import agent.service.dto.AccommodationDTO;
 
 @RestController
@@ -25,7 +25,7 @@ import agent.service.dto.AccommodationDTO;
 public class AccomodationResource {
 
 	@Autowired
-	private AccomodationService accomodationService;
+	private AccomodationService2 accomodationService;
 
 	@Autowired
 	private AccomodationRepository accomodationRepository;

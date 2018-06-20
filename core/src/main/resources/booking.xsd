@@ -113,7 +113,34 @@
     </xs:complexType>
        
    
+    <xs:complexType name="message">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="sender" type="tns:user"/>
+            <xs:element name="recipient" type="tns:agent"/>
+            <xs:element name="text" type="xs:string"/>                    
+        </xs:sequence>
+    </xs:complexType>
     
+    
+    <xs:complexType name="response">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="sender" type="tns:agent"/>
+            <xs:element name="recipient" type="tns:user"/>
+            <xs:element name="text" type="xs:string"/>                    
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+     <xs:complexType name="reservation">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="period" type="tns:period"/>
+            <xs:element name="user" type="tns:user"/>  
+            <xs:element name="confirmed" type="xs:boolean"/>            
+        </xs:sequence>
+    </xs:complexType>
     
     
  
@@ -153,6 +180,42 @@
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>
+    
+    
+     <xs:element name="getUserRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getUserResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="user" type="tns:user"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+    
+    <xs:element name="getAgentRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getAgentResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="agent" type="tns:agent"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
     
     
     <xs:element name="getCountriesRequest">
@@ -223,6 +286,23 @@
     </xs:element>
 	
 	
+	<xs:element name="getAdditionsRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="name" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getAdditionsResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="additions" type="tns:addition" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+	
+	
 	
      <xs:element name="addAccomodationRequest">
     	<xs:complexType>
@@ -239,6 +319,132 @@
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>
+    
+    
+    <xs:element name="deleteAccomodationRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="deleteAccomodationResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="message" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="getMessagesRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getMessagesResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="messages" type="tns:message"  minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+     <xs:element name="sendResponseRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="response" type="tns:response"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="sendResponseResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="message" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+    
+    <xs:element name="getReservationsRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="getReservationsResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="reservations" type="tns:reservation"  minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+    
+     <xs:element name="addPeriodRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="period" type="tns:period"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="addPeriodResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="message" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="agentAuthenticationRequest">
+	   <xs:complexType>
+	    		<xs:sequence>
+	    			<xs:element name="username" type="xs:string"></xs:element>
+	    			<xs:element name="password" type="xs:string"></xs:element>
+	    		</xs:sequence>
+	    	</xs:complexType>
+	    </xs:element>
+	    
+	    
+	<xs:element name="agentAuthenticationResponse">
+	    	<xs:complexType>
+	    		<xs:sequence>
+	    			<xs:element name="message" type="xs:string"></xs:element>
+	    			<xs:element name="user" type="tns:user"></xs:element>
+	    		</xs:sequence>
+	    	</xs:complexType>
+    </xs:element>
+      
+    
+    <xs:element name="confirmReservationRequest">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="confirmReservationResponse">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="message" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
 	
      	 
 </xs:schema>

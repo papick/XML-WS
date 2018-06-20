@@ -169,6 +169,8 @@ export class AccomodationComponent implements OnInit {
 
   }
 
+
+
   public check = false;
 
   addService(service: any) {
@@ -213,6 +215,8 @@ export class AccomodationComponent implements OnInit {
     for (var i = 0; i < this.listAditionalService.length; i++) {
       this.values += this.listAditionalService[i] + '    ';
     }
+
+
 
 
   }

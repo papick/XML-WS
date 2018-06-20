@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bookingws.soap.AccomodationService;
+import com.bookingws.soap.AccomodationServicePort;
+import com.bookingws.soap.AddAccomodationRequest;
+import com.bookingws.soap.AddAccomodationResponse;
+
 import agent.model.Accommodation;
 import agent.model.Addition;
 import agent.repository.AccomodationRepository;
@@ -17,7 +22,7 @@ import agent.repository.UserRepository;
 import agent.service.dto.AccommodationDTO;
 
 @Service
-public class AccomodationService {
+public class AccomodationService2 {
 
 	@Autowired
 	private TypeAccomodationRepository typeAccomodationRepostiroy;
@@ -66,6 +71,15 @@ public class AccomodationService {
 		accomodation.setCategory(categoryRepository.findOneByName(accomodationDTO.getCategory()));
 
 		accomodationRepository.save(accomodation);
+		
+		
+		AccomodationService accomodationService = new AccomodationService();
+		AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
+		
+		AddAccomodationRequest request = new AddAccomodationRequest();
+		request.setAccomodation(accomodation);
+		AddAccomodationResponse response = accomodationServicePort.addAccomodation(request);
+		
 
 		return accomodation;
 	}

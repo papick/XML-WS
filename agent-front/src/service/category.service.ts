@@ -15,6 +15,6 @@ export class CategoryService {
   }
 
   getCategories(): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/all-categories`, httpOptions);
+    return this.http.get(`${this.BASE_URL}/get-categories`, httpOptions);
   }
 }

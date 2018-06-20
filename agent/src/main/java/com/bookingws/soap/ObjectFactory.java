@@ -9,10 +9,12 @@ import agent.model.Agent;
 import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
+import agent.model.Message;
 import agent.model.Period;
 import agent.model.Price;
 import agent.model.TypeAccomodation;
 import agent.model.User;
+import agent.model.Response;
 
 
 /**
@@ -78,6 +80,54 @@ public class ObjectFactory {
      */
     public SetCountryResponse createSetCountryResponse() {
         return new SetCountryResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUserRequest }
+     * 
+     */
+    public GetUserRequest createGetUserRequest() {
+        return new GetUserRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetUserResponse }
+     * 
+     */
+    public GetUserResponse createGetUserResponse() {
+        return new GetUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
+    }
+
+    /**
+     * Create an instance of {@link GetAgentRequest }
+     * 
+     */
+    public GetAgentRequest createGetAgentRequest() {
+        return new GetAgentRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAgentResponse }
+     * 
+     */
+    public GetAgentResponse createGetAgentResponse() {
+        return new GetAgentResponse();
+    }
+
+    /**
+     * Create an instance of {@link Agent }
+     * 
+     */
+    public Agent createAgent() {
+        return new Agent();
     }
 
     /**
@@ -169,6 +219,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAdditionsRequest }
+     * 
+     */
+    public GetAdditionsRequest createGetAdditionsRequest() {
+        return new GetAdditionsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAdditionsResponse }
+     * 
+     */
+    public GetAdditionsResponse createGetAdditionsResponse() {
+        return new GetAdditionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link Addition }
+     * 
+     */
+    public Addition createAddition() {
+        return new Addition();
+    }
+
+    /**
      * Create an instance of {@link AddAccomodationRequest }
      * 
      */
@@ -193,35 +267,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link User }
+     * Create an instance of {@link DeleteAccomodationRequest }
      * 
      */
-    public User createUser() {
-        return new User();
+    public DeleteAccomodationRequest createDeleteAccomodationRequest() {
+        return new DeleteAccomodationRequest();
     }
 
     /**
-     * Create an instance of {@link Addition }
+     * Create an instance of {@link DeleteAccomodationResponse }
      * 
      */
-    public Addition createAddition() {
-        return new Addition();
+    public DeleteAccomodationResponse createDeleteAccomodationResponse() {
+        return new DeleteAccomodationResponse();
     }
 
     /**
-     * Create an instance of {@link Agent }
+     * Create an instance of {@link GetMessagesRequest }
      * 
      */
-    public Agent createAgent() {
-        return new Agent();
+    public GetMessagesRequest createGetMessagesRequest() {
+        return new GetMessagesRequest();
     }
 
     /**
-     * Create an instance of {@link Price }
+     * Create an instance of {@link GetMessagesResponse }
      * 
      */
-    public Price createPrice() {
-        return new Price();
+    public GetMessagesResponse createGetMessagesResponse() {
+        return new GetMessagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link Message }
+     * 
+     */
+    public Message createMessage() {
+        return new Message();
+    }
+
+    /**
+     * Create an instance of {@link SendResponseRequest }
+     * 
+     */
+    public SendResponseRequest createSendResponseRequest() {
+        return new SendResponseRequest();
+    }
+
+    /**
+     * Create an instance of {@link Response }
+     * 
+     */
+    public Response createResponse() {
+        return new Response();
+    }
+
+    /**
+     * Create an instance of {@link SendResponseResponse }
+     * 
+     */
+    public SendResponseResponse createSendResponseResponse() {
+        return new SendResponseResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationsRequest }
+     * 
+     */
+    public GetReservationsRequest createGetReservationsRequest() {
+        return new GetReservationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationsResponse }
+     * 
+     */
+    public GetReservationsResponse createGetReservationsResponse() {
+        return new GetReservationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link Reservation }
+     * 
+     */
+    public Reservation createReservation() {
+        return new Reservation();
+    }
+
+    /**
+     * Create an instance of {@link AddPeriodRequest }
+     * 
+     */
+    public AddPeriodRequest createAddPeriodRequest() {
+        return new AddPeriodRequest();
     }
 
     /**
@@ -230,6 +368,54 @@ public class ObjectFactory {
      */
     public Period createPeriod() {
         return new Period();
+    }
+
+    /**
+     * Create an instance of {@link AddPeriodResponse }
+     * 
+     */
+    public AddPeriodResponse createAddPeriodResponse() {
+        return new AddPeriodResponse();
+    }
+
+    /**
+     * Create an instance of {@link AgentAuthenticationRequest }
+     * 
+     */
+    public AgentAuthenticationRequest createAgentAuthenticationRequest() {
+        return new AgentAuthenticationRequest();
+    }
+
+    /**
+     * Create an instance of {@link AgentAuthenticationResponse }
+     * 
+     */
+    public AgentAuthenticationResponse createAgentAuthenticationResponse() {
+        return new AgentAuthenticationResponse();
+    }
+
+    /**
+     * Create an instance of {@link ConfirmReservationRequest }
+     * 
+     */
+    public ConfirmReservationRequest createConfirmReservationRequest() {
+        return new ConfirmReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link ConfirmReservationResponse }
+     * 
+     */
+    public ConfirmReservationResponse createConfirmReservationResponse() {
+        return new ConfirmReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link Price }
+     * 
+     */
+    public Price createPrice() {
+        return new Price();
     }
 
 }

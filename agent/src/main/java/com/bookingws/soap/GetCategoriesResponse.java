@@ -30,7 +30,6 @@ import agent.model.Category;
  * </pre>
  * 
  * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

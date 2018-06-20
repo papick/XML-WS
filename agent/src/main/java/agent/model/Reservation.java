@@ -26,6 +26,10 @@ public class Reservation {
 	
 	@ManyToOne
 	private User user;
+	
+	
+	private boolean confirmed = false;
+	
 
 	public Reservation(Period period, User user) {
 		super();
@@ -33,7 +37,9 @@ public class Reservation {
 		this.user = user;
 	}
 	
-	public Reservation(){}
+	public Reservation(){
+		
+	}
 
 	public Long getId() {
 		return id;
@@ -59,4 +65,14 @@ public class Reservation {
 		this.user = user;
 	}
 
+	public boolean isConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
+	}
+
+	
+	
 }

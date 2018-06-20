@@ -8,6 +8,8 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import com.bookingws.soap.AddAccomodationRequest;
+import com.bookingws.soap.AddAccomodationResponse;
 import com.bookingws.soap.GetCategoriesRequest;
 import com.bookingws.soap.GetCategoriesResponse;
 import com.bookingws.soap.GetCitiesRequest;
@@ -19,10 +21,12 @@ import com.bookingws.soap.GetTypesAccomodationResponse;
 import com.bookingws.soap.SetCountryRequest;
 import com.bookingws.soap.SetCountryResponse;
 
+import XMLWS.model.Accommodation;
 import XMLWS.model.Category;
 import XMLWS.model.City;
 import XMLWS.model.Country;
 import XMLWS.model.TypeAccomodation;
+import XMLWS.repository.AccomodationRepository;
 import XMLWS.service.CategoryService;
 import XMLWS.service.CityService;
 import XMLWS.service.CountryService;
@@ -45,6 +49,10 @@ public class AccomodationEndpoint {
 	
 	@Autowired
 	private TypeAccomodationService typeAccomodationService;
+	
+	
+	@Autowired
+	private AccomodationRepository accomodationRepository;
 	
 	
 	
@@ -91,7 +99,7 @@ public class AccomodationEndpoint {
 		
 		for(Category category : categories){
 			response.getCategory().add(category);
-			System.out.println(category.getName());
+			
 		}
 		
 		return response;
@@ -113,6 +121,39 @@ public class AccomodationEndpoint {
 		
 		return response;
 	}
+	
+	
+	
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "addAccomodationRequest")
+    @ResponsePayload
+    public AddAccomodationResponse addAccomodationRequest(@RequestPayload AddAccomodationRequest addAccomodationRequest) {
+		
+		AddAccomodationResponse response = new AddAccomodationResponse();
+		
+		Accommodation accommodation = new Accommodation();
+		accommodation.setIdAgentApp(addAccomodationRequest.getAccomodation().getId());
+		accommodation.setAdditions(addAccomodationRequest.getAccomodation().getAdditions());
+		accommodation.setAddress(addAccomodationRequest.getAccomodation().getAddress());
+		accommodation.setAgent(addAccomodationRequest.getAccomodation().getAgent());
+		accommodation.setCapacity(addAccomodationRequest.getAccomodation().getCapacity());
+		accommodation.setCategory(addAccomodationRequest.getAccomodation().getCategory());
+		accommodation.setCity(addAccomodationRequest.getAccomodation().getCity());
+		accommodation.setDescription(addAccomodationRequest.getAccomodation().getDescription());
+		accommodation.setImage(addAccomodationRequest.getAccomodation().getImage());
+		accommodation.setName(addAccomodationRequest.getAccomodation().getName());
+		accommodation.setType(addAccomodationRequest.getAccomodation().getType());
+		
+		accomodationRepository.save(accommodation);
+		
+		response.setMessage("Saved accommodation " + accommodation.getName());
+		
+		
+		return response;
+	}
+	
+	
+	
+	
 	
 	
 	////
