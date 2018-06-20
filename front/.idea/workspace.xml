@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+            <state relative-caret-position="486">
+              <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -89,7 +89,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/components/login/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
@@ -1603,12 +1603,12 @@
       <option name="presentableId" value="Default" />
       <updated>1529312419997</updated>
       <workItem from="1529312422385" duration="12000" />
-      <workItem from="1529312464335" duration="6177000" />
+      <workItem from="1529312464335" duration="6315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6189000" />
+    <option name="totallyTimeSpent" value="6327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
@@ -3127,16 +3127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/components/datepicker-popup/datepicker-popup.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
@@ -3152,6 +3142,16 @@
         <state relative-caret-position="54">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

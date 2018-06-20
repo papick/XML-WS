@@ -1,0 +1,20 @@
+.center {
+  margin: auto;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.tables {
+  width: 100%;
+  border: 1px solid white;
+}
+
+.th-style {
+  background-color: #1a8cff;
+  color: white;
+  border: 1px solid white;
+}
+
+table, th, td {
+  border: 1px solid white;
+}
