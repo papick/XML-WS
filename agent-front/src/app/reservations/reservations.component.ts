@@ -1,5 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AccomodationService} from "../../service/accomodation.service";
 
 @Component({
   selector: 'reservations',
@@ -7,13 +8,19 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./reservations.component.css']
 
 })
-export class ReservationsComponent {
+export class ReservationsComponent implements OnInit {
+
 
   constructor(protected route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private accomodationService: AccomodationService) {
   }
 
-  addReservations(){
+  ngOnInit() {
+
+  }
+
+  addReservations() {
     const username = this.route.snapshot.params.username;
     this.router.navigateByUrl(username + '/add/reservation')
 

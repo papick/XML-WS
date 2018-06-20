@@ -24,20 +24,17 @@
       <select class="form-control margin " [formControl]="accomodation"
               style="width: 100%;display: inline-block">
         <option></option>
-        <option *ngFor="let acc of accomodations ">{{acc.name}}</option>
+        <option *ngFor="let acc of accomodations ">{{acc.id}}/{{acc.name}}/{{acc.type.name}}/{{acc.capacity}}</option>
 
       </select>
 
-      <label style="margin-top:20px">Od: ( yyyy-mm-dd )</label>
-      <input name="from" class="form-control margin" id="input-from"
-             [formControl]="from" style="">
-
-      <label style="margin-top:20px">Do: ( yyyy-mm-dd )</label>
-      <input name="to" class="form-control margin" id="input-to"
-             [formControl]="to" style="">
+      <label style="margin-top:20px">Od:</label>
 
 
-      <button class="btn btn-success" style="width: 100%;margin-top: 30px" (click)="confirmClick()">
+      <label style="margin-top:20px">Do: </label>
+
+
+      <button class="btn btn-success" style="width: 100%;margin-top: 30px" (click)="reservation()">
         REZERVISI
       </button>
       <button class="btn btn-success" style="width: 100% ; margin-top: 20px" (click)="exit()">ZATVORI</button>
