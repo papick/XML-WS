@@ -8,10 +8,11 @@ import {ProfileComponent} from './components/profile/profile.component';
 
 
 export const router: Routes = [
-  {path: '',component: HomeComponent , pathMatch: 'full'},
+  {path: '', redirectTo:"home" , pathMatch: 'full'},
+  {path: 'home',component: HomeComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'profiles/{profileId}', component: ProfileComponent}
+  {path: 'profiles/:username', component: ProfileComponent}
 ];
 
 

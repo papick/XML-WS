@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -19,7 +20,10 @@ import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {DataViewModule} from 'primeng/dataview';
 import {NgbdDatepickerPopup} from "./components/datepicker-popup/datepicker-popup";
+import {CardModule} from 'primeng/card';
+import {DialogModule} from 'primeng/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {UserService} from './services/user.service'
 
 
 @NgModule({
@@ -35,6 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     routes,
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     GrowlModule,
     FormsModule,
@@ -44,10 +49,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MenubarModule,
     InputTextModule,
     DataViewModule,
+    CardModule,
+    DialogModule,
     NgbModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

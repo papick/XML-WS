@@ -1,5 +1,7 @@
 import {Component,OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
 
     submitted: boolean;
 
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
     ngOnInit() {
         this.userform = this.fb.group({
@@ -29,7 +31,11 @@ export class LoginComponent implements OnInit {
     onSubmit(value: string) {
         this.submitted = true;
         this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Success', detail:'Form Submitted'});
+        this.msgs.push({severity:'info', summary:'Success', detail:'User Login Submitted'});
+        this.userService.login(value).subscribe( data=>{
+          sessionStorage.setItem('user', JSON.stringify(value));
+          this.router.navigate(['']);
+        });
     }
 
     get diagnostic() { return JSON.stringify(this.userform.value); }

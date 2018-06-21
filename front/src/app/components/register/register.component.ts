@@ -1,6 +1,7 @@
 import {Component,OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
-
+import {UserService} from './../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
     submitted: boolean;
 
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder,private userService : UserService, private router :Router) {}
 
     ngOnInit() {
         this.userform = this.fb.group({
@@ -26,9 +27,13 @@ export class RegisterComponent implements OnInit {
     }
 
     onSubmit(value: string) {
+      console.log(value);
         this.submitted = true;
         this.msgs = [];
-        this.msgs.push({severity:'info', summary:'Success', detail:'Form Submitted'});
+        this.msgs.push({severity:'info', summary:'Success', detail:'User Submitted'});
+        this.userService.register(value).subscribe( data=>{
+          this.router.navigate(['/login']);
+        });
     }
 
     get diagnostic() { return JSON.stringify(this.userform.value); }

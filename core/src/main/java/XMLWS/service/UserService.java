@@ -26,5 +26,7 @@ public interface UserService {
 	public List<User> getActive();
 	
 	public List<User> getBlocked();
+	
+	public User getUser(String username);
 
 }

@@ -50,7 +50,7 @@ export class NgbdDatepickerPopup {
 
     console.log(this.date)
     this.cdRef.detectChanges();
-    this.message.next('all done loading');
+    //this.message.next('all done loading');
   }
 
 
