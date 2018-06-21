@@ -25,6 +25,9 @@ export class ReservationService {
     return this.http.get(`${this.BASE_URL}/all-reservations`, httpOptions);
   }
 
+  confirmeReservation(id: any): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/confirm/` + id, httpOptions);
+  }
 
 }
 

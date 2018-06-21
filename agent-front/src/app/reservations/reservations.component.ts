@@ -38,4 +38,9 @@ export class ReservationsComponent implements OnInit {
     this.router.navigateByUrl(username + '/add/reservation')
 
   }
+
+  confirmeReservation(id: any) {
+    this.reservationService.confirmeReservation(id).subscribe(data => {
+    })
+  }
 }

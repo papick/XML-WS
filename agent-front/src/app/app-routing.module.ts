@@ -10,8 +10,8 @@ import {ReservationsComponent} from "./reservations/reservations.component";
 const routes: Routes = [
   {path: '', redirectTo: 'log-in', pathMatch: 'full'},
   {path: 'log-in', component: LogInComponent},
-  {path: ':username/reservations', component: ReservationsComponent},
-  {path: ':username/messages', component: MessageComponent},
+//  {path: ':username/reservations', component: ReservationsComponent},
+  //{path: ':username/messages', component: MessageComponent},
   {path: ':username/:click', component: HomeComponent},
   {path: ':username/add/reservation', component: AddReservationComponent},
   {path: ':username/:mode/accomodation', component: AddEditAccomodationComponent},
