@@ -22,6 +22,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "message")
 public class Message implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -35,26 +40,27 @@ public class Message implements Serializable {
 	private String text;
 
 	@OneToMany
-	private List<Message> messages;
+	private List<Response> responses;
 
 	public Message() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Message(Long id, User sender, Agent recipient, String text) {
+	public Message(Long id, User sender, Agent recipient, String text, List<Response> responses) {
 		super();
 		this.id = id;
 		this.sender = sender;
 		this.recipient = recipient;
 		this.text = text;
+		this.responses = responses;
 	}
 
-	public List<Message> getMessages() {
-		return messages;
+	public List<Response> getResponses() {
+		return responses;
 	}
 
-	public void setMessages(List<Message> messages) {
-		this.messages = messages;
+	public void setResponses(List<Response> responses) {
+		this.responses = responses;
 	}
 
 	public Long getId() {

@@ -59,7 +59,7 @@ public class TestData {
 		
 		
 		
-		/*Country country1 = new Country("Serbia");
+		Country country1 = new Country("Serbia");
 		countryRepository.save(country1);
 		
 		Country country2 = new Country();
@@ -141,7 +141,7 @@ public class TestData {
 		commRepo.save(comm4);
 		
 		Comment comm5=new Comment("Bla bla", "Sinisa", a1, true);
-		commRepo.save(comm5); */
+		commRepo.save(comm5); 
 
 	}
 }
