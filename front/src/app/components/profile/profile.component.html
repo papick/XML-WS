@@ -1,40 +1,71 @@
-<p-card [title]="user.username" subtitle="Profile Details" [style]="{width: '360px'}" style.marginTop.px="100" styleClass="ui-card-shadow">
-    <p-header>
-        <img height="300" src="https://instagram.fbeg2-1.fna.fbcdn.net/vp/5d69be5ce2336892e824d925dd60d203/5BC6700E/t51.2885-15/e35/30830052_1742975995781657_4598194400869220352_n.jpg">
-    </p-header>
-    <div>
-      <p>  <b>Username: </b>{{user.username}}</p>
-    <p>  <b>Email: </b>{{user.email}}</p>
+<p-card [title]="user.username" subtitle="Profile Details" [style]="{width: '360px'}" style.marginTop.px="100"
+        styleClass="ui-card-shadow">
+  <p-header>
+    <img height="300"
+         src="https://instagram.fbeg2-1.fna.fbcdn.net/vp/5d69be5ce2336892e824d925dd60d203/5BC6700E/t51.2885-15/e35/30830052_1742975995781657_4598194400869220352_n.jpg">
+  </p-header>
+  <div>
+    <p><b>Username: </b>{{user.username}}</p>
+    <p><b>Email: </b>{{user.email}}</p>
     <p><b>Password: </b>You can't see password! What are think you are, a boss?</p>
-    </div>
-    <p-footer>
-        <button pButton type="button" label="Edit" icon="fa fa-fw fa-edit" style="margin-right: .25em" (click)="showEdit( )"></button>
-    </p-footer>
+  </div>
+  <p-footer>
+    <button pButton type="button" label="Edit" icon="fa fa-fw fa-edit" style="margin-right: .25em"
+            (click)="showEdit( )"></button>
+  </p-footer>
 </p-card>
 
-<p-dialog header="Edit account" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="500">
-    <div class="ui-g ui-fluid" >
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="vin">Email</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="email" [(ngModel)]="updatingUser.email" />
-            </div>
-        </div>
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="year">Password</label>
-            </div>
-            <div class="ui-g-8">
-                <input type="password" pInputText id="password" [(ngModel)]="updatingUser.password" />
-            </div>
-        </div>
-
+<p-dialog header="Edit account" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+          [width]="500">
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12">
+      <div class="ui-g-4">
+        <label for="vin">Email</label>
+      </div>
+      <div class="ui-g-8">
+        <input pInputText id="email" [(ngModel)]="updatingUser.email"/>
+      </div>
     </div>
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
-        </div>
-    </p-footer>
+    <div class="ui-g-12">
+      <div class="ui-g-4">
+        <label for="year">Password</label>
+      </div>
+      <div class="ui-g-8">
+        <input type="password" pInputText id="password" [(ngModel)]="updatingUser.password"/>
+      </div>
+    </div>
+
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+    </div>
+  </p-footer>
 </p-dialog>
+
+<div style="margin-top: 20px">
+  <div style="display: inline-block;width: 30%;text-align: center;">
+    <h3 >Aktivne rezervacije:</h3>
+    <div style="margin-top: 20px">
+      <p>Smestaj:</p>
+      <p>Od:  Do:</p>
+      <button style="background: #3399ff;color: white;height: 30px">Posalji poruku</button>
+      <button style="background: #3399ff;color: white;height: 30px">Otkazi rezervaciju</button>
+    </div>
+  </div>
+
+
+  <div style="display: inline-block;width: 30%;text-align: center">
+    <h3>Realizovane rezervacije:</h3>
+    <div style="margin-top: 20px">
+      <p>Smestaj:</p>
+      <p>Od:  Do:</p>
+      <button style="background: #3399ff;color: white;height: 30px">Oceni</button>
+      <button style="background: #3399ff;color: white;height: 30px">Dodaj komentar</button>
+    </div>
+  </div>
+
+  <div style="display: inline-block;width: 30%;text-align: center">
+    <h3>Poruke:</h3>
+  </div>
+</div>

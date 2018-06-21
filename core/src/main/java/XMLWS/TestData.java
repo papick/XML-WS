@@ -12,6 +12,8 @@ import XMLWS.model.Category;
 import XMLWS.model.City;
 import XMLWS.model.Comment;
 import XMLWS.model.Country;
+import XMLWS.model.Period;
+import XMLWS.model.Reservation;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.model.User;
 import XMLWS.repository.AccomodationRepository;
@@ -21,6 +23,8 @@ import XMLWS.repository.CategoryRepository;
 import XMLWS.repository.CityRepository;
 import XMLWS.repository.CommentRepository;
 import XMLWS.repository.CountryRepository;
+import XMLWS.repository.PeriodRepository;
+import XMLWS.repository.ReservationRepository;
 import XMLWS.repository.TypeAccomodationRepository;
 import XMLWS.repository.UserRepository;
 
@@ -53,6 +57,12 @@ public class TestData {
 	
 	@Autowired
 	private CommentRepository commRepo;
+	
+	@Autowired
+	private PeriodRepository periodRepository;
+	
+	@Autowired
+	private ReservationRepository reservationRepository;
 
 	@PostConstruct
 	private void init() {
@@ -125,7 +135,7 @@ public class TestData {
 		agentRepo.save(agent2);
 		
 		
-		Accommodation a1= new Accommodation("", "", 2, typeAccomodation1,"naziv",city1, "", agent1,category4);
+		Accommodation a1= new Accommodation("", "", 2, typeAccomodation1,"Seraton Novi Sad",city1, "", agent1,category4);
 		accomodationRepository.save(a1); 
 		
 		Comment comm1=new Comment("Odlican smestaj!", "Kristina", a1, false);
@@ -142,6 +152,30 @@ public class TestData {
 		
 		Comment comm5=new Comment("Bla bla", "Sinisa", a1, true);
 		commRepo.save(comm5); 
+		
+		Period period1= new Period();
+		period1.setAccomodation(a1);
+		period1.setFromDate("2018-07-20");
+		period1.setToDate("2018-08-01");
+		periodRepository.save(period1);
+		
+		Reservation reservation1 = new Reservation();
+		reservation1.setConfirmed(false);
+		reservation1.setPeriod(period1);
+		reservation1.setUser(user1);
+		reservationRepository.save(reservation1);
+		
+		Period period2= new Period();
+		period2.setAccomodation(a1);
+		period2.setFromDate("2018-05-05");
+		period2.setToDate("2018-05-10");
+		periodRepository.save(period2);
+		
+		Reservation reservation2 = new Reservation();
+		reservation2.setConfirmed(true);
+		reservation2.setPeriod(period2);
+		reservation2.setUser(user1);
+		reservationRepository.save(reservation2);
 
 	}
 }
