@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bookingws.soap.AccomodationService;
+import com.bookingws.soap.AccomodationServicePort;
+import com.bookingws.soap.AddPeriodRequest;
+import com.bookingws.soap.AddPeriodResponse;
+
 import agent.model.Accommodation;
 import agent.model.Period;
 import agent.model.Reservation;
@@ -80,6 +85,15 @@ public class ReservationService {
 			period.setAccomodation(accomodation);
 
 			periodRepository.save(period);
+			
+			AccomodationService accomodationService = new AccomodationService();
+			AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
+			
+			AddPeriodRequest request = new AddPeriodRequest();
+			request.setPeriod(period);
+			AddPeriodResponse response = accomodationServicePort.addPeriod(request);
+			
+			
 
 		}
 	}

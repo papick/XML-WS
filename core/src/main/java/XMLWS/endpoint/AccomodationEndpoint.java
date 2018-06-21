@@ -10,6 +10,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.bookingws.soap.AddAccomodationRequest;
 import com.bookingws.soap.AddAccomodationResponse;
+import com.bookingws.soap.AddPeriodRequest;
+import com.bookingws.soap.AddPeriodResponse;
 import com.bookingws.soap.GetAdditionsRequest;
 import com.bookingws.soap.GetAdditionsResponse;
 import com.bookingws.soap.GetCategoriesRequest;
@@ -28,8 +30,10 @@ import XMLWS.model.Addition;
 import XMLWS.model.Category;
 import XMLWS.model.City;
 import XMLWS.model.Country;
+import XMLWS.model.Period;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.repository.AccomodationRepository;
+import XMLWS.repository.PeriodRepository;
 import XMLWS.service.AdditionalServiceService;
 import XMLWS.service.CategoryService;
 import XMLWS.service.CityService;
@@ -58,6 +62,8 @@ public class AccomodationEndpoint {
 	@Autowired
 	private AccomodationRepository accomodationRepository;
 	
+	@Autowired
+	private PeriodRepository periodRepository;
 	
 	@Autowired
 	private AdditionalServiceService additionalServiceService;
@@ -180,11 +186,30 @@ public class AccomodationEndpoint {
 	
 	
 	
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "addPeriodRequest")
+    @ResponsePayload
+	public AddPeriodResponse addPeriodRequest(@RequestPayload AddPeriodRequest addPeriodRequest) {
+		
+		
+		AddPeriodResponse response = new AddPeriodResponse();
+		
+		Period period = new Period();
+		
+		period.setFromDate(addPeriodRequest.getPeriod().getFromDate());
+		period.setToDate(addPeriodRequest.getPeriod().getToDate());
+		period.setAccomodation(addPeriodRequest.getPeriod().getAccomodation());
+		
+		periodRepository.save(period);
+		
+		response.setMessage("Saved reserved period from " + period.getFromDate() + " to " + period.getToDate());
+				
+		return response;
+		
+	}
 	
 	
 	
-	
-	////
+	///////////////
 	
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "setCountryRequest")
     @ResponsePayload

@@ -48,8 +48,8 @@
       <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="558">
+              <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -61,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
-              <caret line="24" column="32" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+              <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -81,9 +81,10 @@
         <entry file="file://$PROJECT_DIR$/src/app/components/datepicker-popup/datepicker-popup.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="610">
-              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+              <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
+                <marker date="1529568748125" expanded="true" signature="780:1078" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -93,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/components/login/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1473,13 +1474,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/app/components/datepicker-popup/datepicker-popup.css" />
         <option value="$PROJECT_DIR$/src/app/components/datepicker-popup/datepicker-popup.html" />
         <option value="$PROJECT_DIR$/src/app/components/datepicker-popup/datepicker-popup.ts" />
         <option value="$PROJECT_DIR$/src/app/components/login/login.component.html" />
+        <option value="$PROJECT_DIR$/src/app/app.module.ts" />
       </list>
     </option>
   </component>
@@ -1495,10 +1496,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="7" />
-    <option name="width" value="1842" />
-    <option name="height" value="1080" />
+    <option name="x" value="70" />
+    <option name="y" value="-8" />
+    <option name="width" value="1858" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -1730,7 +1731,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3106,7 +3107,7 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
-          <caret line="24" column="32" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -3130,9 +3131,10 @@
     <entry file="file://$PROJECT_DIR$/src/app/components/datepicker-popup/datepicker-popup.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
-          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
+            <marker date="1529568748125" expanded="true" signature="780:1078" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -3140,15 +3142,15 @@
     <entry file="file://$PROJECT_DIR$/src/app/components/login/login.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        <state relative-caret-position="558">
+          <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
           </folding>
