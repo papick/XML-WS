@@ -70,6 +70,10 @@ public class TestData {
 		
 		
 		Country country1 = new Country("Serbia");
+<<<<<<< HEAD
+		country1.setCode("SRB");
+=======
+>>>>>>> 68d9210c53362937e235945517efe8bc6049a277
 		countryRepository.save(country1);
 		
 		Country country2 = new Country();
@@ -77,7 +81,7 @@ public class TestData {
 		country2.setName("United States of America");
 		countryRepository.save(country2);
 				
-		City city1 = new City("Novi Sad", country1);
+		City city1 = new City("Beograd", country1);
 		cityRepository.save(city1);
 
 		Category category1 = new Category("*");
@@ -134,8 +138,13 @@ public class TestData {
 		Agent agent2=new Agent("hilton","hilton","Jovan","Jovanovic","Beograd");
 		agentRepo.save(agent2);
 		
+<<<<<<< HEAD
+		String image1 ="https://pix6.agoda.net/hotelImages/115/1157073/1157073_16062412150044053329.jpg";
+		Accommodation a1= new Accommodation(image1, "woow", 2, typeAccomodation1,"naziv",city1, "Vojvode Stepe 3", agent1,category4);
+=======
 		
 		Accommodation a1= new Accommodation("", "", 2, typeAccomodation1,"Seraton Novi Sad",city1, "", agent1,category4);
+>>>>>>> 68d9210c53362937e235945517efe8bc6049a277
 		accomodationRepository.save(a1); 
 		
 		Comment comm1=new Comment("Odlican smestaj!", "Kristina", a1, false);
@@ -152,6 +161,8 @@ public class TestData {
 		
 		Comment comm5=new Comment("Bla bla", "Sinisa", a1, true);
 		commRepo.save(comm5); 
+<<<<<<< HEAD
+=======
 		
 		Period period1= new Period();
 		period1.setAccomodation(a1);
@@ -176,6 +187,7 @@ public class TestData {
 		reservation2.setPeriod(period2);
 		reservation2.setUser(user1);
 		reservationRepository.save(reservation2);
+>>>>>>> 68d9210c53362937e235945517efe8bc6049a277
 
 	}
 }

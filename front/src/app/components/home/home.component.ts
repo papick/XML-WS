@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AccomodationService} from '../../services/accomodation.service'
 
 @Component({
   selector: 'app-home',
@@ -7,28 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  accomodations : any[];
+  accomodations : any;
 
-  constructor() { }
+  constructor(private accomodationService:AccomodationService) { }
 
   ngOnInit() {
-    this.accomodations = [
-      {
-        name : 'Stojin Vukašinović',
-        image : 'https://pix6.agoda.net/hotelImages/115/1157073/1157073_16062412150044053329.jpg?s=1024x768',
-        type : 'debeli gmaz',
-        location : 'kamilina grba'
-
-      },
-      {
-        name : 'Lavlja dlaka na kašmiru',
-        image : 'https://pix6.agoda.net/hotelImages/115/1157073/1157073_16062412230044053765.jpg?s=1024x768',
-        type : 'orašasti plodovi',
-        location : 'muda od labuda'
-      }
-    ]
+    this.accomodationService.getAllAccomodations().subscribe(data =>{
+      this.accomodations = data;
+    });
   }
 
-  
+
 
 }
