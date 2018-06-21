@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   accomodations = false;
   reservations = false;
+  message = false;
 
   constructor(protected route: ActivatedRoute,
               private router: Router) {
@@ -22,9 +23,15 @@ export class HomeComponent implements OnInit {
     if (click === 'home') {
       this.accomodations = true;
       this.reservations = false;
+      this.message = false;
     } else if (click === 'reservations') {
       this.accomodations = false;
       this.reservations = true;
+      this.message = false;
+    } else if (click === 'message') {
+      this.accomodations = false;
+      this.reservations = false;
+      this.message = true;
     }
 
   }
@@ -32,10 +39,19 @@ export class HomeComponent implements OnInit {
   accomodationsClick() {
     this.accomodations = true;
     this.reservations = false;
+    this.message = false;
   }
 
-  reservationsClick(){
+  reservationsClick() {
     this.accomodations = false;
     this.reservations = true;
+    this.message = false;
+  }
+
+  messageClick() {
+    this.accomodations = false;
+    this.reservations = false;
+    this.message = true;
+
   }
 }

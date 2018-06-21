@@ -445,6 +445,23 @@
     	</xs:complexType>
     </xs:element>
     
+	<xs:element name="setPricesRequest">
+		<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    			<xs:element name="prices" type="tns:price"  minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="setPricesRespone">
+		<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="message" type="xs:string"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+	</xs:element>
 	
      	 
 </xs:schema>

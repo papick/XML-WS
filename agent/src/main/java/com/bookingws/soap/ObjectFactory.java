@@ -412,11 +412,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetPricesRequest }
+     * 
+     */
+    public SetPricesRequest createSetPricesRequest() {
+        return new SetPricesRequest();
+    }
+
+    /**
      * Create an instance of {@link Price }
      * 
      */
     public Price createPrice() {
         return new Price();
+    }
+
+    /**
+     * Create an instance of {@link SetPricesRespone }
+     * 
+     */
+    public SetPricesRespone createSetPricesRespone() {
+        return new SetPricesRespone();
     }
 
 }

@@ -18,11 +18,14 @@ import {LogInService} from "../service/logInService";
 import {AccomodationsComponent} from "./accomodations/accomodations.component";
 
 import {NgbdDatepickerPopup} from "./datepicker-popup/datepicker-popup";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {AddReservationComponent} from "./add-reservation/add-reservation.component";
-
+import {ReservationService} from "../service/reservation.service";
+import {PeriodService} from "../service/period.service";
+import {MessageComponent} from "./message/message.component";
+import {MessageService} from "../service/message.service";
 
 
 @NgModule({
@@ -32,11 +35,10 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
     AddEditAccomodationComponent,
     LogInComponent,
     AccomodationsComponent,
-
     NgbdDatepickerPopup,
-
     ReservationsComponent,
     AddReservationComponent,
+    MessageComponent,
 
   ],
   imports: [
@@ -56,6 +58,9 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
     TypeAccomodationService,
     AditionalServiceService,
     LogInService,
+    ReservationService,
+    PeriodService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

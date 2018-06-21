@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AccomodationService} from "../../service/accomodation.service";
 import {ReservationModel} from "../../model/reservation.model";
+import {ReservationService} from "../../service/reservation.service";
 
 @Component({
   templateUrl: './add-reservation.component.html',
@@ -20,7 +21,8 @@ export class AddReservationComponent implements OnInit {
   constructor(protected route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
-              private accomodationService: AccomodationService) {
+              private accomodationService: AccomodationService,
+              private reservationService: ReservationService) {
     this.form = this.fb.group({
       'accomodation': ['', Validators.compose([Validators.required])],
       'from': ['', Validators.compose([Validators.required])],
@@ -39,21 +41,22 @@ export class AddReservationComponent implements OnInit {
     })
   }
 
-  reservation():any {
+  reservation(): any {
+
     const reservation = new ReservationModel(
       this.accomodation.value,
-      this.from.value,
-      this.to.value,
-
+      document.getElementById('date_picker_from').getAttribute('date'),
+      document.getElementById('date_picker_to').getAttribute('date'),
     );
 
-    /*this.reservationService.createReservation(reservation).subscribe(data => {
+    this.reservationService.createReservation(reservation).subscribe(data => {
       const username = this.route.snapshot.params.username;
       this.router.navigateByUrl(username + '/reservations');
 
-    })*/
+    })
 
   }
+
   exit() {
     const username = this.route.snapshot.params.username;
     this.router.navigateByUrl(username + '/reservations')

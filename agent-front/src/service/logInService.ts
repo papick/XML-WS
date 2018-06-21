@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 import {LogInModel} from "../model/logIn.model";
 import {Observable} from "rxjs/index";
 
-//milica
+
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'}),
 };
@@ -15,6 +15,7 @@ export class LogInService {
 
   constructor(private http: HttpClient) {
   }
+
   logIn(user: LogInModel): Observable<any> {
     const body = JSON.stringify(user);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});

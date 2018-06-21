@@ -1,6 +1,7 @@
 
 package com.bookingws.soap;
 
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -130,6 +131,16 @@ public interface AccomodationServicePort {
     public GetTypesAccomodationResponse getTypesAccomodation(
         @WebParam(name = "getTypesAccomodationRequest", targetNamespace = "http://bookingws.com/soap", partName = "getTypesAccomodationRequest")
         GetTypesAccomodationRequest getTypesAccomodationRequest);
+
+    /**
+     * 
+     * @param setPricesRequest
+     */
+    @WebMethod
+    @Oneway
+    public void setPrices(
+        @WebParam(name = "setPricesRequest", targetNamespace = "http://bookingws.com/soap", partName = "setPricesRequest")
+        SetPricesRequest setPricesRequest);
 
     /**
      * 
