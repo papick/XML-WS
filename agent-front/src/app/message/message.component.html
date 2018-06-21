@@ -9,20 +9,23 @@
     <div style="text-align: right;margin-right: 3%">
       <button
         style="margin-top: 15px;text-align: center;border-radius: 12px;background-color: #1a8cff;color: white;height: 45px;width: 100px"
-        (click)="answerMessage()">
+        (click)="answerMessage(m.sender.id , m.sender.username)">
         Odgovori
       </button>
     </div>
 
-    <div *ngIf="answer==true"
-         style="margin-left: 5%; margin-bottom: 20px;margin-right: 5%; text-align: left;border-style: solid;border-width: 2px;border-color: darkgray;margin-top: 20px;">
-      <textarea style="width: 94%;margin-left: 3%;margin-right: 3%;margin-top: 20px;height: 100px"></textarea>
-      <div style="text-align: right;margin-right: 3%">
-        <button
-          style="margin-top: 15px;margin-bottom: 15px;text-align: center;border-radius: 12px;background-color: #1a8cff;color: white;height: 45px">
-          Posalji odgovor
-        </button>
-      </div>
+
+  </div>
+
+  <div *ngIf="answer==true"
+       style="margin-left: 5%; margin-bottom: 20px;margin-right: 5%; text-align: left;border-style: solid;border-width: 2px;border-color: darkgray;margin-top: 20px;">
+    <p style="margin-top: 10px;margin-left: 15px">Od: {{idSender}} </p>
+    <textarea style="width: 94%;margin-left: 3%;margin-right: 3%;margin-top: 20px;height: 100px"></textarea>
+    <div style="text-align: right;margin-right: 3%">
+      <button
+        style="margin-top: 15px;margin-bottom: 15px;text-align: center;border-radius: 12px;background-color: #1a8cff;color: white;height: 45px">
+        Posalji odgovor
+      </button>
     </div>
   </div>
 </div>
