@@ -45,7 +45,7 @@ public class AccomodationService2 {
 	@Autowired
 	private AditionalServiceRepository aditionalServiceRepositroy;
 
-	public Accommodation create(AccommodationDTO accomodationDTO, Long id) {
+	public Accommodation create(AccommodationDTO accomodationDTO, String username) {
 		
 		Accommodation accomodation = new Accommodation();
 		// accomodation.setImage(accomodationDTO.getImage());
@@ -67,7 +67,7 @@ public class AccomodationService2 {
 		accomodation.setName(accomodationDTO.getName());
 		accomodation.setCity(cityRepository.findOneByName(accomodationDTO.getCity()));
 		accomodation.setAddress(accomodationDTO.getAddress());
-		accomodation.setAgent(agentRepository.findOne(id));
+		accomodation.setAgent(agentRepository.findOneByUsername(username));
 		accomodation.setCategory(categoryRepository.findOneByName(accomodationDTO.getCategory()));
 
 		accomodationRepository.save(accomodation);

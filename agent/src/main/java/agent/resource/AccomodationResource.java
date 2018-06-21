@@ -30,10 +30,10 @@ public class AccomodationResource {
 	@Autowired
 	private AccomodationRepository accomodationRepository;
 
-	@PostMapping("/create/{id}")
-	public void createAccomodation(@RequestBody AccommodationDTO accomodationDTO, @PathVariable Long id) {
+	@PostMapping("/create/{username}")
+	public void createAccomodation(@RequestBody AccommodationDTO accomodationDTO, @PathVariable String username) {
 
-		accomodationService.create(accomodationDTO, id);
+		accomodationService.create(accomodationDTO, username);
 
 	}
 
