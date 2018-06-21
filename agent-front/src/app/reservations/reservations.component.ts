@@ -42,5 +42,6 @@ export class ReservationsComponent implements OnInit {
   confirmeReservation(id: any) {
     this.reservationService.confirmeReservation(id).subscribe(data => {
     })
+    location.reload();
   }
 }
