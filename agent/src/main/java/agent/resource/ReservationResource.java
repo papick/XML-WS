@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,12 @@ public class ReservationResource {
 	public ResponseEntity<List<Reservation>> getReservations() {
 		List<Reservation> reservations = reservationService.getAllReservations();
 		return new ResponseEntity<>(reservations, HttpStatus.OK);
+
+	}
+
+	@GetMapping("/confirm/{id}")
+	public void confirme(@PathVariable Long id) {
+		reservationService.confirmeReservation(id);
 
 	}
 

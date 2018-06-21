@@ -102,4 +102,13 @@ public class ReservationService {
 		return reservationRepository.findAll();
 	}
 
+	public void confirmeReservation(Long id) {
+		Reservation reservation = reservationRepository.findOne(id);
+		if(reservation == null){
+			throw new IllegalArgumentException("No reservation !!!");
+		}
+		reservation.setConfirmed(true);
+		reservationRepository.save(reservation);
+	}
+
 }

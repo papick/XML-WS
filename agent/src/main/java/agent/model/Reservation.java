@@ -16,29 +16,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "reservation")
 public class Reservation {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@OneToOne
-	//private Period period;
-	
+	private Period period;
+
 	@ManyToOne
 	private User user;
-	
-	
-	private boolean confirmed = false;
-	
 
-	/*public Reservation(Period period, User user) {
+	private boolean confirmed = false;
+
+	public Reservation(Period period, User user) {
 		super();
 		this.period = period;
 		this.user = user;
-	}*/
-	
-	public Reservation(){
-		
+	}
+
+	public Reservation() {
+
 	}
 
 	public Long getId() {
@@ -49,13 +47,13 @@ public class Reservation {
 		this.id = id;
 	}
 
-	/*public Period getPeriod() {
+	public Period getPeriod() {
 		return period;
 	}
 
 	public void setPeriod(Period period) {
 		this.period = period;
-	}*/
+	}
 
 	public User getUser() {
 		return user;
@@ -73,6 +71,4 @@ public class Reservation {
 		this.confirmed = confirmed;
 	}
 
-	
-	
 }

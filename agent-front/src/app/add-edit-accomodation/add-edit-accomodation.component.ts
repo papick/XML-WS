@@ -138,7 +138,8 @@ export class AddEditAccomodationComponent implements OnInit {
       this.listAditionalService,
     );
 
-    this.accomodationService.createAccomodation(accomodation, 1).subscribe(data => {
+    const username = this.route.snapshot.params.username;
+    this.accomodationService.createAccomodation(accomodation, username).subscribe(data => {
       const username = this.route.snapshot.params.username;
       this.router.navigateByUrl(username + '/home');
 

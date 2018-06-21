@@ -70,8 +70,13 @@
 
         <div style=" display: inline-block; width: 50%;margin-top: 20px">
           <div *ngFor="let s of services ">
-            <button style="margin-right: 15px;height: 30px;width: 70px;border-radius: 12px;background-color: #1a8cff;color: white;" (click)="addService(s.name )" >Dodaj</button>
-            <button style="height: 30px;width: 70px;border-radius: 12px;background-color: #ff6666;color: white;" (click)="removeService(s.name )" >Ukloni</button>
+            <button
+              style="margin-right: 15px;height: 30px;width: 70px;border-radius: 12px;background-color: #1a8cff;color: white;"
+              (click)="addService(s.name )">Dodaj
+            </button>
+            <button style="height: 30px;width: 70px;border-radius: 12px;background-color: #ff6666;color: white;"
+                    (click)="removeService(s.name )">Ukloni
+            </button>
 
             <label style="margin-left: 15px;font-size: 18px">{{s.name}}</label>
           </div>
@@ -80,12 +85,6 @@
         <div style=" display: inline-block;width: 50%;height: 100%">
           <label style="margin-top:20px">Dodatne usluge:</label>
           <textarea style=" height: 110px;width: 100%" disabled="true">{{values}}</textarea>
-        </div>
-
-
-        <div>
-          <label>Datum isticanja licitacije: </label>
-          <ngbd-datepicker-popup id="date_picker"></ngbd-datepicker-popup>
         </div>
 
 
