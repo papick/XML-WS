@@ -74,5 +74,15 @@ public class UserController {
 	public void blockUser(@PathVariable Long id) {
 		us.blockUser(id);
 	}
+	
+	@GetMapping("/{username}")
+	public ResponseEntity<User> getUser(@PathVariable String username) {
+		
+		User user = us.getUser(username);
+		if(user == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 
 }

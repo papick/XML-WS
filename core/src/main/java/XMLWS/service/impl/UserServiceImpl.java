@@ -100,4 +100,10 @@ public class UserServiceImpl implements UserService {
 
 		return blockedUsers;
 	}
+
+	@Override
+	public User getUser(String username) {
+		
+		return userRepo.findByUsername(username);
+	}
 }

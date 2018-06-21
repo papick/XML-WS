@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
+import { UserService } from './services/user.service';
 
 
 
@@ -9,21 +10,28 @@ import {MenuItem} from 'primeng/api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  {
   title = 'app';
   items: MenuItem[];
 
-  constructor(){
+  constructor(private userService : UserService, private router : Router){
     this.items = [
-      {label: 'Home', routerLink: ['/']},
-      {label: 'Login',  routerLink: ['/login']},
-      {label: 'Register',  routerLink: ['/register']},
-
+      {label: 'Home', routerLink: ['/']}
     ]
   }
 
-  logout(){
-    console.log('Not Implemented');
+  isLogged(){
+    return this.userService.getLoggedUser() != null;
   }
-  
+
+  getUsername(){
+    return this.userService.getLoggedUser().username;
+  }
+  logout(){
+    sessionStorage.clear();
+    this.userService.logout().subscribe(data =>{
+      this.router.navigate(['']);
+    });
+  }
+
 }

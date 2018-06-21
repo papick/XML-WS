@@ -1,4 +1,7 @@
 <p-menubar [model]="items">
-    <button pButton label="Logout" icon="fa fa-sign-out" (click)="logout()"></button>
+  <button pButton  *ngIf="!isLogged()" label="Login"  routerLink="/login"></button>
+  <button pButton  *ngIf="!isLogged()" label="Register"  routerLink="/register"></button>
+  <button pButton  *ngIf="isLogged()" [label]="getUsername()" icon="fa fa-user" [routerLink]="'/profiles/' + getUsername()"></button>
+  <button pButton  *ngIf="isLogged()" label="Logout" icon="fa fa-sign-out" (click)="logout()"></button>
 </p-menubar>
 <router-outlet></router-outlet>
