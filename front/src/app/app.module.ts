@@ -1,24 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { AccomodationComponent } from './components/accomodation/accomodation.component';
-import { DatePickerComponent } from './components/datepicker/datepicker.component'
+import {AppComponent} from './app.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
+import {HomeComponent} from './components/home/home.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {AccomodationComponent} from './components/accomodation/accomodation.component';
+import {DatePickerComponent} from './components/datepicker/datepicker.component'
 
 import {UserService} from './services/user.service'
 import {AccomodationService} from './services/accomodation.service';
 import {ReservationService} from './services/reservation.service';
 
-import { routes } from './app.router';
+import {routes} from './app.router';
 
 import {GrowlModule} from 'primeng/growl';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PanelModule} from 'primeng/panel';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
@@ -31,13 +31,11 @@ import {DialogModule} from 'primeng/dialog';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
 import {MessagesComponent} from "./components/messages/messages.component";
-<<<<<<< HEAD
+
 import {CommentsService} from "./services/commentsService";
-=======
+
+
 import {VoteService} from "./services/vote.service";
->>>>>>> b2585f864b40c433d0ff50d562a0dc02aaa08805
-
-
 
 
 @NgModule({
@@ -76,12 +74,10 @@ import {VoteService} from "./services/vote.service";
     AccomodationService,
     ReservationService,
     MessageService,
-<<<<<<< HEAD
     CommentsService,
-=======
     VoteService,
->>>>>>> b2585f864b40c433d0ff50d562a0dc02aaa08805
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

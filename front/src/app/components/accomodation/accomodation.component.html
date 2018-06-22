@@ -1,44 +1,60 @@
 <br>
 <p-panel>
-    <p-header>
-        <div class="ui-helper-clearfix">
-            <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">{{accomodation.name}}</span>
-        </div>
-    </p-header>
-    <div class="ui-g">
-      <div class="ui-g-12 ui-md-4">
-        <img height="300" width="500" src="{{accomodation.image}}">
-      </div>
-      <div class="ui-g-12 ui-md-4 ui-md-offset-4">
-        <datepicker ></datepicker>
-        <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Reserve"></button>
-
-      </div>
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <span class="ui-panel-title"
+            style="font-size:16px;display:inline-block;margin-top:2px">{{accomodation.name}}</span>
     </div>
-    <p-footer>
-      <div >
-          <div class="ui-g-2 ui-sm-6">Type: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{accomodation.type.name}}</b></div>
+  </p-header>
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-4">
+      <img height="300" width="500" src="{{accomodation.image}}">
+    </div>
+    <div class="ui-g-12 ui-md-4 ui-md-offset-4">
+      <datepicker></datepicker>
+      <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Reserve"></button>
 
-          <div class="ui-g-2 ui-sm-6">Location: </div>
-          <div class="ui-g-10 ui-sm-6"><b>{{accomodation.address}},{{accomodation.city.name}},{{accomodation.city.country.name}}</b></div>
-        <div>Komentari: </div>
-        <div *ngFor="let item of comms;">
-          <p><b>{{item.nameOfUser}}</b></p>
-          <p>{{item.text}}</p>
-        </div>
+    </div>
+  </div>
+  <p-footer>
+    <div >
+      <div class="ui-g-2 ui-sm-6">Type:</div>
+      <div class="ui-g-10 ui-sm-6"><b>{{accomodation.type.name}}</b></div>
 
+      <div  class="ui-g-2 ui-sm-6">Location:</div>
+      <div style="margin-bottom: 50px" class="ui-g-10 ui-sm-6"><b>{{accomodation.address}},{{accomodation.city.name}},{{accomodation.city.country.name}}</b>
       </div>
 
-    </p-footer>
+    </div>
+
+    <div>
+
+      <h2 style="margin-left: 15px">Komentari:</h2>
+      <div *ngFor="let item of comms;">
+        <div style="margin-top: 20px;border-style: solid;border-width: 2px;border-color: darkgray;">
+          <p style="margin-left: 15px"><b>Autor : {{item.nameOfUser}}</b></p>
+          <div
+            style="margin-top: 20px;border-top: solid;border-width: 2px;border-color: darkgray;">
+            <p style="margin-left: 15px">{{item.text}}</p>
+          </div>
+          <br>
+        </div>
+        <br>
+      </div>
+
+    </div>
+  </p-footer>
+
+
 </p-panel>
 
-<p-dialog header="Reservation" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" [baseZIndex]="10000">
+<p-dialog header="Reservation" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [width]="350"
+          [minWidth]="200" [minY]="70" [baseZIndex]="10000">
     <span>
       You want to reserve accomodation <b>{{accomodation.name}}</b> for period {{fromDate ? dateToString(fromDate) : 'no date'}} - {{toDate ? dateToString(toDate) : 'no date'}} ?
     </span>
-        <p-footer>
-            <button type="button" pButton icon="pi pi-check" (click)="reserve()" label="Yes"></button>
-            <button type="button" pButton icon="fa fa-close" (click)="closeDialog()" label="No"></button>
-        </p-footer>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="reserve()" label="Yes"></button>
+    <button type="button" pButton icon="fa fa-close" (click)="closeDialog()" label="No"></button>
+  </p-footer>
 </p-dialog>
