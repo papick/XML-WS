@@ -29,17 +29,29 @@ public class Price {
     private String month;
     
     
+    private String sum;
+    
+    
+    
+    
     public Price() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Price(long id, Accommodation accomodation, String month) {
+	
+
+
+	public Price(long id, Accommodation accomodation, String month, String sum) {
 		super();
 		this.id = id;
 		this.accomodation = accomodation;
 		this.month = month;
+		this.sum = sum;
 	}
+
+
+
 
 
 	public long getId() {
@@ -70,4 +82,24 @@ public class Price {
 	public void setMonth(String month) {
 		this.month = month;
 	}
+
+
+
+
+
+	public String getSum() {
+		return sum;
+	}
+
+
+
+
+
+	public void setSum(String sum) {
+		this.sum = sum;
+	}
+	
+	
+	
+	
 }
