@@ -21,4 +21,11 @@ export class ReservationService {
   getReservationsByUser(username: any): Observable<any> {
     return this.http.get(`${this.url}/user/` + username, httpOptions);
   }
+<<<<<<< HEAD
+=======
+
+  public deleteReservation(id: any) {
+    return this.http.delete(this.url + '/' + id);
+  }
+>>>>>>> b2585f864b40c433d0ff50d562a0dc02aaa08805
 }

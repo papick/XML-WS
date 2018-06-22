@@ -83,14 +83,11 @@ public class ReservationController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> cancelReservation(@PathVariable Long id, HttpSession session) {
-		User user = (User) session.getAttribute("loggedUser");
+	public ResponseEntity<Void> cancelReservation(@PathVariable Long id) {
+
 		Reservation reservationDelete = service.getReservation(id);
 		if (reservationDelete == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		if (user == null || reservationDelete.getUser().getUsername().equals(user.getUsername())) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 
 		service.removeReservation(id);

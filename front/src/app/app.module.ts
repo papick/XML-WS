@@ -31,7 +31,11 @@ import {DialogModule} from 'primeng/dialog';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
 import {MessagesComponent} from "./components/messages/messages.component";
+<<<<<<< HEAD
 import {CommentsService} from "./services/commentsService";
+=======
+import {VoteService} from "./services/vote.service";
+>>>>>>> b2585f864b40c433d0ff50d562a0dc02aaa08805
 
 
 
@@ -72,7 +76,11 @@ import {CommentsService} from "./services/commentsService";
     AccomodationService,
     ReservationService,
     MessageService,
+<<<<<<< HEAD
     CommentsService,
+=======
+    VoteService,
+>>>>>>> b2585f864b40c433d0ff50d562a0dc02aaa08805
   ],
   bootstrap: [AppComponent]
 })

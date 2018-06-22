@@ -5,6 +5,8 @@ import {ReservationService} from "../../services/reservation.service";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MessageModel} from "../../model/message.model";
 import {MessageService} from "../../services/message.service";
+import {VoteModel} from "../../model/vote.model";
+import {VoteService} from "../../services/vote.service";
 
 @Component({
   selector: 'app-profile',
@@ -20,23 +22,35 @@ export class ProfileComponent implements OnInit {
   realizedReservations = [];
   sendMessage = false;
   reservationShow = true;
+  voteShow = false;
   accName;
   idAgent;
+  idAccomodationForVore;
 
   public form: FormGroup;
   public text: AbstractControl;
+
+  //public form1: FormGroup;
+  public vote1: AbstractControl;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private reservationService: ReservationService,
               private fb: FormBuilder,
               private messageService: MessageService,
-              protected router: Router) {
+              protected router: Router,
+              private voteService: VoteService) {
     this.form = this.fb.group({
       'text': ['', Validators.compose([Validators.required])],
 
     })
     this.text = this.form.controls['text'];
+
+    this.form = this.fb.group({
+      'vote1': ['', Validators.compose([Validators.required])],
+
+    })
+    this.vote1 = this.form.controls['vote1'];
 
     const username = this.route.snapshot.params['username'];
     this.userService.getUser(username).subscribe(user => this.user = user, err => console.log(err));
@@ -46,6 +60,7 @@ export class ProfileComponent implements OnInit {
 
     this.sendMessage = false;
     this.reservationShow = true;
+    this.vote = false;
 
     const username = this.route.snapshot.params.username;
     this.reservationService.getReservationsByUser(username).subscribe(data => {
@@ -84,6 +99,7 @@ export class ProfileComponent implements OnInit {
   sendMessageToAgent(idAgent: any, idUser: any, nameAccomodation: any) {
     this.sendMessage = true;
     this.reservationShow = false;
+    this.voteShow = false;
 
     this.accName = nameAccomodation;
     this.idAgent = idAgent;
@@ -106,6 +122,7 @@ export class ProfileComponent implements OnInit {
 
     this.sendMessage = false;
     this.reservationShow = true;
+    this.voteShow = false;
 
 
   }
@@ -113,11 +130,46 @@ export class ProfileComponent implements OnInit {
   exit() {
     this.sendMessage = false;
     this.reservationShow = true;
+    this.voteShow = false;
   }
 
   showMessages() {
     const username = this.route.snapshot.params.username;
-    this.router.navigateByUrl('profiles/' +username + '/messages')
+    this.router.navigateByUrl('profiles/' + username + '/messages')
+  }
+
+  cancleReservation(idReservation: any) {
+
+    this.reservationService.deleteReservation(idReservation).subscribe(data => {
+
+      this.activeReservations = this.activeReservations.filter(el => el.id != idReservation);
+    })
+  }
+
+  voteForAccomodation(accomodationName: any, accomodationId: any) {
+    this.sendMessage = false;
+    this.reservationShow = false;
+    this.voteShow = true;
+    this.accName = accomodationName;
+    this.idAccomodationForVore = accomodationId;
+  }
+
+  confirmVote() {
+
+    const username = this.route.snapshot.params.username;
+
+    const vote = new VoteModel(
+      username,
+      this.idAccomodationForVore,
+      this.vote1.value,
+    );
+    console.log(this.vote1.value)
+    this.voteService.createVote(vote).subscribe();
+
+    this.sendMessage = false;
+    this.reservationShow = true;
+    this.voteShow = false;
+
   }
 
 }

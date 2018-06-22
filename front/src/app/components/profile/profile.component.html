@@ -41,6 +41,35 @@
   </p-footer>
 </p-dialog>
 
+<div *ngIf="voteShow==true" style="text-align: center">
+  <h3>Oceni smestaj</h3>
+  <p>{{accName}}</p>
+  <div style="margin-left: 40%;margin-right: 40%">
+    <form [formGroup]="form">
+
+      <div class="form-group">
+        <p style="margin-top: 10px;display: inline-block">Ocena: (1-10)</p>
+        <input style="width: 50px;display: inline-block;margin-left: 20px"
+               class="form-control margin " [formControl]="vote1">
+        <div style="text-align: right;">
+          <div style="text-align: center">
+            <button (click)="confirmVote()"
+                    style="margin-top: 15px;margin-bottom: 15px;text-align: center;background-color: #1a8cff;color: white;height: 30px">
+              Oceni
+            </button>
+            <button (click)="exit()"
+                    style="margin-top: 15px;margin-bottom: 15px;text-align: center;background-color: #1a8cff;color: white;height: 30px">
+              Odustani
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
 <div style="margin-right: 20%;margin-left: 20%" *ngIf="sendMessage===true">
   <div style="text-align: center">
     <h3>Nova poruka:</h3>
@@ -72,7 +101,7 @@
 
   </div>
   <div style="text-align: center">
-    <div style="margin-top: 50px;"  >
+    <div style="margin-top: 50px;">
       <div style="display: inline-block;width: 30%;text-align: center;margin-right: 30px">
         <h3>Aktivne rezervacije:</h3>
         <div style="margin-top: 20px;border-style: solid;border-width: 2px;border-color: darkgray;"
@@ -84,7 +113,9 @@
                   (click)="sendMessageToAgent(active.period.accomodation.agent.id , active.user.id ,active.period.accomodation.name  )">
             Posalji poruku
           </button>
-          <button style="background: #3399ff;color: white;height: 30px">Otkazi rezervaciju</button>
+          <button style="background: #3399ff;color: white;height: 30px" (click)="cancleReservation(active.id)">Otkazi
+            rezervaciju
+          </button>
           <br>
           <br>
         </div>
@@ -98,7 +129,7 @@
           <br>
           <p>Smestaj:{{realized.period.accomodation.name}}</p>
           <p>Od: {{realized.period.fromDate}} Do: {{realized.period.toDate}}</p>
-          <button style="background: #3399ff;color: white;height: 30px">Oceni</button>
+          <button style="background: #3399ff;color: white;height: 30px" (click)="voteForAccomodation(realized.period.accomodation.name,realized.period.accomodation.id)">Oceni</button>
           <button style="background: #3399ff;color: white;height: 30px">Dodaj komentar</button>
           <br>
           <br>

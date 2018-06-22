@@ -110,7 +110,7 @@ public class TestData {
 		Addition additionalService3 = new Addition("Spa");
 		additionalServiceRepo.save(additionalService3);
 
-		User user1 = new User("dejan", "dejan", "dejan@gmail.com", false);
+		User user1 = new User("dejan", "dejan123", "dejan@gmail.com", false);
 		userRepository.save(user1);
 
 		User klijent1 = new User("kris", "kris", "kristina@gmail.com", true);

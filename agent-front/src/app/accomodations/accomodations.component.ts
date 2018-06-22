@@ -25,6 +25,12 @@ export class AccomodationsComponent implements OnInit {
     })
   }
 
+  addPriceList(id : any, name : string) {
+
+    const username = this.route.snapshot.params.username;
+    this.router.navigateByUrl(username + '/price-list/' + id + '/' + name);
+  }
+
 
   addAccomodation() {
     const username = this.route.snapshot.params.username;

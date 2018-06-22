@@ -26,6 +26,8 @@ import {ReservationService} from "../service/reservation.service";
 import {PeriodService} from "../service/period.service";
 import {MessageComponent} from "./message/message.component";
 import {MessageService} from "../service/message.service";
+import {PriceListComponent} from "./price-list/price-list.component";
+import {PriceListService} from "../service/priceList.service";
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import {MessageService} from "../service/message.service";
     ReservationsComponent,
     AddReservationComponent,
     MessageComponent,
+    PriceListComponent,
 
   ],
   imports: [
@@ -61,6 +64,7 @@ import {MessageService} from "../service/message.service";
     ReservationService,
     PeriodService,
     MessageService,
+    PriceListService,
   ],
   bootstrap: [AppComponent]
 })
