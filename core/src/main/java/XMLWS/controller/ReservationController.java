@@ -1,5 +1,6 @@
 package XMLWS.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -74,6 +75,26 @@ public class ReservationController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		// check avaibility!!! TODO
+		List<Period> allPeriods = periodService.getAllPeriodsByAccomodation(reservation.getPeriod().getAccomodation().getId());
+	
+		Date fromDate = null;
+		Date toDate = null;
+		try {
+			fromDate = Date.valueOf(reservation.getPeriod().getFromDate());
+		    toDate = Date.valueOf(reservation.getPeriod().getToDate());
+		}catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		for(Period period : allPeriods) {
+			System.out.println("from : " + period.getFromDate() + " to : " + period.getToDate());
+			Date from =  Date.valueOf(period.getFromDate());
+			Date to =  Date.valueOf(period.getToDate());
+			if( fromDate.compareTo(to) <= 0  &&  toDate.compareTo(from) >= 0 ) {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+		}
+		
 		User user = userService.getUser(reservation.getUser().getUsername());
 		reservation.setUser(user);
 		Period period = periodService.addPeriod(reservation.getPeriod());

@@ -1,7 +1,5 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/index";
-import {AnswerModel} from "../model/answer.model";
 import {MessageModel} from "../model/message.model";
 import {VoteModel} from "../model/vote.model";
 
@@ -18,12 +16,10 @@ export class VoteService {
   }
 
 
-  createVote(vote: VoteModel): Observable<any> {
+  createVote(vote: VoteModel){
     const body = JSON.stringify(vote);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post(`${this.BASE_URL}/new-vote`, body, {headers: headers})
   }
 
 }
-
-

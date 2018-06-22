@@ -20,6 +20,7 @@ export class AccomodationComponent implements OnInit {
   displayDialog: boolean = false;
 
   comms = [];
+  commentText : string;
 
   fromDate: NgbDateStruct;
   toDate: NgbDateStruct;
@@ -64,6 +65,8 @@ export class AccomodationComponent implements OnInit {
 
     this.reservationService.reserve(reservation).subscribe(data => {
       this.closeDialog();
+    }, err =>{
+      alert('Already reserved');
     });
 
 
@@ -75,13 +78,24 @@ export class AccomodationComponent implements OnInit {
 
   private dateToString(date): string {
     let dateString: string;
-    dateString = '' + date.year + '/' + date.month + '/' + date.day;
+    dateString = '' + date.year + '-' + date.month + '-' + date.day;
     return dateString;
   }
 
   getComments(id) {
     this.commService.getComments(id).subscribe(data => {
       this.comms = data;
+    });
+  }
+
+  comment(){
+    const comment = {
+      text: this.commentText,
+      accommodation: this.accomodation,
+      nameOfUser: this.userService.getLoggedUser().username
+    };
+    this.commService.addComment(comment).subscribe(data => {
+      alert('Comment will be placed after adminstrator review');
     });
   }
 

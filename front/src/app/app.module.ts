@@ -28,6 +28,7 @@ import {DataViewModule} from 'primeng/dataview';
 import {NgbdDatepickerPopup} from "./components/datepicker-popup/datepicker-popup";
 import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
 import {MessagesComponent} from "./components/messages/messages.component";
@@ -50,6 +51,7 @@ import {VoteService} from "./services/vote.service";
     DatePickerComponent,
     MessagesComponent,
 
+
   ],
   imports: [
     routes,
@@ -66,6 +68,7 @@ import {VoteService} from "./services/vote.service";
     DataViewModule,
     CardModule,
     DialogModule,
+    InputTextareaModule,
     NgbModule.forRoot(),
 
   ],
@@ -75,7 +78,8 @@ import {VoteService} from "./services/vote.service";
     ReservationService,
     MessageService,
     CommentsService,
-    VoteService,
+    VoteService
+
   ],
   bootstrap: [AppComponent]
 })

@@ -66,7 +66,7 @@ export class DatePickerComponent implements OnInit{
   }
 
   stringToDate(dateString)  {
-    const splitted = dateString.split("/");
+    const splitted = dateString.split("-");
     const date =  {year: splitted[0], month:splitted[1], day:splitted[2]};
     return date;
   }

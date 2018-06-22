@@ -16,4 +16,7 @@ export class CommentsService {
     return this.http.get(`http://localhost:8000/api/comments/get-comments-acc/${id}`, httpOptions);
   }
 
+  addComment(comment): Observable<any> {
+    return this.http.post('http://localhost:8000/api/comments/add-comment/',comment, httpOptions);
+  }
 }

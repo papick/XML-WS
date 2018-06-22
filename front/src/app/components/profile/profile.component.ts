@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
   idAgent;
   idAccomodationForVore;
 
+
   public form: FormGroup;
   public text: AbstractControl;
 
@@ -60,7 +61,7 @@ export class ProfileComponent implements OnInit {
 
     this.sendMessage = false;
     this.reservationShow = true;
-    this.vote = false;
+    //this.votel = false;
 
     const username = this.route.snapshot.params.username;
     this.reservationService.getReservationsByUser(username).subscribe(data => {
