@@ -24,16 +24,21 @@ import com.bookingws.soap.GetTypesAccomodationRequest;
 import com.bookingws.soap.GetTypesAccomodationResponse;
 import com.bookingws.soap.SetCountryRequest;
 import com.bookingws.soap.SetCountryResponse;
+import com.bookingws.soap.SetPricesRequest;
+import com.bookingws.soap.SetPricesRespone;
 
 import XMLWS.model.Accommodation;
 import XMLWS.model.Addition;
+import XMLWS.model.Agent;
 import XMLWS.model.Category;
 import XMLWS.model.City;
 import XMLWS.model.Country;
 import XMLWS.model.Period;
+import XMLWS.model.Price;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.repository.AccomodationRepository;
 import XMLWS.repository.PeriodRepository;
+import XMLWS.repository.PriceRepository;
 import XMLWS.service.AdditionalServiceService;
 import XMLWS.service.CategoryService;
 import XMLWS.service.CityService;
@@ -67,6 +72,10 @@ public class AccomodationEndpoint {
 	
 	@Autowired
 	private AdditionalServiceService additionalServiceService;
+	
+	@Autowired
+	private PriceRepository priceRepository;
+	
 	
 	
 	
@@ -206,6 +215,42 @@ public class AccomodationEndpoint {
 		return response;
 		
 	}
+	
+	
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "setPricesRequest")
+    @ResponsePayload
+	public SetPricesRespone setPricesRequest(@RequestPayload SetPricesRequest setPricesRequest) {
+		
+		SetPricesRespone response = new SetPricesRespone();
+		
+		for(Price p : setPricesRequest.getPrices()) {
+			
+			Price price = new Price();
+			
+			Accommodation accomodation = p.getAccomodation();
+			Agent agent = accomodation.getAgent();
+			
+			List<Accommodation> accommFromAgent = accomodationRepository.findByAgent(agent);
+			
+			for(Accommodation ac : accommFromAgent) {
+				
+				if(accomodation.getId().equals(ac.getIdAgentApp())) {
+					
+					price.setAccomodation(ac);
+					price.setMonth(p.getMonth());
+					price.setSum(p.getSum());
+					
+					priceRepository.save(price);
+				}
+			}
+					
+		}
+			
+		response.setMessage("Saved pricelist");
+		
+		return response;
+	}
+	
 	
 	
 	

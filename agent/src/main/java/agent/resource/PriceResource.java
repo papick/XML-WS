@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookingws.soap.AccomodationService;
+import com.bookingws.soap.AccomodationServicePort;
+import com.bookingws.soap.SetPricesRequest;
+import com.bookingws.soap.SetPricesResponse;
+
 import agent.model.Accommodation;
 import agent.model.Price;
 import agent.repository.AccomodationRepository;
@@ -31,6 +36,7 @@ public class PriceResource {
 		
 		Accommodation accomodation = accomodationRepository.findOne(idAccomodation);
 		
+		SetPricesRequest request = new SetPricesRequest();
 		
 		for(PriceDTO priceDTO : priceListDTO.getPrices()) {
 			
@@ -41,7 +47,15 @@ public class PriceResource {
 			
 			priceRepository.save(price);
 			
+			request.getPrices().add(price);
+			
 		}
+		
+		AccomodationService accomodationService = new AccomodationService();
+		AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
+		
+		
+		SetPricesResponse response = accomodationServicePort.setPrices(request);
 		
 		
 	}

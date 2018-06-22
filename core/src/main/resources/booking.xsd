@@ -98,7 +98,8 @@
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
             <xs:element name="accomodation" type="tns:accommodation"/> 
-            <xs:element name="month" type="xs:string"/>               
+            <xs:element name="month" type="xs:string"/>
+            <xs:element name="sum" type="xs:string"/>                 
         </xs:sequence>
     </xs:complexType>  
     
@@ -455,7 +456,7 @@
 	</xs:element>
 	
 	
-	<xs:element name="setPricesRespone">
+	<xs:element name="setPricesResponse">
 		<xs:complexType>
     		<xs:sequence>
     			<xs:element name="message" type="xs:string"></xs:element>
