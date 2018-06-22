@@ -84,7 +84,7 @@
                   (click)="sendMessageToAgent(active.period.accomodation.agent.id , active.user.id ,active.period.accomodation.name  )">
             Posalji poruku
           </button>
-          <button style="background: #3399ff;color: white;height: 30px">Otkazi rezervaciju</button>
+          <button style="background: #3399ff;color: white;height: 30px" (click)="cancleReservation(active.id)">Otkazi rezervaciju</button>
           <br>
           <br>
         </div>

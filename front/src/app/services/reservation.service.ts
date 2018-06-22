@@ -26,7 +26,7 @@ export class ReservationService {
     return this.http.get(`${this.url}/user/` + username, httpOptions);
   }
 
-  public deleteReservation(id) {
-    return this.http.delete(this.url + id);
+  public deleteReservation(id: any) {
+    return this.http.delete(this.url + '/' + id);
   }
 }

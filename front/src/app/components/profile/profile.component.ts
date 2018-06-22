@@ -117,7 +117,15 @@ export class ProfileComponent implements OnInit {
 
   showMessages() {
     const username = this.route.snapshot.params.username;
-    this.router.navigateByUrl('profiles/' +username + '/messages')
+    this.router.navigateByUrl('profiles/' + username + '/messages')
+  }
+
+  cancleReservation(idReservation: any) {
+
+    this.reservationService.deleteReservation(idReservation).subscribe(data => {
+
+      this.activeReservations = this.activeReservations.filter(el => el.id != idReservation);
+    })
   }
 
 }
