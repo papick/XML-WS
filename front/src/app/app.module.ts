@@ -8,6 +8,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AccomodationComponent } from './components/accomodation/accomodation.component';
+import { DatePickerComponent } from './components/datepicker/datepicker.component'
+
+import {UserService} from './services/user.service'
+import {AccomodationService} from './services/accomodation.service';
+import {ReservationService} from './services/reservation.service';
 
 import { routes } from './app.router';
 
@@ -22,8 +28,12 @@ import {DataViewModule} from 'primeng/dataview';
 import {NgbdDatepickerPopup} from "./components/datepicker-popup/datepicker-popup";
 import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {UserService} from './services/user.service'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MessageService} from "./services/message.service";
+import {MessagesComponent} from "./components/messages/messages.component";
+import {VoteService} from "./services/vote.service";
+
+
 
 
 @NgModule({
@@ -34,6 +44,9 @@ import {UserService} from './services/user.service'
     HomeComponent,
     ProfileComponent,
     NgbdDatepickerPopup,
+    AccomodationComponent,
+    DatePickerComponent,
+    MessagesComponent,
 
   ],
   imports: [
@@ -54,7 +67,13 @@ import {UserService} from './services/user.service'
     NgbModule.forRoot(),
 
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    AccomodationService,
+    ReservationService,
+    MessageService,
+    VoteService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

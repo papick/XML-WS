@@ -21,17 +21,19 @@ public class ClientController {
 	private UserService userService;
 
 	@PostMapping(value="/login", consumes="application/json" )
-	public ResponseEntity<Void> login(@RequestBody User logUser, HttpSession session){
+	public ResponseEntity<User> login(@RequestBody User logUser, HttpSession session){
 		User user = userService.getUser(logUser.getUsername());
 		if(user == null || !logUser.getPassword().equals(user.getPassword())) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		System.out.println(user.getUsername());
 		session.setAttribute("loggedUser", user);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
 	
 	@PostMapping(value="/register", consumes="application/json" )
-	public ResponseEntity<Void> register(@RequestBody User user, HttpSession session){
+	public ResponseEntity<Void> register(@RequestBody User user){
+		System.out.println("registrovan");
 		userService.addUser(user);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -41,4 +43,5 @@ public class ClientController {
 		session.invalidate();
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+
 }
