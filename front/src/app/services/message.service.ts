@@ -17,8 +17,8 @@ export class MessageService {
   }
 
 
-  getMessages(): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/all-messages`, httpOptions);
+  getMessages(username: any): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/all-messages/` + username, httpOptions);
   }
 
   createMessage(message: MessageModel): Observable<any> {

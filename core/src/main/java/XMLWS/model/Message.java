@@ -1,11 +1,13 @@
 package XMLWS.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -19,20 +21,22 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "message")
 public class Message implements Serializable {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-		
+
 	@OneToOne
 	private User sender;
-	
+
 	@OneToOne
 	private Agent recipient;
-	
+
 	private String text;
-	
+
+	@OneToMany
+	private List<Response> responses;
+
 	public Message() {
 		// TODO Auto-generated constructor stub
 	}
@@ -43,6 +47,14 @@ public class Message implements Serializable {
 		this.sender = sender;
 		this.recipient = recipient;
 		this.text = text;
+	}
+
+	public List<Response> getResponses() {
+		return responses;
+	}
+
+	public void setResponses(List<Response> responses) {
+		this.responses = responses;
 	}
 
 	public Long getId() {
@@ -76,9 +88,5 @@ public class Message implements Serializable {
 	public void setText(String text) {
 		this.text = text;
 	}
-	
-	
-	
-	
 
 }

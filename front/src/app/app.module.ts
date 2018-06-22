@@ -30,6 +30,7 @@ import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
+import {MessagesComponent} from "./components/messages/messages.component";
 
 
 
@@ -44,6 +45,7 @@ import {MessageService} from "./services/message.service";
     NgbdDatepickerPopup,
     AccomodationComponent,
     DatePickerComponent,
+    MessagesComponent,
 
   ],
   imports: [

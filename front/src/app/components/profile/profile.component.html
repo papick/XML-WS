@@ -1,8 +1,6 @@
 <p-card [title]="user.username" subtitle="Profile Details" [style]="{width: '360px'}" style.marginTop.px="100"
         styleClass="ui-card-shadow">
   <p-header>
-    <img height="300"
-         src="https://instagram.fbeg2-1.fna.fbcdn.net/vp/5d69be5ce2336892e824d925dd60d203/5BC6700E/t51.2885-15/e35/30830052_1742975995781657_4598194400869220352_n.jpg">
   </p-header>
   <div>
     <p><b>Username: </b>{{user.username}}</p>
@@ -68,46 +66,44 @@
   </form>
 </div>
 
-<div>
-  <div style="margin-top: 20px;" s *ngIf="reservationShow ===true">
-    <div style="display: inline-block;width: 30%;text-align: center;margin-right: 30px">
-      <h3>Aktivne rezervacije:</h3>
-      <div style="margin-top: 20px;border-style: solid;border-width: 2px;border-color: darkgray;"
-           *ngFor="let active of activeReservations">
-        <br>
-        <p>Smestaj:{{active.period.accomodation.name}}</p>
-        <p>Od: {{active.period.fromDate}} Do: {{active.period.toDate}}</p>
-        <button style="background: #3399ff;color: white;height: 30px"
-                (click)="sendMessageToAgent(active.period.accomodation.agent.id , active.user.id ,active.period.accomodation.name  )">
-          Posalji poruku
-        </button>
-        <button style="background: #3399ff;color: white;height: 30px">Otkazi rezervaciju</button>
-        <br>
-        <br>
+<div *ngIf="reservationShow ===true">
+  <div style="text-align: center">
+    <button style="background: #3399ff;color: white;height: 30px;" (click)="showMessages()">Poruke</button>
+
+  </div>
+  <div style="text-align: center">
+    <div style="margin-top: 50px;"  >
+      <div style="display: inline-block;width: 30%;text-align: center;margin-right: 30px">
+        <h3>Aktivne rezervacije:</h3>
+        <div style="margin-top: 20px;border-style: solid;border-width: 2px;border-color: darkgray;"
+             *ngFor="let active of activeReservations">
+          <br>
+          <p>Smestaj:{{active.period.accomodation.name}}</p>
+          <p>Od: {{active.period.fromDate}} Do: {{active.period.toDate}}</p>
+          <button style="background: #3399ff;color: white;height: 30px"
+                  (click)="sendMessageToAgent(active.period.accomodation.agent.id , active.user.id ,active.period.accomodation.name  )">
+            Posalji poruku
+          </button>
+          <button style="background: #3399ff;color: white;height: 30px">Otkazi rezervaciju</button>
+          <br>
+          <br>
+        </div>
       </div>
-    </div>
 
 
-    <div style="display: inline-block;width: 30%;text-align: center;margin-right: 30px">
-      <h3>Realizovane rezervacije:</h3>
-      <div style="margin-top: 20px;border-style: solid;border-width: 2px;border-color: darkgray;"
-           *ngFor="let realized of realizedReservations">
-        <br>
-        <p>Smestaj:{{realized.period.accomodation.name}}</p>
-        <p>Od: {{realized.period.fromDate}} Do: {{realized.period.toDate}}</p>
-        <button style="background: #3399ff;color: white;height: 30px">Oceni</button>
-        <button style="background: #3399ff;color: white;height: 30px">Dodaj komentar</button>
-        <br>
-        <br>
+      <div style="display: inline-block;width: 30%;text-align: center;margin-right: 30px">
+        <h3>Realizovane rezervacije:</h3>
+        <div style="margin-top: 20px;border-style: solid;border-width: 2px;border-color: darkgray;"
+             *ngFor="let realized of realizedReservations">
+          <br>
+          <p>Smestaj:{{realized.period.accomodation.name}}</p>
+          <p>Od: {{realized.period.fromDate}} Do: {{realized.period.toDate}}</p>
+          <button style="background: #3399ff;color: white;height: 30px">Oceni</button>
+          <button style="background: #3399ff;color: white;height: 30px">Dodaj komentar</button>
+          <br>
+          <br>
+        </div>
       </div>
-    </div>
-
-    <div style="display: inline-block;width: 30%;text-align: center">
-      <button style="background: #3399ff;color: white;height: 30px;" (click)="showMessages()">Poruke</button>
-      <br>
-      <br>
-      <br>
-      <br>
 
     </div>
 

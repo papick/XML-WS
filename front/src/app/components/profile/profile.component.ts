@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ReservationService} from "../../services/reservation.service";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MessageModel} from "../../model/message.model";
@@ -30,7 +30,8 @@ export class ProfileComponent implements OnInit {
               private route: ActivatedRoute,
               private reservationService: ReservationService,
               private fb: FormBuilder,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              protected router: Router) {
     this.form = this.fb.group({
       'text': ['', Validators.compose([Validators.required])],
 
@@ -115,7 +116,8 @@ export class ProfileComponent implements OnInit {
   }
 
   showMessages() {
-    
+    const username = this.route.snapshot.params.username;
+    this.router.navigateByUrl('profiles/' +username + '/messages')
   }
 
 }

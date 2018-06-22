@@ -1,0 +1,20 @@
+<div *ngIf="empty==true">
+  <h2 style="text-align: center;margin-top: 30px">Nema poruka</h2>
+</div>
+<div style="text-align: center">
+  <h1>Poruke</h1>
+  <div *ngFor="let m of messages"
+       style="margin-left: 15%;margin-right: 15%; text-align: left;margin-bottom: 20px ;border-style: solid;border-width: 2px;border-color: darkgray;margin-top: 20px;">
+    <p style="margin-top: 10px;margin-left: 15px">Od: {{m.sender.username}} </p>
+    <textarea style="width: 94%;margin-left: 3%;margin-right: 3%;height: 100px" disabled="true">{{m.text}}</textarea>
+
+    <div *ngFor="let response of m.responses ">
+      <p style="margin-top: 10px;margin-left: 10%">Odgovor: {{response.sender.name}}</p>
+      <textarea style=" margin-top: 15px;width: 87%;margin-left: 10%;margin-right: 3%;height: 100px;margin-bottom: 20px"
+                disabled="true">{{response.text}}</textarea>
+    </div>
+
+  </div>
+
+
+</div>
