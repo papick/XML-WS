@@ -9,6 +9,8 @@ import {RegisterComponent} from './components/register/register.component';
 import {HomeComponent} from './components/home/home.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {AccomodationComponent} from './components/accomodation/accomodation.component';
+import {AccomodationListComponent} from './components/accomodationList/accomodationList.component';
+
 import {DatePickerComponent} from './components/datepicker/datepicker.component'
 
 import {UserService} from './services/user.service'
@@ -29,6 +31,7 @@ import {NgbdDatepickerPopup} from "./components/datepicker-popup/datepicker-popu
 import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {KeyFilterModule} from 'primeng/keyfilter';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
 import {MessagesComponent} from "./components/messages/messages.component";
@@ -50,6 +53,7 @@ import {VoteService} from "./services/vote.service";
     AccomodationComponent,
     DatePickerComponent,
     MessagesComponent,
+    AccomodationListComponent
 
 
   ],
@@ -69,6 +73,7 @@ import {VoteService} from "./services/vote.service";
     CardModule,
     DialogModule,
     InputTextareaModule,
+    KeyFilterModule,
     NgbModule.forRoot(),
 
   ],

@@ -24,6 +24,12 @@ public class AccomodationServiceImpl implements AccomodationService {
 	public Accommodation getAccomodation(Long id) {
 		return accomodationRepository.findOne(id);
 	}
+
+	@Override
+	public List<Accommodation> getAccomodationBySearch(String cityName , int capacity) {
+		
+		return accomodationRepository.findByCityNameIgnoreCaseContainingAndCapacity(cityName, capacity) ;
+	}
 		
 
 }

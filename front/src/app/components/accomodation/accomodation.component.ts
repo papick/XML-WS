@@ -33,6 +33,8 @@ export class AccomodationComponent implements OnInit {
     this.accomodation.type = {};
     this.accomodation.city = {};
     this.accomodation.city.country = {};
+    this.accomodation.category = {};
+
     const id = this.route.snapshot.params['id'];
     this.getComments(id);
     this.accomodationService.getAccomodation(id).subscribe(data => {
@@ -47,7 +49,6 @@ export class AccomodationComponent implements OnInit {
       console.log("You must log in!");
       return;
     }
-    console.log(JSON.stringify(this.accomodation.periods));
     this.fromDate = this.datePicker.fromDate;
     this.toDate = this.datePicker.toDate;
 

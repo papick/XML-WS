@@ -87,7 +87,6 @@ public class ReservationController {
 		}
 		
 		for(Period period : allPeriods) {
-			System.out.println("from : " + period.getFromDate() + " to : " + period.getToDate());
 			Date from =  Date.valueOf(period.getFromDate());
 			Date to =  Date.valueOf(period.getToDate());
 			if( fromDate.compareTo(to) <= 0  &&  toDate.compareTo(from) >= 0 ) {

@@ -17,15 +17,27 @@
     </div>
   </div>
   <p-footer>
-    <div >
-      <div class="ui-g-2 ui-sm-6">Type:</div>
-      <div class="ui-g-10 ui-sm-6"><b>{{accomodation.type.name}}</b></div>
 
-      <div  class="ui-g-2 ui-sm-6">Location:</div>
-      <div style="margin-bottom: 50px" class="ui-g-10 ui-sm-6"><b>{{accomodation.address}},{{accomodation.city.name}},{{accomodation.city.country.name}}</b>
-      </div>
 
+  <div class="ui-g">
+    <div class="ui-g-6">
+      Type: <b>{{accomodation.type.name}}</b>
     </div>
+    <div class="ui-g-6">
+      Location: <b>{{accomodation.address}},{{accomodation.city.name}},{{accomodation.city.country.name}}</b>
+    </div>
+    <div class="ui-g-6">
+      Category: <b>{{accomodation.category.name}}</b>
+    </div>
+    <div class="ui-g-6">
+      Capacity: {{accomodation.capacity}}<button pButton  icon="fa fa-user" ></button>
+    </div>
+
+    <div class="ui-g-12">
+      Description: <b>{{accomodation.description}}</b>
+    </div>
+
+  </div>
 
     <div>
       <textarea rows="5" cols="50" pInputTextarea [(ngModel)]="commentText" ></textarea><br><br>
