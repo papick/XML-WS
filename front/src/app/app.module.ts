@@ -29,6 +29,7 @@ import {NgbdDatepickerPopup} from "./components/datepicker-popup/datepicker-popu
 import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MessageService} from "./services/message.service";
 
 
 
@@ -66,7 +67,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   providers: [
     UserService,
     AccomodationService,
-    ReservationService
+    ReservationService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

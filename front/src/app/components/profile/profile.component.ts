@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {ReservationService} from "../../services/reservation.service";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MessageModel} from "../../model/message.model";
+import {MessageService} from "../../services/message.service";
 
 @Component({
   selector: 'app-profile',
@@ -15,16 +18,34 @@ export class ProfileComponent implements OnInit {
   displayDialog: boolean = false;
   activeReservations = [];
   realizedReservations = [];
+  sendMessage = false;
+  reservationShow = true;
+  accName;
+  idAgent;
+
+  public form: FormGroup;
+  public text: AbstractControl;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private reservationService: ReservationService) {
+              private reservationService: ReservationService,
+              private fb: FormBuilder,
+              private messageService: MessageService) {
+    this.form = this.fb.group({
+      'text': ['', Validators.compose([Validators.required])],
+
+    })
+    this.text = this.form.controls['text'];
 
     const username = this.route.snapshot.params['username'];
     this.userService.getUser(username).subscribe(user => this.user = user, err => console.log(err));
   }
 
   ngOnInit() {
+
+    this.sendMessage = false;
+    this.reservationShow = true;
+
     const username = this.route.snapshot.params.username;
     this.reservationService.getReservationsByUser(username).subscribe(data => {
       for (var i = 0; i < data.length; i++) {
@@ -57,6 +78,44 @@ export class ProfileComponent implements OnInit {
       this.copyUser(this.user, this.updatingUser);
 
     });
+  }
+
+  sendMessageToAgent(idAgent: any, idUser: any, nameAccomodation: any) {
+    this.sendMessage = true;
+    this.reservationShow = false;
+
+    this.accName = nameAccomodation;
+    this.idAgent = idAgent;
+    this.text.setValue('');
+
+    //location.reload();
+  }
+
+
+  confirmSendMessage() {
+    const username = this.route.snapshot.params.username;
+
+    const message = new MessageModel(
+      username,
+      this.idAgent,
+      this.text.value,
+    );
+
+    this.messageService.createMessage(message).subscribe();
+
+    this.sendMessage = false;
+    this.reservationShow = true;
+
+
+  }
+
+  exit() {
+    this.sendMessage = false;
+    this.reservationShow = true;
+  }
+
+  showMessages() {
+    
   }
 
 }
