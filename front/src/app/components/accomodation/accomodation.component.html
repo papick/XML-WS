@@ -16,13 +16,20 @@
       </div>
     </div>
     <p-footer>
-      <div class="ui-g">
+      <div >
           <div class="ui-g-2 ui-sm-6">Type: </div>
           <div class="ui-g-10 ui-sm-6"><b>{{accomodation.type.name}}</b></div>
 
           <div class="ui-g-2 ui-sm-6">Location: </div>
           <div class="ui-g-10 ui-sm-6"><b>{{accomodation.address}},{{accomodation.city.name}},{{accomodation.city.country.name}}</b></div>
+        <div>Komentari: </div>
+        <div *ngFor="let item of comms;">
+          <p><b>{{item.nameOfUser}}</b></p>
+          <p>{{item.text}}</p>
+        </div>
+
       </div>
+
     </p-footer>
 </p-panel>
 

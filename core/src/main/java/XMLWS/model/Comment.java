@@ -27,7 +27,7 @@ public class Comment {
 	private Accommodation accommodation;
 	
 
-	private boolean approved;
+	private boolean approved; //pri dodavanju setuje se na false
 
 	public Comment() {
 	}

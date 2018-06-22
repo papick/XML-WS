@@ -41,17 +41,28 @@ public class Agent {
 
 	@Column
     private String address;
+	
+	private String mbr;
 
 	public Agent() {
 	}
 
-	public Agent(String username, String password, String name, String surname, String addressr) {
+	public Agent(String username, String password, String name, String surname, String address, String mbr) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
+		this.mbr = mbr;
+	}
+
+	public String getMbr() {
+		return mbr;
+	}
+
+	public void setMbr(String mbr) {
+		this.mbr = mbr;
 	}
 
 	public Long getId() {

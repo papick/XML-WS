@@ -128,10 +128,10 @@ public class TestData {
 		User blocked = new User("luka", "luka", "luka@gmail.com", false);
 		userRepository.save(blocked);
 
-		Agent agent1 = new Agent("sheraton", "sheraton", "Marko", "Markovic", "Novi Sad");
+		Agent agent1 = new Agent("sheraton", "sheraton", "Marko", "Markovic", "Novi Sad","1");
 		agentRepo.save(agent1);
 
-		Agent agent2 = new Agent("hilton", "hilton", "Jovan", "Jovanovic", "Beograd");
+		Agent agent2 = new Agent("hilton", "hilton", "Jovan", "Jovanovic", "Beograd","2");
 		agentRepo.save(agent2);
 
 		String image1 = "https://pix6.agoda.net/hotelImages/115/1157073/1157073_16062412150044053329.jpg";

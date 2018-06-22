@@ -31,4 +31,8 @@ export class TypeAccommodationService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.put(`http://localhost:8000/api/type-accommodation/edit-type/${id}`, body, {headers: headers});
   }
+
+  removeTypeAccomodation(id): Observable<any> {
+    return this.http.delete(`http://localhost:8000/api/type-accommodation/delete-type/${id}`, httpOptions);
+  }
 }

@@ -28,6 +28,7 @@ public class AgentServiceImpl implements AgentService {
 		newA.setPassword(a.getPassword());
 		newA.setSurname(a.getSurname());
 		newA.setUsername(a.getUsername());
+		newA.setMbr(a.getMbr());
 		return agentRepo.save(newA);
 	}
 

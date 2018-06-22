@@ -18,15 +18,7 @@ export class ReservationService {
     return this.http.post(this.url, reservation);
   }
 
-  public getReservationsByUser() {
-    return this.http.get(this.url);
-  }
-
   getReservationsByUser(username: any): Observable<any> {
     return this.http.get(`${this.url}/user/` + username, httpOptions);
-  }
-
-  public deleteReservation(id) {
-    return this.http.delete(this.url + id);
   }
 }

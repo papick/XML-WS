@@ -30,4 +30,11 @@ export class TypeAccommodationComponent implements OnInit {
     this.router.navigateByUrl('/home/typeAccomodationForm/edit/' + id);
   }
 
+  removeType(id){
+    this.typeService.removeTypeAccomodation(id).subscribe(data => {
+        location.reload();
+      }
+    );
+  }
+
 }

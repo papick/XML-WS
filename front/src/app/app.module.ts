@@ -31,6 +31,7 @@ import {DialogModule} from 'primeng/dialog';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
 import {MessagesComponent} from "./components/messages/messages.component";
+import {CommentsService} from "./services/commentsService";
 
 
 
@@ -71,6 +72,7 @@ import {MessagesComponent} from "./components/messages/messages.component";
     AccomodationService,
     ReservationService,
     MessageService,
+    CommentsService,
   ],
   bootstrap: [AppComponent]
 })

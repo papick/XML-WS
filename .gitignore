@@ -1,3 +1,4 @@
 .gitignore
 /front/node_modules
 /agent-front/node_modules
+/XMLadmin/node_modules
