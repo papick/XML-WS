@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import XMLWS.model.Period;
 import XMLWS.model.Reservation;
 import XMLWS.model.User;
+import XMLWS.repository.ReservationRepository;
+import XMLWS.repository.UserRepository;
 import XMLWS.service.PeriodService;
 import XMLWS.service.ReservationService;
 import XMLWS.service.UserService;
@@ -26,47 +28,52 @@ import XMLWS.service.UserService;
 @RequestMapping(value = "/api/reservations")
 public class ReservationController {
 
-	
 	@Autowired
 	private ReservationService service;
-	
-	@Autowired 
+
+	@Autowired
 	private PeriodService periodService;
-	
-	@Autowired 
+
+	@Autowired
 	private UserService userService;
-	
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private ReservationRepository reservationRepository;
+
 	@GetMapping
 	public ResponseEntity<List<Reservation>> getAllReservationsByUser(HttpSession session) {
-		User user = (User)session.getAttribute("loggedUser");
-		if(user == null) {
+		User user = (User) session.getAttribute("loggedUser");
+		if (user == null) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 		List<Reservation> reservations = service.getReservationByUser(user.getId());
-		return new ResponseEntity<List<Reservation>>(reservations,HttpStatus.OK);
+		return new ResponseEntity<List<Reservation>>(reservations, HttpStatus.OK);
 	}
-	
-	@GetMapping("/user/{id}")
-	public ResponseEntity<List<Reservation>> getReservationByUser( @PathVariable Long id,HttpSession session) {
-		User user = userService.getUser(id);
-		if(user == null) {
+
+	@GetMapping("/user/{username}")
+	public ResponseEntity<List<Reservation>> getReservationByUser(@PathVariable String username) {
+		User user = userRepository.findByUsername(username);
+		if (user == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
-		List<Reservation> reservations = service.getReservationByUser(id);
-		return new ResponseEntity<List<Reservation>>(reservations,HttpStatus.OK);
+
+		List<Reservation> reservations = reservationRepository.findByUser(user);
+		return new ResponseEntity<List<Reservation>>(reservations, HttpStatus.OK);
 	}
-	
+
 	@PostMapping()
-	public ResponseEntity<Reservation> newReservation(@RequestBody Reservation reservation,HttpSession session) {
-		/*User user = (User)session.getAttribute("loggedUser");
-		if(user == null) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		}*/
-		if(reservation.getPeriod() == null || reservation.isConfirmed()) {
+	public ResponseEntity<Reservation> newReservation(@RequestBody Reservation reservation, HttpSession session) {
+		/*
+		 * User user = (User)session.getAttribute("loggedUser"); if(user ==
+		 * null) { return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); }
+		 */
+		if (reservation.getPeriod() == null || reservation.isConfirmed()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		//check avaibility!!! TODO
+		// check avaibility!!! TODO
 		User user = userService.getUser(reservation.getUser().getUsername());
 		reservation.setUser(user);
 		Period period = periodService.addPeriod(reservation.getPeriod());
@@ -74,21 +81,20 @@ public class ReservationController {
 		Reservation newReservation = service.addReservation(reservation);
 		return new ResponseEntity<Reservation>(newReservation, HttpStatus.CREATED);
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> cancelReservation(@PathVariable Long id,HttpSession session) {
-		User user = (User)session.getAttribute("loggedUser");
+	public ResponseEntity<Void> cancelReservation(@PathVariable Long id, HttpSession session) {
+		User user = (User) session.getAttribute("loggedUser");
 		Reservation reservationDelete = service.getReservation(id);
-		if(reservationDelete == null) {
+		if (reservationDelete == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		if(user == null || reservationDelete.getUser().getUsername().equals(user.getUsername())) {
+		if (user == null || reservationDelete.getUser().getUsername().equals(user.getUsername())) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
-		
+
 		service.removeReservation(id);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
-	
-	
+
 }

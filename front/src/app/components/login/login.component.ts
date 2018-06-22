@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.msgs = [];
         this.msgs.push({severity:'info', summary:'Success', detail:'User Login Submitted'});
         this.userService.login(value).subscribe( data=>{
-          sessionStorage.setItem('user', JSON.stringify(value));
+          sessionStorage.setItem('user', JSON.stringify(data);
           this.router.navigate(['']);
         });
     }
