@@ -26,6 +26,8 @@ public class Price {
 
     private String month;
     
+    private String sum;
+    
     
     public Price() {
 		// TODO Auto-generated constructor stub
@@ -68,8 +70,19 @@ public class Price {
 	public void setMonth(String month) {
 		this.month = month;
 	}
+
+
+	public String getSum() {
+		return sum;
+	}
+
+
+	public void setSum(String sum) {
+		this.sum = sum;
+	}
     
     
+	
 	
 	
 

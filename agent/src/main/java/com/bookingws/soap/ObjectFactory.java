@@ -428,11 +428,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetPricesRespone }
+     * Create an instance of {@link SetPricesResponse }
      * 
      */
-    public SetPricesRespone createSetPricesRespone() {
-        return new SetPricesRespone();
+    public SetPricesResponse createSetPricesResponse() {
+        return new SetPricesResponse();
     }
 
 }

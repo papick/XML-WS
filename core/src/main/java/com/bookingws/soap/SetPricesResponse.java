@@ -14,8 +14,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import XMLWS.model.Country;
-
 
 /**
  * <p>Java class for anonymous complex type.
@@ -27,7 +25,7 @@ import XMLWS.model.Country;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="country" type="{http://bookingws.com/soap}country"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,36 +36,36 @@ import XMLWS.model.Country;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "country"
+    "message"
 })
-@XmlRootElement(name = "setCountryRequest")
-public class SetCountryRequest {
+@XmlRootElement(name = "setPricesResponse")
+public class SetPricesResponse {
 
     @XmlElement(required = true)
-    protected Country country;
+    protected String message;
 
     /**
-     * Gets the value of the country property.
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
-     *     {@link Country }
+     *     {@link String }
      *     
      */
-    public Country getCountry() {
-        return country;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * Sets the value of the country property.
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Country }
+     *     {@link String }
      *     
      */
-    public void setCountry(Country value) {
-        this.country = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }
