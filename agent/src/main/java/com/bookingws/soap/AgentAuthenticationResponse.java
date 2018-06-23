@@ -44,7 +44,7 @@ public class AgentAuthenticationResponse {
     protected Agent agent;
 
     /**
-     * Gets the value of the messageo property.
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
