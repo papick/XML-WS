@@ -130,7 +130,8 @@
           <p>Smestaj:{{realized.period.accomodation.name}}</p>
           <p>Od: {{realized.period.fromDate}} Do: {{realized.period.toDate}}</p>
           <button style="background: #3399ff;color: white;height: 30px" (click)="voteForAccomodation(realized.period.accomodation.name,realized.period.accomodation.id)">Oceni</button>
-          <button style="background: #3399ff;color: white;height: 30px">Dodaj komentar</button>
+
+          <button style="background: #3399ff;color: white;height: 30px" (click)="showDialogComment(realized.accomodation)">Dodaj komentar</button>
           <br>
           <br>
         </div>
@@ -142,3 +143,22 @@
 
 
 </div>
+
+<p-dialog  [(visible)]="displayDialogComment" [responsive]="true" showEffect="fade" [modal]="true"
+          [width]="500">
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12">
+      <div class="ui-g-4">
+        <label for="vin">Comment</label>
+      </div>
+      <div class="ui-g-8">
+        <textarea rows="5" cols="50" pInputTextarea [(ngModel)]="commentText" ></textarea><br><br>
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button pButton type="button" (click)="comment()" label="Lupi komentar"  class="ui-button-primary" ></button>
+    </div>
+  </p-footer>
+</p-dialog>

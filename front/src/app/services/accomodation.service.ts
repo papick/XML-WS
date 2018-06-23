@@ -24,4 +24,8 @@ export class AccomodationService {
   public getAllAccomodationsByAdvancedSearch(searchBody){
     return this.http.post(this.url +'/advancedSearch' , searchBody);
   }
+
+  public getPriceList(id){
+      return this.http.get(this.url +'/'+id+'/prices' );
+  }
 }

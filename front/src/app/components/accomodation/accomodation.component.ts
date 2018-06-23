@@ -20,7 +20,9 @@ export class AccomodationComponent implements OnInit {
   displayDialog: boolean = false;
 
   comms = [];
-  commentText : string;
+
+  priceList: any;
+  price : any;
 
   fromDate: NgbDateStruct;
   toDate: NgbDateStruct;
@@ -40,6 +42,9 @@ export class AccomodationComponent implements OnInit {
 
     const id = this.route.snapshot.params['id'];
     this.getComments(id);
+    this.accomodationService.getPriceList(id).subscribe(data => {
+      this.priceList = data;
+    });
     this.accomodationService.getAccomodation(id).subscribe(data => {
       this.accomodation = data;
       const periods = this.accomodation.periods;
@@ -52,8 +57,16 @@ export class AccomodationComponent implements OnInit {
       alert("You must log in!");
       return;
     }
+
     this.fromDate = this.datePicker.fromDate;
     this.toDate = this.datePicker.toDate;
+    this.price = 0;
+/*let d = this.fromDate;
+    while(d <= this.toDate){
+
+      price + = priceList[d.month];
+      d.setDate(d.getDate() + 1);
+    }*/
 
     this.displayDialog = true;
   }
@@ -98,16 +111,7 @@ export class AccomodationComponent implements OnInit {
     });
   }
 
-  comment(){
-    const comment = {
-      text: this.commentText,
-      accommodation: this.accomodation,
-      nameOfUser: this.userService.getLoggedUser().username
-    };
-    this.commService.addComment(comment).subscribe(data => {
-      alert('Comment will be placed after adminstrator review');
-    });
-  }
+
 
   initCalendar(periods){
     this.minDate = new Date();
@@ -116,15 +120,13 @@ export class AccomodationComponent implements OnInit {
      periods.forEach( (period, index, arr)=>{
        const reservedFromDate = this.stringToDate(period.fromDate);
        const reservedToDate = this.stringToDate(period.toDate);
-       console.log(JSON.stringify(reservedFromDate));
-
        let d = reservedFromDate;
-       /*while(d <= reservedToDate){
+       while(d <= reservedToDate){
 
-         this.invalidDates.push(d);
+         this.invalidDates.push(new Date(d));
 
-         d = new Date(d.getDate() + 1);
-       }*/
+         d.setDate(d.getDate() + 1);
+       }
      });
 
     }

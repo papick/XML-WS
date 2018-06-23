@@ -45,8 +45,6 @@
   </div>
 
     <div>
-      <textarea rows="5" cols="50" pInputTextarea [(ngModel)]="commentText" ></textarea><br><br>
-      <button pButton type="button" (click)="comment()" label="Lupi komentar"  class="ui-button-primary" ></button>
       <h2 style="margin-left: 15px">Komentari:</h2>
       <div *ngFor="let item of comms;">
         <div style="margin-top: 20px;border-style: solid;border-width: 2px;border-color: darkgray;">
@@ -69,7 +67,8 @@
 <p-dialog header="Reservation" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [width]="350"
           [minWidth]="200" [minY]="70" [baseZIndex]="10000">
     <span>
-      You want to reserve accomodation <b>{{accomodation.name}}</b> for period {{fromDate ? dateToString(fromDate) : 'no date'}} - {{toDate ? dateToString(toDate) : 'no date'}} ?
+      You want to reserve accomodation <b>{{accomodation.name}}</b> for period {{fromDate ? dateToString(fromDate) : 'no date'}} - {{toDate ? dateToString(toDate) : 'no date'}}
+      and price {{price}} ?
     </span>
   <p-footer>
     <button type="button" pButton icon="pi pi-check" (click)="reserve()" label="Yes"></button>
