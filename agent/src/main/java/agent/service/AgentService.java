@@ -16,6 +16,8 @@ import com.bookingws.soap.GetCitiesRequest;
 import com.bookingws.soap.GetCitiesResponse;
 import com.bookingws.soap.GetCountriesRequest;
 import com.bookingws.soap.GetCountriesResponse;
+import com.bookingws.soap.GetMessagesForAgentRequest;
+import com.bookingws.soap.GetMessagesForAgentResponse;
 import com.bookingws.soap.GetReservationsForAgentRequest;
 import com.bookingws.soap.GetReservationsForAgentResponse;
 import com.bookingws.soap.GetTypesAccomodationRequest;
@@ -27,6 +29,7 @@ import agent.model.Agent;
 import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
+import agent.model.Message;
 import agent.model.Period;
 import agent.model.Reservation;
 import agent.model.TypeAccomodation;
@@ -233,7 +236,21 @@ public class AgentService {
 		
 		// messages
 		
+		GetMessagesForAgentRequest request7 = new GetMessagesForAgentRequest();
+		request7.setUsername(username);
+		GetMessagesForAgentResponse response7 = accomodationServicePort.getMessagesForAgent(request7);
 		
+		List<Message> messages = response7.getMessages();
+		
+		if(messages != null) {
+			
+			for(Message message : messages) {
+				
+				Message mes = new Message();
+			}
+		}
+		
+		// to do
 		
 	}
 	

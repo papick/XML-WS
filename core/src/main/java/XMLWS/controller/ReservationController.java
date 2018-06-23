@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import XMLWS.model.Period;
 import XMLWS.model.Reservation;
+import XMLWS.model.ReservationAgent;
 import XMLWS.model.User;
+import XMLWS.repository.ReservationAgentRepository;
 import XMLWS.repository.ReservationRepository;
 import XMLWS.repository.UserRepository;
 import XMLWS.service.PeriodService;
@@ -43,6 +45,10 @@ public class ReservationController {
 
 	@Autowired
 	private ReservationRepository reservationRepository;
+	
+	@Autowired
+	private ReservationAgentRepository reservationAgentRepository;
+	
 
 	@GetMapping
 	public ResponseEntity<List<Reservation>> getAllReservationsByUser(HttpSession session) {
@@ -99,6 +105,16 @@ public class ReservationController {
 		Period period = periodService.addPeriod(reservation.getPeriod());
 		reservation.setPeriod(period);
 		Reservation newReservation = service.addReservation(reservation);
+		
+		ReservationAgent resAgent = new ReservationAgent();
+		resAgent.setReservation(newReservation);
+		resAgent.setAgent(newReservation.getPeriod().getAccomodation().getAgent());
+		
+		reservationAgentRepository.save(resAgent);
+		
+		
+		
+		
 		return new ResponseEntity<Reservation>(newReservation, HttpStatus.CREATED);
 	}
 
