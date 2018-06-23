@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import XMLWS.model.Addition;
 
 @Repository
-public interface AdditionalServiceRepository extends CrudRepository<Addition, Long>{
-
+public interface AdditionalServiceRepository extends CrudRepository<Addition, Long> {
+	Addition findOneByName(String name);
 }
