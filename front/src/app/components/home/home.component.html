@@ -15,8 +15,8 @@
           <datepicker  ></datepicker>
         </div>
         <div class="ui-g-6">
-          <p-toggleButton [(ngModel)]="checked" onLabel="Advanced Search" offLabel="Advanced Search" onIcon="pi pi-check" ></p-toggleButton>
-          <div *ngIf="checked">
+          <p-toggleButton [(ngModel)]="checkedAdvanced" onLabel="Advanced Search" offLabel="Advanced Search" onIcon="pi pi-check" ></p-toggleButton>
+          <div *ngIf="checkedAdvanced">
             <div class="ui-g">
                 <div class="ui-g-4">
                   <label>Categories</label>
@@ -36,6 +36,6 @@
     </div>
 
     <p-footer>
-        <button pButton type="button" [disabled]="capacity <= 0 || city == '' || !datePicker.toDate || !datePicker.fromDate" (click)="find()" label="Find accomodation" class="ui-button-success"></button>
+        <button pButton type="button" [disabled]=" !capacity || capacity<= 0 || !city || city == '' || !datePicker.toDate || !datePicker.fromDate" (click)="find()" label="Find accomodation" class="ui-button-success"></button>
     </p-footer>
 </p-panel>

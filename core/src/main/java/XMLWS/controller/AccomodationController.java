@@ -3,6 +3,7 @@ package XMLWS.controller;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import XMLWS.dto.AccomodationAdvancedSearchDTO;
 import XMLWS.dto.AccomodationDTO;
 import XMLWS.dto.AccomodationSearchDTO;
 import XMLWS.model.Accommodation;
@@ -78,6 +80,40 @@ public class AccomodationController {
 		}
 		
 		return retVal;
+	}
+	
+	
+	@PostMapping("/advancedSearch")
+	public List<Accommodation> getAccomodationsAdvancedSearch(@RequestBody AccomodationAdvancedSearchDTO search) {
+		List<Accommodation> accomodations=accomodationService.getAccomodationBySearch(search.getCity(), search.getCapacity());
+		Date fromDate = null;
+		Date toDate = null;
+		try {
+			fromDate = Date.valueOf(search.getFromDate());
+		    toDate = Date.valueOf(search.getToDate());
+		}catch (Exception e) {
+			return null;
+		}
+		List<Accommodation> retVal = new ArrayList<>();
+		for(Accommodation accommodation : accomodations) {
+			List<Period> periods = periodService.getAllPeriodsByAccomodation(accommodation.getId());
+			boolean flag = true;
+			for(Period period : periods) {
+				Date from =  Date.valueOf(period.getFromDate());
+				Date to =  Date.valueOf(period.getToDate());
+				if( fromDate.compareTo(to) <= 0  &&  toDate.compareTo(from) >= 0 ) {
+					flag = false;
+				}		
+			}
+			if(flag) {
+				retVal.add(accommodation);
+			}
+		}
+		List<Accommodation> filters = retVal.stream()
+		 .filter(a -> search.hasCategory(a.getCategory()) && search.hasType(a.getType()) && search.hasAdditons(a.getAdditions()))
+		 .collect(Collectors.toList());
+		
+		return filters;
 	}
 	
 	

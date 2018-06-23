@@ -6,7 +6,7 @@ export class AccomodationService {
   private url = 'http://localhost:8000/api/accomodations';
 
   public data : any;
-  
+
   constructor(private http:HttpClient) { }
 
   public getAllAccomodations(){
@@ -19,5 +19,9 @@ export class AccomodationService {
 
   public getAllAccomodationsBySearch(searchBody){
     return this.http.post(this.url +'/search' , searchBody);
+  }
+
+  public getAllAccomodationsByAdvancedSearch(searchBody){
+    return this.http.post(this.url +'/advancedSearch' , searchBody);
   }
 }

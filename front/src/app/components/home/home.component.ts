@@ -41,16 +41,31 @@ export class HomeComponent implements OnInit {
   }
 
   find(){
-    const searchBody = {
-      capacity : this.capacity,
-      city : this.city,
-      fromDate : this.dateToString(this.datePicker.fromDate),
-      toDate : this.dateToString(this.datePicker.toDate)
-    }
 
     if(this.checkedAdvanced){
+      const searchBody = {
+        capacity : this.capacity,
+        city : this.city,
+        fromDate : this.dateToString(this.datePicker.fromDate),
+        toDate : this.dateToString(this.datePicker.toDate),
+        categories : this.selectedCategories,
+        types : this.selectedTypes,
+        additions : this.selectedAdditions
+      }
+  console.log(JSON.stringify(searchBody));
+      this.accomodationService.getAllAccomodationsByAdvancedSearch(searchBody).subscribe(data =>{
+        this.accomodationService.data = data;
 
+
+        this.router.navigate(['accomodations']);
+      })
     }else{
+      const searchBody = {
+        capacity : this.capacity,
+        city : this.city,
+        fromDate : this.dateToString(this.datePicker.fromDate),
+        toDate : this.dateToString(this.datePicker.toDate)
+      }
       this.accomodationService.getAllAccomodationsBySearch(searchBody).subscribe(data =>{
         this.accomodationService.data = data;
         this.router.navigate(['accomodations']);
