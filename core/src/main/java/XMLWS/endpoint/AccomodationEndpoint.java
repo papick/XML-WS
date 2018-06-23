@@ -165,8 +165,8 @@ public class AccomodationEndpoint {
 		
 		List<TypeAccomodation> typesAccomodation = typeAccomodationService.getAllTypes();
 		
-		for(TypeAccomodation type : typesAccomodation) {
-			response.getTypesAccomodation().add(type);
+		for(TypeAccomodation typee : typesAccomodation) {
+			response.getTypesAccomodation().add(typee);
 		}
 		
 		return response;
@@ -331,10 +331,8 @@ public class AccomodationEndpoint {
 		SendResponseResponse response = new SendResponseResponse();
 		
 		Response resp = new Response();
-		resp.setMessage(sendResponseRequest.getResponse().getMessage());
-		resp.setRecipient(sendResponseRequest.getResponse().getRecipient());
-		resp.setSender(sendResponseRequest.getResponse().getSender());
-		resp.setText(sendResponseRequest.getResponse().getText());
+		//resp.setMessage(sendResponseRequest.getResponse().getMessage());
+		
 		
 		responseRepository.save(resp);
 		

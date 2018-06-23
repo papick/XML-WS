@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import agent.model.Response;
+import agent.model.Message;
 
 
 /**
@@ -20,7 +20,7 @@ import agent.model.Response;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="response" type="{http://bookingws.com/soap}response"/&gt;
+ *         &lt;element name="message" type="{http://bookingws.com/soap}message"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,36 +31,36 @@ import agent.model.Response;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "response"
+    "message"
 })
 @XmlRootElement(name = "sendResponseRequest")
 public class SendResponseRequest {
 
     @XmlElement(required = true)
-    protected Response response;
+    protected Message message;
 
     /**
-     * Gets the value of the response property.
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
-     *     {@link Response }
+     *     {@link Message }
      *     
      */
-    public Response getResponse() {
-        return response;
+    public Message getMessage() {
+        return message;
     }
 
     /**
-     * Sets the value of the response property.
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Response }
+     *     {@link Message }
      *     
      */
-    public void setResponse(Response value) {
-        this.response = value;
+    public void setMessage(Message value) {
+        this.message = value;
     }
 
 }

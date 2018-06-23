@@ -49,7 +49,7 @@ public class MessageService {
 		answer.setSender(agent);
 		answer.setRecipient(user);
 		answer.setText(answerDTO.getText());
-		answer.setMessage(message);
+	
 		responseRepository.save(answer);
 
 		/*

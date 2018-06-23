@@ -26,7 +26,9 @@ public class AgentResource {
 	public ResponseEntity<LogInResponse> logIn(@RequestBody AgentDTO agentDTO) {
 
 		Agent agent = agentService.logIn(agentDTO);
-
+		
+		
+		
 		return new ResponseEntity<>(new LogInResponse(agent), HttpStatus.OK);
 	}
 }

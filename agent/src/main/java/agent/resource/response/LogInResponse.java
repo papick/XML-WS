@@ -5,6 +5,8 @@ import agent.model.Agent;
 public class LogInResponse {
 
 	private Agent agent;
+	
+	private Long idCore;
 
 	public LogInResponse() {
 		super();
@@ -16,6 +18,12 @@ public class LogInResponse {
 		this.agent = agent;
 	}
 
+	public LogInResponse(Agent agent, Long idCore) {
+		super();
+		this.agent = agent;
+		this.idCore = idCore;
+	}
+
 	public Agent getAgent() {
 		return agent;
 	}
@@ -24,4 +32,14 @@ public class LogInResponse {
 		this.agent = agent;
 	}
 
+	public Long getIdCore() {
+		return idCore;
+	}
+
+	public void setIdCore(Long idCore) {
+		this.idCore = idCore;
+	}
+
+	
+	
 }

@@ -255,4 +255,12 @@ public class AgentService {
 	}
 	
 	
+	public Long checkIdAgent() {
+		
+		Long x = null;
+		
+		return x;
+	}
+	
+	
 }

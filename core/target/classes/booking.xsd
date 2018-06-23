@@ -220,7 +220,7 @@
     <xs:element name="getAgentRequest">
     	<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="id" type="xs:long"></xs:element>
+    			<xs:element name="username" type="xs:string"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>
@@ -375,7 +375,7 @@
      <xs:element name="sendResponseRequest">
     	<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="response" type="tns:response"></xs:element>
+    			<xs:element name="message" type="tns:message"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>

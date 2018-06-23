@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 import agent.model.Agent;
 import agent.model.User;
 
+
 @Entity
 @Table
 @XmlRootElement
@@ -35,9 +36,7 @@ public class Response implements Serializable{
 	private User recipient;
 	
 	private String text;
-	
-	@OneToOne
-	private Message message;
+
 	
 	public Response() {
 		// TODO Auto-generated constructor stub
@@ -83,13 +82,6 @@ public class Response implements Serializable{
 		this.text = text;
 	}
 
-	public Message getMessage() {
-		return message;
-	}
-
-	public void setMessage(Message message) {
-		this.message = message;
-	}
 	
 	
 	
