@@ -144,6 +144,22 @@
     </xs:complexType>
     
     
+     <xs:complexType name="messageAgent">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="agent" type="tns:agent"/>
+            <xs:element name="message" type="tns:message"/>                    
+        </xs:sequence>
+    </xs:complexType>
+ 
+ 
+ 	 <xs:complexType name="reservationAgent">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="agent" type="tns:agent"/>
+            <xs:element name="reservation" type="tns:reservation"/>                    
+        </xs:sequence>
+    </xs:complexType>
  
     
     <!--  *****  **** ***** -->
@@ -359,7 +375,7 @@
      <xs:element name="sendResponseRequest">
     	<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="response" type="tns:response"></xs:element>
+    			<xs:element name="message" type="tns:message"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>
@@ -367,7 +383,7 @@
     <xs:element name="sendResponseResponse">
     	<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="message" type="xs:string"></xs:element>
+    			<xs:element name="text" type="xs:string"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>
@@ -424,7 +440,7 @@
 	    	<xs:complexType>
 	    		<xs:sequence>
 	    			<xs:element name="message" type="xs:string"></xs:element>
-	    			<xs:element name="user" type="tns:user"></xs:element>
+	    			<xs:element name="agent" type="tns:agent"></xs:element>
 	    		</xs:sequence>
 	    	</xs:complexType>
     </xs:element>
@@ -463,6 +479,48 @@
     		</xs:sequence>
     	</xs:complexType>
 	</xs:element>
+	
+	
+	<xs:element name="getMessagesForAgentRequest">
+		<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="getMessagesForAgentResponse">
+		<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="messages" type="tns:message" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="getReservationsForAgentRequest">
+		<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="id" type="xs:long"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="getReservationsForAgentResponse">
+		<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="reservations" type="tns:message" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    
+    
+    
+	
+	
 	
      	 
 </xs:schema>
