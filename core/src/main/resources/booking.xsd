@@ -484,7 +484,7 @@
 	<xs:element name="getMessagesForAgentRequest">
 		<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="id" type="xs:long"></xs:element>
+    			<xs:element name="username" type="xs:string"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
 	</xs:element>
@@ -502,7 +502,7 @@
 	<xs:element name="getReservationsForAgentRequest">
 		<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="id" type="xs:long"></xs:element>
+    			<xs:element name="username" type="xs:string"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
 	</xs:element>

@@ -285,7 +285,7 @@ public class AccomodationEndpoint {
 		
 		GetMessagesForAgentResponse response = new GetMessagesForAgentResponse();
 		
-		Agent agent = agentRepository.findOne(getMessagesForAgentRequest.getId());
+		Agent agent = agentRepository.findByUsername(getMessagesForAgentRequest.getUsername());
 		
 		List<MessageAgent> messagesAgent = messageAgentRepository.findByAgent(agent);
 		
@@ -307,7 +307,7 @@ public class AccomodationEndpoint {
 		
 		GetReservationsForAgentResponse response = new GetReservationsForAgentResponse();
 		
-		Agent agent = agentRepository.findOne(getReservationsForAgentRequest.getId());
+		Agent agent = agentRepository.findByUsername(getReservationsForAgentRequest.getUsername());
 		
 		List<ReservationAgent> reservationsAgent = reservationAgentRepository.findByAgent(agent);
 		
