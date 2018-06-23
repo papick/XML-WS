@@ -1,36 +1,41 @@
-<p-dataView #dv [value]="accomodations" [paginator]="true" [rows]="8" >
-   <p-header>
-       <div class="ui-helper-clearfix">
-           <div class="ui-g">
-              <!-- <div class="ui-g-12 ui-md-4">
-                   <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
-               </div>
-               <div class="ui-g-6 ui-md-4 filter-container">
-                   <div style="position:relative">
-                       <input type="search" pInputText placeholder="Search by brand" (keyup)="dv.filter($event.target.value)">
-                   </div>
-               </div>-->
-           </div>
-       </div>
-   </p-header>
-   <ng-template let-accomodation pTemplate="listItem">
-       <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-           <div class="ui-g-12 ui-md-3" style="text-align:center">
-              <a [href]="'accomodations/'+accomodation.id"> <img height="250" width="400" src="{{accomodation.image}}"></a>
-           </div>
-           <div class="ui-g-12 ui-md-8 car-details" style="margin: 0px 0px 0px 100px">
-               <div class="ui-g">
-                   <div class="ui-g-2 ui-sm-6">Name: </div>
-                   <div class="ui-g-10 ui-sm-6"><b>{{accomodation.name}}</b></div>
 
-                   <div class="ui-g-2 ui-sm-6">Type: </div>
-                   <div class="ui-g-10 ui-sm-6"><b>{{accomodation.type.name}}</b></div>
+<p-panel styleClass="panel">
+    <p-header>
+      <div class="ui-g">
+          <div class="ui-g-6">City</div>
+          <div class="ui-g-6">Capacity(number)</div>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-6"><input [(ngModel)]="city" id="float-input" type="text" size="30" pInputText></div>
+          <div class="ui-g-6"><input [(ngModel)]="capacity" type="text" pKeyFilter="int" pInputText></div>
+      </div>
+    </p-header>
+    <div class="ui-g">
+        <div class="ui-g-6">
+          <datepicker  ></datepicker>
+        </div>
+        <div class="ui-g-6">
+          <p-toggleButton [(ngModel)]="checked" onLabel="Advanced Search" offLabel="Advanced Search" onIcon="pi pi-check" ></p-toggleButton>
+          <div *ngIf="checked">
+            <div class="ui-g">
+                <div class="ui-g-4">
+                  <label>Categories</label>
+                  <p-listbox [options]="categories" [(ngModel)]="selectedCategories" optionLabel="name"  multiple="multiple" checkbox="checkbox" filter="filter" ></p-listbox>
+                </div>
+                <div class="ui-g-4">
+                  <label>Types</label>
+                  <p-listbox [options]="types" [(ngModel)]="selectedTypes" optionLabel="name"  multiple="multiple" checkbox="checkbox" filter="filter" ></p-listbox>
+                </div>
+                <div class="ui-g-4">
+                  <label>Additions</label>
+                  <p-listbox [options]="additions" [(ngModel)]="selectedAdditions" optionLabel="name"  multiple="multiple" checkbox="checkbox" filter="filter" ></p-listbox>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
 
-                   <div class="ui-g-2 ui-sm-6">Location: </div>
-                   <div class="ui-g-10 ui-sm-6"><b>{{accomodation.address}},{{accomodation.city.name}},{{accomodation.city.country.name}}</b></div>
-               </div>
-           </div>
-       </div>
-   </ng-template>
-
-</p-dataView>
+    <p-footer>
+        <button pButton type="button" [disabled]="capacity <= 0 || city == '' || !datePicker.toDate || !datePicker.fromDate" (click)="find()" label="Find accomodation" class="ui-button-success"></button>
+    </p-footer>
+</p-panel>

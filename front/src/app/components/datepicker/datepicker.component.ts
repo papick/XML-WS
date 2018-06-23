@@ -1,5 +1,5 @@
 import {Component,Input,OnInit } from '@angular/core';
-import {NgbDateStruct,NgbDatepickerConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateStruct,NgbDatepickerConfig,NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
   one && two && two.year === one.year && two.month === one.month && two.day === one.day;
@@ -27,31 +27,14 @@ export class DatePickerComponent implements OnInit{
   model;
 
   periods : any;
-  constructor(private config: NgbDatepickerConfig) {
-
+  constructor(private config: NgbDatepickerConfig,private calendar: NgbCalendar) {
+    const minDate = this.calendar.getToday();
+    this.config.minDate =minDate;
+    this.config.outsideDays = 'hidden';
   }
     ngOnInit() {
-      const minDate = new Date();
-      this.config.minDate = {year: minDate.getFullYear(), month:minDate.getMonth(), day: minDate.getDay()};
 
-      // days that don't belong to current month are not visible
-      this.config.outsideDays = 'hidden';
 
-      console.log(JSON.stringify(this.periods));
-      this.config.markDisabled = (date: NgbDateStruct) => {
-        let period : any;
-        for( period in this.periods){
-          const reservedFromDate = this.stringToDate(period.fromDate);
-          const reservedToDate = this.stringToDate(period.toDate);
-          if(date.year >= reservedFromDate.year && date.year <= reservedToDate.year
-            && date.month >= reservedFromDate.month && date.month <= reservedToDate.month
-            && date.day >= reservedFromDate.day && date.day <= reservedToDate.day
-        ){
-          return true;
-        }
-        return false;
-        }
-      };
     }
 
   onDateSelection(date: NgbDateStruct) {

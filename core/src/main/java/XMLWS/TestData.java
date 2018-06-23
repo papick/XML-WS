@@ -136,7 +136,7 @@ public class TestData {
 
 		String image1 = "https://pix6.agoda.net/hotelImages/115/1157073/1157073_16062412150044053329.jpg";
 
-		Accommodation a1 = new Accommodation(image1, "", 2, typeAccomodation1, "Seraton Novi Sad", city1, "", agent1,
+		Accommodation a1 = new Accommodation(image1, "pogled na smetliste i 30 km od centra grada", 2, typeAccomodation1, "Sheraton", city1, "Vojvode Stepe", agent1,
 				category4);
 
 		accomodationRepository.save(a1);

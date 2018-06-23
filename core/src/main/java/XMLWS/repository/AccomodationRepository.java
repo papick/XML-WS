@@ -10,7 +10,11 @@ import XMLWS.model.Agent;
 
 @Repository
 public interface AccomodationRepository extends JpaRepository<Accommodation, Long>{
+
+	List<Accommodation> findByCityNameIgnoreCaseContainingAndCapacity(String cityName, int capacity);
+
 	
 	List<Accommodation> findByAgent(Agent agent);
+
 
 }
