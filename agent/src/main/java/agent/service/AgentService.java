@@ -16,6 +16,7 @@ import com.bookingws.soap.GetCitiesRequest;
 import com.bookingws.soap.GetCitiesResponse;
 import com.bookingws.soap.GetCountriesRequest;
 import com.bookingws.soap.GetCountriesResponse;
+import com.bookingws.soap.GetReservationsForAgentRequest;
 import com.bookingws.soap.GetTypesAccomodationRequest;
 import com.bookingws.soap.GetTypesAccomodationResponse;
 
@@ -67,7 +68,7 @@ public class AgentService {
 		if (agent.getPassword().equals(agentDTO.getPassword())) {
 					
 			System.out.println("PROSAOXXXX");
-			synchronizeDB();
+			synchronizeDB(agent.getUsername());
 			
 			return agent;
 		}
@@ -76,7 +77,7 @@ public class AgentService {
 	}
 	
 	
-	public void synchronizeDB() {
+	public void synchronizeDB(String username) {
 		
 		System.out.println("PROLAZIII");
 		
@@ -147,6 +148,22 @@ public class AgentService {
 		for(Addition addition : services) {
 			aditionalServiceRepository.save(addition);
 		}
+		
+		
+		
+		// reservations
+		
+		GetReservationsForAgentRequest request6 = new GetReservationsForAgentRequest();
+		
+		/*
+		Agent agent
+		
+		request6.setId(value); */
+		
+		
+		// messages
+		
+		
 		
 	}
 	

@@ -34,8 +34,6 @@ public class Message implements Serializable {
 
 	private String text;
 
-	@OneToMany
-	private List<Response> responses;
 
 	public Message() {
 		// TODO Auto-generated constructor stub
@@ -49,13 +47,8 @@ public class Message implements Serializable {
 		this.text = text;
 	}
 
-	public List<Response> getResponses() {
-		return responses;
-	}
+	
 
-	public void setResponses(List<Response> responses) {
-		this.responses = responses;
-	}
 
 	public Long getId() {
 		return id;

@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import agent.model.User;
+import agent.model.Agent;
 
 
 /**
@@ -21,7 +21,7 @@ import agent.model.User;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="user" type="{http://bookingws.com/soap}user"/&gt;
+ *         &lt;element name="agent" type="{http://bookingws.com/soap}agent"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,7 +33,7 @@ import agent.model.User;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "message",
-    "user"
+    "agent"
 })
 @XmlRootElement(name = "agentAuthenticationResponse")
 public class AgentAuthenticationResponse {
@@ -41,7 +41,7 @@ public class AgentAuthenticationResponse {
     @XmlElement(required = true)
     protected String message;
     @XmlElement(required = true)
-    protected User user;
+    protected Agent agent;
 
     /**
      * Gets the value of the message property.
@@ -68,27 +68,27 @@ public class AgentAuthenticationResponse {
     }
 
     /**
-     * Gets the value of the user property.
+     * Gets the value of the agent property.
      * 
      * @return
      *     possible object is
-     *     {@link User }
+     *     {@link Agent }
      *     
      */
-    public User getUser() {
-        return user;
+    public Agent getAgent() {
+        return agent;
     }
 
     /**
-     * Sets the value of the user property.
+     * Sets the value of the agent property.
      * 
      * @param value
      *     allowed object is
-     *     {@link User }
+     *     {@link Agent }
      *     
      */
-    public void setUser(User value) {
-        this.user = value;
+    public void setAgent(Agent value) {
+        this.agent = value;
     }
 
 }

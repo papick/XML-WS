@@ -37,9 +37,7 @@ public class MessageService {
 	}
 
 	public void answer(AnswerDTO answerDTO) {
-		System.out.println(" aaaa  " + answerDTO.getIdMessage() + answerDTO.getReceipient() + answerDTO.getSender()
-				+ answerDTO.getText());
-
+		
 		Long idMessage = Long.parseLong(answerDTO.getIdMessage());
 		Message message = messageRepository.findOne(idMessage);
 
@@ -51,8 +49,11 @@ public class MessageService {
 		answer.setSender(agent);
 		answer.setRecipient(user);
 		answer.setText(answerDTO.getText());
+		answer.setMessage(message);
 		responseRepository.save(answer);
 
+		/*
+		
 		if (message.getResponses().isEmpty()) {
 			ArrayList<Response> answers = new ArrayList<Response>();
 			answers.add(answer);
@@ -63,7 +64,7 @@ public class MessageService {
 			message.getResponses().add(answer);
 			messageRepository.save(message);
 
-		}
+		} */
 	}
 
 }

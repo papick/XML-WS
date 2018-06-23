@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import XMLWS.model.Agent;
 import XMLWS.model.Message;
+import XMLWS.model.MessageAgent;
 import XMLWS.model.User;
 import XMLWS.repository.AgentRepository;
+import XMLWS.repository.MessageAgentRepository;
 import XMLWS.repository.MessageRepository;
 import XMLWS.repository.ResponseRepository;
 import XMLWS.repository.UserRepository;
@@ -28,6 +30,9 @@ public class MessageService {
 
 	@Autowired
 	private ResponseRepository responseRepository;
+	
+	@Autowired
+	private MessageAgentRepository messageAgentRepository;
 
 	public List<Message> getAllMessages(String username) {
 		User user = userRepository.findByUsername(username);
@@ -44,6 +49,11 @@ public class MessageService {
 		message.setSender(user);
 		message.setText(messageDTO.getText());
 		messageRepository.save(message);
+		
+		MessageAgent messageAgent = new MessageAgent();
+		messageAgent.setMessage(message);
+		messageAgent.setAgent(message.getRecipient());
+		messageAgentRepository.save(messageAgent);
 
 	}
 

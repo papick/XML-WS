@@ -7,6 +7,7 @@ import {AddReservationComponent} from "./add-reservation/add-reservation.compone
 import {MessageComponent} from "./message/message.component";
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {PriceListComponent} from "./price-list/price-list.component";
+import {CommentComponent} from "./comment/commentComponent";
 
 const routes: Routes = [
   {path: '', redirectTo: 'log-in', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: ':username/:click', component: HomeComponent},
   {path: ':username/add/reservation', component: AddReservationComponent},
   {path: ':username/:mode/accomodation', component: AddEditAccomodationComponent},
+  {path: ':username/comments/:id', component: CommentComponent},
   {path: ':username/:mode/accomodation/:id', component: AddEditAccomodationComponent},
   {path: ':username/price-list/:id/:name', component: PriceListComponent},
 

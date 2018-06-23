@@ -85,6 +85,18 @@ public interface AccomodationServicePort {
 
     /**
      * 
+     * @param getMessagesForAgentRequest
+     * @return
+     *     returns com.bookingws.soap.GetMessagesForAgentResponse
+     */
+    @WebMethod
+    @WebResult(name = "getMessagesForAgentResponse", targetNamespace = "http://bookingws.com/soap", partName = "getMessagesForAgentResponse")
+    public GetMessagesForAgentResponse getMessagesForAgent(
+        @WebParam(name = "getMessagesForAgentRequest", targetNamespace = "http://bookingws.com/soap", partName = "getMessagesForAgentRequest")
+        GetMessagesForAgentRequest getMessagesForAgentRequest);
+
+    /**
+     * 
      * @param getReservationsRequest
      * @return
      *     returns com.bookingws.soap.GetReservationsResponse
@@ -190,6 +202,18 @@ public interface AccomodationServicePort {
     public AgentAuthenticationResponse agentAuthentication(
         @WebParam(name = "agentAuthenticationRequest", targetNamespace = "http://bookingws.com/soap", partName = "agentAuthenticationRequest")
         AgentAuthenticationRequest agentAuthenticationRequest);
+
+    /**
+     * 
+     * @param getReservationsForAgentRequest
+     * @return
+     *     returns com.bookingws.soap.GetReservationsForAgentResponse
+     */
+    @WebMethod
+    @WebResult(name = "getReservationsForAgentResponse", targetNamespace = "http://bookingws.com/soap", partName = "getReservationsForAgentResponse")
+    public GetReservationsForAgentResponse getReservationsForAgent(
+        @WebParam(name = "getReservationsForAgentRequest", targetNamespace = "http://bookingws.com/soap", partName = "getReservationsForAgentRequest")
+        GetReservationsForAgentRequest getReservationsForAgentRequest);
 
     /**
      * 

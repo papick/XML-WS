@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import agent.model.Accommodation;
+import agent.model.Period;
+import agent.model.Reservation;
 import agent.repository.AccomodationRepository;
+import agent.repository.PeriodRepository;
+import agent.repository.ReservationRepository;
 import agent.resource.response.ResponseAccomodations;
 import agent.service.AccomodationService2;
 import agent.service.dto.AccommodationDTO;

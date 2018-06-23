@@ -12,11 +12,15 @@ import com.bookingws.soap.AddAccomodationResponse;
 
 import agent.model.Accommodation;
 import agent.model.Addition;
+import agent.model.Period;
+import agent.model.Reservation;
 import agent.repository.AccomodationRepository;
 import agent.repository.AditionalServiceRepository;
 import agent.repository.AgentRepository;
 import agent.repository.CategoryRepository;
 import agent.repository.CityRepository;
+import agent.repository.PeriodRepository;
+import agent.repository.ReservationRepository;
 import agent.repository.TypeAccomodationRepository;
 import agent.repository.UserRepository;
 import agent.service.dto.AccommodationDTO;
@@ -35,7 +39,7 @@ public class AccomodationService2 {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
+
 	@Autowired
 	private AgentRepository agentRepository;
 
@@ -45,13 +49,19 @@ public class AccomodationService2 {
 	@Autowired
 	private AditionalServiceRepository aditionalServiceRepositroy;
 
+	@Autowired
+	private PeriodRepository periodRepository;
+
+	@Autowired
+	ReservationRepository reservationRepository;
+
 	public Accommodation create(AccommodationDTO accomodationDTO, String username) {
-		
+
 		Accommodation accomodation = new Accommodation();
 		// accomodation.setImage(accomodationDTO.getImage());
 		accomodation.setDescription(accomodationDTO.getDescription());
 		int capacity = Integer.parseInt(accomodationDTO.getCapacity());
-		accomodation.setCapacity(capacity);	
+		accomodation.setCapacity(capacity);
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accomodationDTO.getType()));
 		// aditonal service
 		ArrayList<Addition> aditionals = new ArrayList<Addition>();
@@ -71,15 +81,13 @@ public class AccomodationService2 {
 		accomodation.setCategory(categoryRepository.findOneByName(accomodationDTO.getCategory()));
 
 		accomodationRepository.save(accomodation);
-		
-		
+
 		AccomodationService accomodationService = new AccomodationService();
 		AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
-		
+
 		AddAccomodationRequest request = new AddAccomodationRequest();
 		request.setAccomodation(accomodation);
 		AddAccomodationResponse response = accomodationServicePort.addAccomodation(request);
-		
 
 		return accomodation;
 	}
@@ -92,6 +100,17 @@ public class AccomodationService2 {
 			throw new IllegalArgumentException("Tried to delete non-existant accomodation");
 		}
 		accomodation.getAdditions().clear();
+
+		ArrayList<Period> periods = (ArrayList<Period>) periodRepository.findByAccomodation(accomodation);
+
+		for (int i = 0; i < periods.size(); i++) {
+			Reservation reservation = reservationRepository.findOneByPeriod(periods.get(i));
+			if (reservation != null) {
+				reservationRepository.delete(reservation);
+			}
+		}
+		periodRepository.delete(periods);
+
 		accomodationRepository.delete(accomodation);
 		return accomodation;
 	}
@@ -104,7 +123,7 @@ public class AccomodationService2 {
 		accomodation.setDescription(accDTO.getDescription());
 		int capacity = Integer.parseInt(accDTO.getCapacity());
 		accomodation.setCapacity(capacity);
-		
+
 		accomodation.setType(typeAccomodationRepostiroy.findOneByName(accDTO.getType()));
 		// aditonal service
 		ArrayList<Addition> aditionals = new ArrayList<Addition>();
