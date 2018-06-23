@@ -14,6 +14,7 @@ export class LogInComponent {
   public username: AbstractControl;
   public password: AbstractControl;
   agent;
+  agentId;
 
   constructor(protected router: Router,
               private fb: FormBuilder,
@@ -36,11 +37,14 @@ export class LogInComponent {
     );
     this.logInService.logIn(logIn).subscribe(data => {
       this.agent = data.agent;
+      this.agentId = 1;
+      localStorage.setItem('agentId', this.agentId);
+
       if (this.agent == null) {
         alert('Pogresna lozinka! Pokusajte ponovo.');
         this.form.controls['password'].setValue('');
       } else {
-        this.router.navigateByUrl(this.agent.username +'/home');
+        this.router.navigateByUrl(this.agent.username + '/home');
       }
     })
   }

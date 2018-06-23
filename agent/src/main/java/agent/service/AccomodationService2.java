@@ -13,6 +13,7 @@ import com.bookingws.soap.AddAccomodationResponse;
 import agent.model.Accommodation;
 import agent.model.Addition;
 import agent.model.Period;
+import agent.model.Price;
 import agent.model.Reservation;
 import agent.repository.AccomodationRepository;
 import agent.repository.AditionalServiceRepository;
@@ -20,6 +21,7 @@ import agent.repository.AgentRepository;
 import agent.repository.CategoryRepository;
 import agent.repository.CityRepository;
 import agent.repository.PeriodRepository;
+import agent.repository.PriceRepository;
 import agent.repository.ReservationRepository;
 import agent.repository.TypeAccomodationRepository;
 import agent.repository.UserRepository;
@@ -54,6 +56,9 @@ public class AccomodationService2 {
 
 	@Autowired
 	ReservationRepository reservationRepository;
+	
+	@Autowired
+	private PriceRepository priceRepository;
 
 	public Accommodation create(AccommodationDTO accomodationDTO, String username) {
 
@@ -113,6 +118,9 @@ public class AccomodationService2 {
 		}
 		periodRepository.delete(periods);
 
+		ArrayList<Price> prices = priceRepository.findAllByAccomodation(accomodation);
+		priceRepository.delete(prices);
+		
 		accomodationRepository.delete(accomodation);
 		return accomodation;
 	}
