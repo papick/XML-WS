@@ -25,7 +25,7 @@
           (click)="showComments(item.id)">Pogledaj komentare
         </button>
 
-        <button
+        <button *ngIf="item.price == false"
           style="border-radius: 12px;background-color: #1a8cff;color: white;height: 45px;width: 110px;font-size: 20px;margin-right: 20px"
           (click)="addPriceList(item.id,item.name)">Cenovnik
         </button>
