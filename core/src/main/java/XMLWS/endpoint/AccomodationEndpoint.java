@@ -14,6 +14,8 @@ import com.bookingws.soap.AddPeriodRequest;
 import com.bookingws.soap.AddPeriodResponse;
 import com.bookingws.soap.GetAdditionsRequest;
 import com.bookingws.soap.GetAdditionsResponse;
+import com.bookingws.soap.GetAgentRequest;
+import com.bookingws.soap.GetAgentResponse;
 import com.bookingws.soap.GetCategoriesRequest;
 import com.bookingws.soap.GetCategoriesResponse;
 import com.bookingws.soap.GetCitiesRequest;
@@ -339,6 +341,21 @@ public class AccomodationEndpoint {
 		
 		return response;
 	}
+	
+	
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getAgentRequest")
+    @ResponsePayload
+	public GetAgentResponse getAgentRequest(@RequestPayload GetAgentRequest request) {
+		
+		GetAgentResponse response = new GetAgentResponse();
+		
+		Agent agent = agentRepository.findByUsername(request.getUsername());
+		response.setAgent(agent);
+		
+		
+		return response;  
+	} 
+	
 	
 	
 	///////////////

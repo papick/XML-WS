@@ -22,42 +22,40 @@ import agent.service.dto.PriceListDTO;
 @RestController
 @RequestMapping(value = "/api/price")
 public class PriceResource {
-	
+
 	@Autowired
 	private AccomodationRepository accomodationRepository;
-	
+
 	@Autowired
 	private PriceRepository priceRepository;
-	
-	
+
 	@PostMapping("/create-price-list/{idAccomodation}")
 	public void createPriceList(@RequestBody PriceListDTO priceListDTO, @PathVariable Long idAccomodation) {
-		
-		
+
 		Accommodation accomodation = accomodationRepository.findOne(idAccomodation);
-		
+
+		accomodation.setPrice(true);
+		accomodationRepository.save(accomodation);
 		SetPricesRequest request = new SetPricesRequest();
-		
-		for(PriceDTO priceDTO : priceListDTO.getPrices()) {
-			
+
+		for (PriceDTO priceDTO : priceListDTO.getPrices()) {
+
 			Price price = new Price();
 			price.setAccomodation(accomodation);
 			price.setMonth(priceDTO.getMonth());
 			price.setSum(priceDTO.getSum());
-			
+
 			priceRepository.save(price);
-			
+
 			request.getPrices().add(price);
-			
+
 		}
-		
+
 		AccomodationService accomodationService = new AccomodationService();
 		AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
-		
-		
+
 		SetPricesResponse response = accomodationServicePort.setPrices(request);
-		
-		
+
 	}
 
 }

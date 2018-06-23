@@ -13,6 +13,7 @@ import XMLWS.model.City;
 import XMLWS.model.Comment;
 import XMLWS.model.Country;
 import XMLWS.model.Period;
+import XMLWS.model.Price;
 import XMLWS.model.Reservation;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.model.User;
@@ -24,6 +25,7 @@ import XMLWS.repository.CityRepository;
 import XMLWS.repository.CommentRepository;
 import XMLWS.repository.CountryRepository;
 import XMLWS.repository.PeriodRepository;
+import XMLWS.repository.PriceRepository;
 import XMLWS.repository.ReservationRepository;
 import XMLWS.repository.TypeAccomodationRepository;
 import XMLWS.repository.UserRepository;
@@ -60,6 +62,9 @@ public class TestData {
 
 	@Autowired
 	private PeriodRepository periodRepository;
+	
+	@Autowired
+	private PriceRepository priceRepository;
 
 	@Autowired
 	private ReservationRepository reservationRepository;
@@ -179,6 +184,12 @@ public class TestData {
 		reservation2.setPeriod(period2);
 		reservation2.setUser(user1);
 		reservationRepository.save(reservation2);
-
+		
+		Price price1 = new Price();
+		price1.setAccomodation(a1);
+		price1.setMonth("07");
+		price1.setSum("100");
+		priceRepository.save(price1);
+		
 	}
 }

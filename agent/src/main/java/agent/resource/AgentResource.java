@@ -27,8 +27,9 @@ public class AgentResource {
 
 		Agent agent = agentService.logIn(agentDTO);
 		
+		Long id = agentService.checkIdAgent(agent.getUsername());
 		
 		
-		return new ResponseEntity<>(new LogInResponse(agent), HttpStatus.OK);
+		return new ResponseEntity<>(new LogInResponse(agent,id), HttpStatus.OK);
 	}
 }

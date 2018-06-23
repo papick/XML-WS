@@ -80,7 +80,7 @@ export class MessageComponent {
       this.router.navigateByUrl(username + '/messages');
 
     })
-
+    this.router.navigateByUrl(username + '/messages')
     location.reload();
   }
 }

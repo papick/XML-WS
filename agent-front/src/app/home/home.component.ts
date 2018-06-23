@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
       this.message = true;
     }
 
+    console.log(localStorage.getItem('agentId'))
   }
 
   accomodationsClick() {
@@ -53,5 +54,9 @@ export class HomeComponent implements OnInit {
     this.reservations = false;
     this.message = true;
 
+  }
+
+  logOut() {
+    this.router.navigateByUrl('');
   }
 }

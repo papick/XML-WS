@@ -7,6 +7,7 @@ import {MessageModel} from "../../model/message.model";
 import {MessageService} from "../../services/message.service";
 import {VoteModel} from "../../model/vote.model";
 import {VoteService} from "../../services/vote.service";
+import {CommentsService} from "../../services/commentsService";
 
 @Component({
   selector: 'app-profile',
@@ -27,6 +28,9 @@ export class ProfileComponent implements OnInit {
   idAgent;
   idAccomodationForVore;
 
+  accomodation : any;
+  commentText : string;
+  displayDialogComment : boolean = false;
 
   public form: FormGroup;
   public text: AbstractControl;
@@ -40,7 +44,8 @@ export class ProfileComponent implements OnInit {
               private fb: FormBuilder,
               private messageService: MessageService,
               protected router: Router,
-              private voteService: VoteService) {
+              private voteService: VoteService,
+              private  commService: CommentsService) {
     this.form = this.fb.group({
       'text': ['', Validators.compose([Validators.required])],
 
@@ -171,6 +176,24 @@ export class ProfileComponent implements OnInit {
     this.reservationShow = true;
     this.voteShow = false;
 
+  }
+
+  comment(){
+    const comment = {
+      text: this.commentText,
+      accommodation: this.accomodation,
+      nameOfUser: this.userService.getLoggedUser().username
+    };
+    this.commService.addComment(comment).subscribe(data => {
+      alert('Comment will be placed after adminstrator review');
+    });
+
+    this.displayDialogComment = false;
+  }
+
+  showDialogComment(acc){
+    this.accomodation = acc;
+    this.displayDialogComment = true;
   }
 
 }

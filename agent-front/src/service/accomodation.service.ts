@@ -10,7 +10,7 @@ const httpOptions = {
 @Injectable()
 export class AccomodationService {
 
-  private BASE_URL = 'http://localhost:8090/api/accomodation';
+  private BASE_URL = 'http://localhost:809'+ localStorage.getItem('agentId') +'/api/accomodation';
 
   constructor(private http: HttpClient) {
   }

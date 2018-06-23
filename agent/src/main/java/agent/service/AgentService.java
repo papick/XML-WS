@@ -10,6 +10,8 @@ import com.bookingws.soap.AccomodationService;
 import com.bookingws.soap.AccomodationServicePort;
 import com.bookingws.soap.GetAdditionsRequest;
 import com.bookingws.soap.GetAdditionsResponse;
+import com.bookingws.soap.GetAgentRequest;
+import com.bookingws.soap.GetAgentResponse;
 import com.bookingws.soap.GetCategoriesRequest;
 import com.bookingws.soap.GetCategoriesResponse;
 import com.bookingws.soap.GetCitiesRequest;
@@ -240,6 +242,10 @@ public class AgentService {
 		request7.setUsername(username);
 		GetMessagesForAgentResponse response7 = accomodationServicePort.getMessagesForAgent(request7);
 		
+		
+		
+		
+		
 		List<Message> messages = response7.getMessages();
 		
 		if(messages != null) {
@@ -255,11 +261,19 @@ public class AgentService {
 	}
 	
 	
-	public Long checkIdAgent() {
+	public Long checkIdAgent(String username) {
 		
-		Long x = null;
 		
-		return x;
+		AccomodationService accomodationService = new AccomodationService();
+		AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
+		
+		GetAgentRequest request = new GetAgentRequest();
+		request.setUsername(username);
+		GetAgentResponse response = accomodationServicePort.getAgent(request);
+		
+		Long id = response.getAgent().getId();
+		
+		return id;
 	}
 	
 	
