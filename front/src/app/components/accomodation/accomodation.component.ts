@@ -25,6 +25,9 @@ export class AccomodationComponent implements OnInit {
   fromDate: NgbDateStruct;
   toDate: NgbDateStruct;
 
+  minDate: Date;
+  invalidDates: Array<Date>
+
   constructor(private userService: UserService, private accomodationService: AccomodationService,
               private reservationService: ReservationService, private route: ActivatedRoute, private  commService: CommentsService) {
   }
@@ -39,14 +42,14 @@ export class AccomodationComponent implements OnInit {
     this.getComments(id);
     this.accomodationService.getAccomodation(id).subscribe(data => {
       this.accomodation = data;
-      this.datePicker.periods = this.accomodation.periods;
-      this.datePicker.ngOnInit();
+      const periods = this.accomodation.periods;
+      this.initCalendar(periods);
     }, err => console.log(err));
   }
 
   showDialog() {
     if (this.userService.getLoggedUser() == null) {
-      console.log("You must log in!");
+      alert("You must log in!");
       return;
     }
     this.fromDate = this.datePicker.fromDate;
@@ -77,10 +80,16 @@ export class AccomodationComponent implements OnInit {
     this.displayDialog = false;
   }
 
-  private dateToString(date): string {
+   dateToString(date): string {
     let dateString: string;
     dateString = '' + date.year + '-' + date.month + '-' + date.day;
     return dateString;
+  }
+
+  stringToDate(dateString:string):Date  {
+    const splitted = dateString.split("-");
+    const date =  new Date(Number.parseInt( splitted[0]), Number.parseInt( splitted[1]),Number.parseInt(  splitted[2]));
+    return date;
   }
 
   getComments(id) {
@@ -99,6 +108,27 @@ export class AccomodationComponent implements OnInit {
       alert('Comment will be placed after adminstrator review');
     });
   }
+
+  initCalendar(periods){
+    this.minDate = new Date();
+    this.invalidDates = [];
+    let period;
+     periods.forEach( (period, index, arr)=>{
+       const reservedFromDate = this.stringToDate(period.fromDate);
+       const reservedToDate = this.stringToDate(period.toDate);
+       console.log(JSON.stringify(reservedFromDate));
+
+       let d = reservedFromDate;
+       /*while(d <= reservedToDate){
+
+         this.invalidDates.push(d);
+
+         d = new Date(d.getDate() + 1);
+       }*/
+     });
+
+    }
+
 
 
 }

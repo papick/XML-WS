@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {AccomodationService} from '../../services/accomodation.service';
+import {DataSearchService} from "../../services/dataSearch.service";
+
 import {DatePickerComponent} from '../datepicker/datepicker.component';
 import {Router} from '@angular/router';
 
@@ -15,10 +17,27 @@ export class HomeComponent implements OnInit {
   @ViewChild(DatePickerComponent) datePicker: DatePickerComponent;
   city : string;
   capacity : number;
-  constructor(private accomodationService:AccomodationService, private router: Router) { }
+
+  checkedAdvanced : boolean;
+  categories : any;
+  types : any;
+  additions : any;
+  selectedCategories : any;
+  selectedTypes : any;
+  selectedAdditions: any;
+
+  constructor(private accomodationService:AccomodationService, private dataSearch:DataSearchService , private router: Router) { }
 
   ngOnInit() {
-
+    this.dataSearch.getAllCategories().subscribe(data => {
+      this.categories = data;
+    })
+    this.dataSearch.getAllTypes().subscribe(data => {
+      this.types = data;
+    })
+    this.dataSearch.getAllAdditions().subscribe(data => {
+      this.additions = data;
+    })
   }
 
   find(){
@@ -28,11 +47,15 @@ export class HomeComponent implements OnInit {
       fromDate : this.dateToString(this.datePicker.fromDate),
       toDate : this.dateToString(this.datePicker.toDate)
     }
-    this.accomodationService.getAllAccomodationsBySearch(searchBody).subscribe(data =>{
-      this.accomodationService.data = data;
-      this.router.navigate(['accomodations']);
 
-    })
+    if(this.checkedAdvanced){
+
+    }else{
+      this.accomodationService.getAllAccomodationsBySearch(searchBody).subscribe(data =>{
+        this.accomodationService.data = data;
+        this.router.navigate(['accomodations']);
+      })
+    }
   }
 
   private dateToString(date): string {

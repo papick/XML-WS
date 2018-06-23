@@ -12,7 +12,12 @@
     </div>
     <div class="ui-g-12 ui-md-4 ui-md-offset-4">
       <datepicker></datepicker>
-      <button type="button" [disabled]="!datePicker.fromDate || !datePicker.toDate" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Reserve"></button>
+
+      <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [minDate]="minDate" [disabledDates]="invalidDates"
+      [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" readonlyInput="true"  [showIcon]="true"></p-calendar>
+      &nbsp;&nbsp;&nbsp;;&nbsp;;&nbsp;&nbsp;
+      <button type="button" [disabled]="!datePicker.fromDate || !datePicker.toDate" (click)="showDialog()"
+      pButton icon="pi pi-info-circle" label="Reserve"></button>
 
     </div>
   </div>

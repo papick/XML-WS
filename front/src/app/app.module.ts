@@ -27,16 +27,19 @@ import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule} from 'primeng/inputtext';
 import {DataViewModule} from 'primeng/dataview';
-import {NgbdDatepickerPopup} from "./components/datepicker-popup/datepicker-popup";
 import {CardModule} from 'primeng/card';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import {CalendarModule} from 'primeng/calendar';
+import {ListboxModule} from 'primeng/listbox';
+import {ToggleButtonModule} from 'primeng/togglebutton';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
 import {MessagesComponent} from "./components/messages/messages.component";
 
 import {CommentsService} from "./services/commentsService";
+import {DataSearchService} from "./services/dataSearch.service";
 
 
 import {VoteService} from "./services/vote.service";
@@ -49,7 +52,6 @@ import {VoteService} from "./services/vote.service";
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    NgbdDatepickerPopup,
     AccomodationComponent,
     DatePickerComponent,
     MessagesComponent,
@@ -74,6 +76,9 @@ import {VoteService} from "./services/vote.service";
     DialogModule,
     InputTextareaModule,
     KeyFilterModule,
+    CalendarModule,
+    ListboxModule,
+    ToggleButtonModule,
     NgbModule.forRoot(),
 
   ],
@@ -83,7 +88,8 @@ import {VoteService} from "./services/vote.service";
     ReservationService,
     MessageService,
     CommentsService,
-    VoteService
+    VoteService,
+    DataSearchService
 
   ],
   bootstrap: [AppComponent]

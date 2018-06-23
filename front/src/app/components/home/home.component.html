@@ -2,17 +2,39 @@
 <p-panel styleClass="panel">
     <p-header>
       <div class="ui-g">
-    <div class="ui-g-6">City</div>
-    <div class="ui-g-6">Capacity(number)</div>
-</div>
-<div class="ui-g">
-  <div class="ui-g-6"><input [(ngModel)]="city" id="float-input" type="text" size="30" pInputText></div>
-    <div class="ui-g-6"><input [(ngModel)]="capacity" type="text" pKeyFilter="int" pInputText></div>
-</div>
-
-
+          <div class="ui-g-6">City</div>
+          <div class="ui-g-6">Capacity(number)</div>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-6"><input [(ngModel)]="city" id="float-input" type="text" size="30" pInputText></div>
+          <div class="ui-g-6"><input [(ngModel)]="capacity" type="text" pKeyFilter="int" pInputText></div>
+      </div>
     </p-header>
-      <datepicker  ></datepicker>
+    <div class="ui-g">
+        <div class="ui-g-6">
+          <datepicker  ></datepicker>
+        </div>
+        <div class="ui-g-6">
+          <p-toggleButton [(ngModel)]="checked" onLabel="Advanced Search" offLabel="Advanced Search" onIcon="pi pi-check" ></p-toggleButton>
+          <div *ngIf="checked">
+            <div class="ui-g">
+                <div class="ui-g-4">
+                  <label>Categories</label>
+                  <p-listbox [options]="categories" [(ngModel)]="selectedCategories" optionLabel="name"  multiple="multiple" checkbox="checkbox" filter="filter" ></p-listbox>
+                </div>
+                <div class="ui-g-4">
+                  <label>Types</label>
+                  <p-listbox [options]="types" [(ngModel)]="selectedTypes" optionLabel="name"  multiple="multiple" checkbox="checkbox" filter="filter" ></p-listbox>
+                </div>
+                <div class="ui-g-4">
+                  <label>Additions</label>
+                  <p-listbox [options]="additions" [(ngModel)]="selectedAdditions" optionLabel="name"  multiple="multiple" checkbox="checkbox" filter="filter" ></p-listbox>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <p-footer>
         <button pButton type="button" [disabled]="capacity <= 0 || city == '' || !datePicker.toDate || !datePicker.fromDate" (click)="find()" label="Find accomodation" class="ui-button-success"></button>
     </p-footer>
