@@ -17,18 +17,17 @@ export class AccomodationsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.accomodationService.getAccomodations().subscribe(data => {
       this.items = data.accomodations;
-
-
     })
+
   }
 
-  addPriceList(id : any, name : string) {
+  addPriceList(id: any, name: string) {
 
     const username = this.route.snapshot.params.username;
     this.router.navigateByUrl(username + '/price-list/' + id + '/' + name);
+
   }
 
 
@@ -47,5 +46,10 @@ export class AccomodationsComponent implements OnInit {
       this.items = this.items.filter(el => el.id != id);
 
     })
+  }
+
+  showComments(id): any {
+    const username = this.route.snapshot.params.username;
+    this.router.navigateByUrl(username + '/comments/' + id);
   }
 }
