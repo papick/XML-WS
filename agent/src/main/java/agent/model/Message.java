@@ -39,29 +39,21 @@ public class Message implements Serializable {
 
 	private String text;
 
-	@OneToMany
-	private List<Response> responses;
+
 
 	public Message() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Message(Long id, User sender, Agent recipient, String text, List<Response> responses) {
+	public Message(Long id, User sender, Agent recipient, String text) {
 		super();
 		this.id = id;
 		this.sender = sender;
 		this.recipient = recipient;
 		this.text = text;
-		this.responses = responses;
 	}
 
-	public List<Response> getResponses() {
-		return responses;
-	}
-
-	public void setResponses(List<Response> responses) {
-		this.responses = responses;
-	}
+	
 
 	public Long getId() {
 		return id;

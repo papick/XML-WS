@@ -375,7 +375,7 @@
      <xs:element name="sendResponseRequest">
     	<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="message" type="tns:message"></xs:element>
+    			<xs:element name="response" type="tns:response"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>
@@ -511,7 +511,7 @@
 	<xs:element name="getReservationsForAgentResponse">
 		<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="reservations" type="tns:message" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    			<xs:element name="reservations" type="tns:reservation" minOccurs="0" maxOccurs="unbounded"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>

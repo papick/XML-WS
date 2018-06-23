@@ -33,6 +33,9 @@ public class Response implements Serializable{
 	
 	private String text;
 	
+	@OneToOne
+	private Message message;
+	
 	public Response() {
 		// TODO Auto-generated constructor stub
 	}
@@ -75,6 +78,14 @@ public class Response implements Serializable{
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public Message getMessage() {
+		return message;
+	}
+
+	public void setMessage(Message message) {
+		this.message = message;
 	}
 	
 	

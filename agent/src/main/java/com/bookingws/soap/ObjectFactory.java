@@ -10,9 +10,11 @@ import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
 import agent.model.Message;
+import agent.model.MessageAgent;
 import agent.model.Period;
 import agent.model.Price;
 import agent.model.Reservation;
+import agent.model.ReservationAgent;
 import agent.model.Response;
 import agent.model.TypeAccomodation;
 import agent.model.User;
@@ -433,6 +435,54 @@ public class ObjectFactory {
      */
     public SetPricesResponse createSetPricesResponse() {
         return new SetPricesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetMessagesForAgentRequest }
+     * 
+     */
+    public GetMessagesForAgentRequest createGetMessagesForAgentRequest() {
+        return new GetMessagesForAgentRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetMessagesForAgentResponse }
+     * 
+     */
+    public GetMessagesForAgentResponse createGetMessagesForAgentResponse() {
+        return new GetMessagesForAgentResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationsForAgentRequest }
+     * 
+     */
+    public GetReservationsForAgentRequest createGetReservationsForAgentRequest() {
+        return new GetReservationsForAgentRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationsForAgentResponse }
+     * 
+     */
+    public GetReservationsForAgentResponse createGetReservationsForAgentResponse() {
+        return new GetReservationsForAgentResponse();
+    }
+
+    /**
+     * Create an instance of {@link MessageAgent }
+     * 
+     */
+    public MessageAgent createMessageAgent() {
+        return new MessageAgent();
+    }
+
+    /**
+     * Create an instance of {@link ReservationAgent }
+     * 
+     */
+    public ReservationAgent createReservationAgent() {
+        return new ReservationAgent();
     }
 
 }

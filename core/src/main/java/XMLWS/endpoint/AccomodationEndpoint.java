@@ -20,8 +20,14 @@ import com.bookingws.soap.GetCitiesRequest;
 import com.bookingws.soap.GetCitiesResponse;
 import com.bookingws.soap.GetCountriesRequest;
 import com.bookingws.soap.GetCountriesResponse;
+import com.bookingws.soap.GetMessagesForAgentRequest;
+import com.bookingws.soap.GetMessagesForAgentResponse;
+import com.bookingws.soap.GetReservationsForAgentRequest;
+import com.bookingws.soap.GetReservationsForAgentResponse;
 import com.bookingws.soap.GetTypesAccomodationRequest;
 import com.bookingws.soap.GetTypesAccomodationResponse;
+import com.bookingws.soap.SendResponseRequest;
+import com.bookingws.soap.SendResponseResponse;
 import com.bookingws.soap.SetCountryRequest;
 import com.bookingws.soap.SetCountryResponse;
 import com.bookingws.soap.SetPricesRequest;
@@ -33,12 +39,19 @@ import XMLWS.model.Agent;
 import XMLWS.model.Category;
 import XMLWS.model.City;
 import XMLWS.model.Country;
+import XMLWS.model.MessageAgent;
 import XMLWS.model.Period;
 import XMLWS.model.Price;
+import XMLWS.model.ReservationAgent;
+import XMLWS.model.Response;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.repository.AccomodationRepository;
+import XMLWS.repository.AgentRepository;
+import XMLWS.repository.MessageAgentRepository;
 import XMLWS.repository.PeriodRepository;
 import XMLWS.repository.PriceRepository;
+import XMLWS.repository.ReservationAgentRepository;
+import XMLWS.repository.ResponseRepository;
 import XMLWS.service.AdditionalServiceService;
 import XMLWS.service.CategoryService;
 import XMLWS.service.CityService;
@@ -77,6 +90,20 @@ public class AccomodationEndpoint {
 	private PriceRepository priceRepository;
 	
 	
+	@Autowired
+	private AgentRepository agentRepository;
+	
+	
+	@Autowired
+	private MessageAgentRepository messageAgentRepository;
+	
+	
+	@Autowired
+	private ReservationAgentRepository reservationAgentRepository;
+	
+	
+	@Autowired
+	private ResponseRepository responseRepository;
 	
 	
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getCountriesRequest")
@@ -252,6 +279,68 @@ public class AccomodationEndpoint {
 	}
 	
 	
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getMessagesForAgentRequest")
+    @ResponsePayload
+	public GetMessagesForAgentResponse getMessagesForAgentRequest(@RequestPayload GetMessagesForAgentRequest getMessagesForAgentRequest) {
+		
+		GetMessagesForAgentResponse response = new GetMessagesForAgentResponse();
+		
+		Agent agent = agentRepository.findOne(getMessagesForAgentRequest.getId());
+		
+		List<MessageAgent> messagesAgent = messageAgentRepository.findByAgent(agent);
+		
+		for(MessageAgent ma : messagesAgent) {
+			
+			response.getMessages().add(ma.getMessage());
+			messageAgentRepository.delete(ma);
+		}
+		
+		return response;
+		
+	}
+	
+	
+	
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getReservationsForAgentRequest")
+    @ResponsePayload
+	public GetReservationsForAgentResponse getReservationsForAgentRequest(@RequestPayload GetReservationsForAgentRequest getReservationsForAgentRequest) {
+		
+		GetReservationsForAgentResponse response = new GetReservationsForAgentResponse();
+		
+		Agent agent = agentRepository.findOne(getReservationsForAgentRequest.getId());
+		
+		List<ReservationAgent> reservationsAgent = reservationAgentRepository.findByAgent(agent);
+		
+		for(ReservationAgent ra : reservationsAgent) {
+			
+			response.getReservations().add(ra.getReservation());
+			reservationAgentRepository.delete(ra);
+			
+		}
+		
+		return response;
+		
+	}
+	
+	
+
+	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "sendResponseRequest")
+    @ResponsePayload
+	public SendResponseResponse sendResponseRequest(@RequestPayload SendResponseRequest sendResponseRequest) {
+		
+		SendResponseResponse response = new SendResponseResponse();
+		
+		Response resp = new Response();
+		resp.setMessage(sendResponseRequest.getResponse().getMessage());
+		resp.setRecipient(sendResponseRequest.getResponse().getRecipient());
+		resp.setSender(sendResponseRequest.getResponse().getSender());
+		resp.setText(sendResponseRequest.getResponse().getText());
+		
+		responseRepository.save(resp);
+		
+		
+		return response;
+	}
 	
 	
 	///////////////
