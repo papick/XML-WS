@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import XMLWS.model.Country;
+import XMLWS.model.Message;
 
 
 /**
@@ -29,7 +29,7 @@ import XMLWS.model.Country;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="country" type="{http://bookingws.com/soap}country" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="reservations" type="{http://bookingws.com/soap}message" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,40 +40,40 @@ import XMLWS.model.Country;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "country"
+    "reservations"
 })
-@XmlRootElement(name = "getCountriesResponse")
-public class GetCountriesResponse {
+@XmlRootElement(name = "getReservationsForAgentResponse")
+public class GetReservationsForAgentResponse {
 
-    protected List<Country> country;
+    protected List<Message> reservations;
 
     /**
-     * Gets the value of the country property.
+     * Gets the value of the reservations property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the country property.
+     * This is why there is not a <CODE>set</CODE> method for the reservations property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCountry().add(newItem);
+     *    getReservations().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Country }
+     * {@link Message }
      * 
      * 
      */
-    public List<Country> getCountry() {
-        if (country == null) {
-            country = new ArrayList<Country>();
+    public List<Message> getReservations() {
+        if (reservations == null) {
+            reservations = new ArrayList<Message>();
         }
-        return this.country;
+        return this.reservations;
     }
 
 }
