@@ -51,6 +51,9 @@ public class MessageService {
 		answer.setText(answerDTO.getText());
 	
 		responseRepository.save(answer);
+		message.setResponse(answer);
+		messageRepository.save(message);
+
 
 		/*
 		
