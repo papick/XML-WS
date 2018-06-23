@@ -7,5 +7,7 @@ import agent.model.Accommodation;
 
 @Repository
 public interface AccomodationRepository extends JpaRepository<Accommodation, Long>{
+	
+	
 
 }
