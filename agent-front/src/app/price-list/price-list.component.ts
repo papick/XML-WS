@@ -107,8 +107,8 @@ export class PriceListComponent implements OnInit {
 
       console.log('ok');
     })
-
-
+    const username = this.route.snapshot.params.username;
+    this.router.navigateByUrl(username+'/home')
   }
 
 

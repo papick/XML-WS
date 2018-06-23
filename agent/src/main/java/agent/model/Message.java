@@ -39,7 +39,7 @@ public class Message implements Serializable {
 
 	private String text;
 
-
+	
 
 	public Message() {
 		// TODO Auto-generated constructor stub

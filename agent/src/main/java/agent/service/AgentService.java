@@ -16,22 +16,34 @@ import com.bookingws.soap.GetCitiesRequest;
 import com.bookingws.soap.GetCitiesResponse;
 import com.bookingws.soap.GetCountriesRequest;
 import com.bookingws.soap.GetCountriesResponse;
+import com.bookingws.soap.GetMessagesForAgentRequest;
+import com.bookingws.soap.GetMessagesForAgentResponse;
 import com.bookingws.soap.GetReservationsForAgentRequest;
+import com.bookingws.soap.GetReservationsForAgentResponse;
 import com.bookingws.soap.GetTypesAccomodationRequest;
 import com.bookingws.soap.GetTypesAccomodationResponse;
 
+import agent.model.Accommodation;
 import agent.model.Addition;
 import agent.model.Agent;
 import agent.model.Category;
 import agent.model.City;
 import agent.model.Country;
+import agent.model.Message;
+import agent.model.Period;
+import agent.model.Reservation;
 import agent.model.TypeAccomodation;
+import agent.model.User;
+import agent.repository.AccomodationRepository;
 import agent.repository.AditionalServiceRepository;
 import agent.repository.AgentRepository;
 import agent.repository.CategoryRepository;
 import agent.repository.CityRepository;
 import agent.repository.CountryRepository;
+import agent.repository.PeriodRepository;
+import agent.repository.ReservationRepository;
 import agent.repository.TypeAccomodationRepository;
+import agent.repository.UserRepository;
 import agent.service.dto.AgentDTO;
 
 @Transactional
@@ -54,9 +66,23 @@ public class AgentService {
 	@Autowired 
 	private TypeAccomodationRepository typeAccomodationRepository;
 	
-
 	@Autowired
 	private AgentRepository agentRepository;
+		
+	@Autowired 
+	private UserRepository userRepository;
+		
+	@Autowired
+	private AccomodationRepository accomodationRepository;
+	
+	@Autowired
+	private PeriodRepository periodRepository;
+	
+	
+	@Autowired
+	private ReservationRepository reservationRepository;
+	
+	
 
 	public Agent logIn(AgentDTO agentDTO) {
 
@@ -67,7 +93,7 @@ public class AgentService {
 
 		if (agent.getPassword().equals(agentDTO.getPassword())) {
 					
-			System.out.println("PROSAOXXXX");
+			
 			synchronizeDB(agent.getUsername());
 			
 			return agent;
@@ -154,16 +180,77 @@ public class AgentService {
 		// reservations
 		
 		GetReservationsForAgentRequest request6 = new GetReservationsForAgentRequest();
+		request6.setUsername(username);
+		GetReservationsForAgentResponse response6 = accomodationServicePort.getReservationsForAgent(request6);
 		
-		/*
-		Agent agent
+		List<Reservation> reservations = response6.getReservations();
 		
-		request6.setId(value); */
+		
+		if(reservations != null) {
+			
+			for(Reservation res : reservations) {
+				
+	
+				Reservation reservation = new Reservation();
+				
+				User user = userRepository.findByUsername(res.getUser().getUsername());
+				
+				if(user == null) {
+					
+					User us = new User();
+					us.setUsername(res.getUser().getUsername());
+					us.setPassword(res.getUser().getPassword());
+					us.setEmail(res.getUser().getEmail());
+					us.setType(res.getUser().getType());
+					
+					userRepository.save(us);
+					reservation.setUser(us);					
+				}				
+				else{					
+					reservation.setUser(user);
+				}
+								
+				Period period = res.getPeriod();
+				
+				Period per = new Period();
+				
+				per.setFromDate(period.getFromDate());
+				per.setToDate(period.getToDate());
+				
+				Accommodation accommodation = accomodationRepository.findOne(period.getAccomodation().getIdAgentApp());
+				per.setAccomodation(accommodation);
+				
+				periodRepository.save(period);
+				
+				reservation.setPeriod(per);
+				reservation.setConfirmed(false);
+				
+				reservationRepository.save(reservation);
+				
+			}
+		}
+		
+		
+		
 		
 		
 		// messages
 		
+		GetMessagesForAgentRequest request7 = new GetMessagesForAgentRequest();
+		request7.setUsername(username);
+		GetMessagesForAgentResponse response7 = accomodationServicePort.getMessagesForAgent(request7);
 		
+		List<Message> messages = response7.getMessages();
+		
+		if(messages != null) {
+			
+			for(Message message : messages) {
+				
+				Message mes = new Message();
+			}
+		}
+		
+		// to do
 		
 	}
 	

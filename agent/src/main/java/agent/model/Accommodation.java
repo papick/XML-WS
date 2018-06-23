@@ -14,7 +14,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -27,7 +26,7 @@ public class Accommodation {
 
 	@Column
 	private String name;
-	
+
 	@Column
 	private String image;
 
@@ -42,7 +41,7 @@ public class Accommodation {
 
 	@ManyToMany
 	private List<Addition> additions;
-	
+
 	@OneToOne
 	private City city;
 
@@ -54,17 +53,17 @@ public class Accommodation {
 
 	@OneToOne
 	private Category category;
-	
-	
+
 	@Column
 	private Long idAgentApp;
 
+	private Boolean price = false;
 
 	public Accommodation() {
 	}
 
-	public Accommodation(String image, String description, int capacity,  TypeAccomodation type,
-			String name, City city, String address, Agent agent, Category category) {
+	public Accommodation(String image, String description, int capacity, TypeAccomodation type, String name, City city,
+			String address, Agent agent, Category category) {
 		super();
 		this.image = image;
 		this.description = description;
@@ -75,7 +74,15 @@ public class Accommodation {
 		this.address = address;
 		this.agent = agent;
 		this.category = category;
-		
+
+	}
+
+	public Boolean getPrice() {
+		return price;
+	}
+
+	public void setPrice(Boolean price) {
+		this.price = price;
 	}
 
 	public Long getId() {
@@ -85,9 +92,6 @@ public class Accommodation {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
-	
 
 	public Long getIdAgentApp() {
 		return idAgentApp;
@@ -128,8 +132,6 @@ public class Accommodation {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
-	
 
 	public TypeAccomodation getType() {
 		return type;
@@ -178,7 +180,5 @@ public class Accommodation {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-	
 
 }

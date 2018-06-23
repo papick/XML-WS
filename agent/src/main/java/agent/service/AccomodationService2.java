@@ -80,6 +80,8 @@ public class AccomodationService2 {
 		accomodation.setAgent(agentRepository.findOneByUsername(username));
 		accomodation.setCategory(categoryRepository.findOneByName(accomodationDTO.getCategory()));
 
+		accomodation.setPrice(false);
+
 		accomodationRepository.save(accomodation);
 
 		AccomodationService accomodationService = new AccomodationService();
