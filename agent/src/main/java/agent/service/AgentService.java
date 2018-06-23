@@ -42,6 +42,7 @@ import agent.repository.AgentRepository;
 import agent.repository.CategoryRepository;
 import agent.repository.CityRepository;
 import agent.repository.CountryRepository;
+import agent.repository.MessageRepository;
 import agent.repository.PeriodRepository;
 import agent.repository.ReservationRepository;
 import agent.repository.TypeAccomodationRepository;
@@ -83,6 +84,10 @@ public class AgentService {
 	
 	@Autowired
 	private ReservationRepository reservationRepository;
+	
+	
+	@Autowired
+	private MessageRepository messageRepository;
 	
 	
 
@@ -253,6 +258,17 @@ public class AgentService {
 			for(Message message : messages) {
 				
 				Message mes = new Message();
+				
+				User user = userRepository.findByUsername(mes.getSender().getUsername());
+				Agent agent = agentRepository.findOneByUsername(mes.getRecipient().getUsername());
+				
+				mes.setIdCore(message.getId());
+				mes.setText(message.getText());
+				mes.setSender(user);
+				mes.setRecipient(agent);
+				
+				messageRepository.save(mes);
+				
 			}
 		}
 		
