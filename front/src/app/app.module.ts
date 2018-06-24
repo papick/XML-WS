@@ -33,6 +33,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {CalendarModule} from 'primeng/calendar';
 import {ListboxModule} from 'primeng/listbox';
+import {DropdownModule} from 'primeng/dropdown';
+
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MessageService} from "./services/message.service";
@@ -79,6 +81,7 @@ import {VoteService} from "./services/vote.service";
     CalendarModule,
     ListboxModule,
     ToggleButtonModule,
+    DropdownModule,
     NgbModule.forRoot(),
 
   ],

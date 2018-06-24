@@ -7,6 +7,7 @@ export class AccomodationModel {
               public category: string,
               public capacity: string,
               public list: any,
+              public image : string
            ) {
   }
 }

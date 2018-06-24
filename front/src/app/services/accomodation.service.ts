@@ -6,6 +6,8 @@ export class AccomodationService {
   private url = 'http://localhost:8000/api/accomodations';
 
   public data : any;
+  public fromDate: any;
+  public toDate : any;
 
   constructor(private http:HttpClient) { }
 
@@ -26,6 +28,6 @@ export class AccomodationService {
   }
 
   public getPriceList(id){
-      return this.http.get(this.url +'/'+id+'/prices' );
+      return this.http.get<any[]>(this.url +'/'+id+'/prices' );
   }
 }

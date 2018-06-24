@@ -52,10 +52,10 @@ export class HomeComponent implements OnInit {
         types : this.selectedTypes,
         additions : this.selectedAdditions
       }
-  console.log(JSON.stringify(searchBody));
       this.accomodationService.getAllAccomodationsByAdvancedSearch(searchBody).subscribe(data =>{
         this.accomodationService.data = data;
-
+        this.accomodationService.fromDate =  this.datePicker.fromDate
+        this.accomodationService.toDate =  this.datePicker.toDate
 
         this.router.navigate(['accomodations']);
       })
@@ -68,6 +68,9 @@ export class HomeComponent implements OnInit {
       }
       this.accomodationService.getAllAccomodationsBySearch(searchBody).subscribe(data =>{
         this.accomodationService.data = data;
+
+        this.accomodationService.fromDate =  this.datePicker.fromDate
+        this.accomodationService.toDate =  this.datePicker.toDate
         this.router.navigate(['accomodations']);
       })
     }

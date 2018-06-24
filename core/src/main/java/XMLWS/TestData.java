@@ -143,9 +143,16 @@ public class TestData {
 
 		Accommodation a1 = new Accommodation(image1, "pogled na smetliste i 30 km od centra grada", 2, typeAccomodation1, "Sheraton", city1, "Vojvode Stepe", agent1,
 				category4);
+		a1 = accomodationRepository.save(a1);
 
-		accomodationRepository.save(a1);
+		Accommodation a2= new Accommodation(image1, "300000 km od planete zemlje", 2, typeAccomodation2, "Bajagino gnezdo", city1, "Vojvode Mirka", agent1,
+				category3);
+		a2= accomodationRepository.save(a2);
 
+		Accommodation a3 = new Accommodation(image1, "Pored riblje pijace, miris lepote", 2, typeAccomodation2, "Riblja prasuma", city1, "Sanela Jerkovic", agent1,
+				category2);
+		a3= accomodationRepository.save(a3);
+		
 		Comment comm1 = new Comment("Odlican smestaj!", "Kristina", a1, false);
 		commRepo.save(comm1);
 
@@ -190,6 +197,18 @@ public class TestData {
 		price1.setMonth("07");
 		price1.setSum("100");
 		priceRepository.save(price1);
+		
+		Price price2 = new Price();
+		price2.setAccomodation(a2);
+		price2.setMonth("07");
+		price2.setSum("150");
+		priceRepository.save(price2);
+		
+		Price price3 = new Price();
+		price3.setAccomodation(a3);
+		price3.setMonth("07");
+		price3.setSum("70");
+		priceRepository.save(price3);
 		
 	}
 }

@@ -21,11 +21,12 @@ export class AccomodationComponent implements OnInit {
 
   comms = [];
 
-  priceList: any;
-  price : any;
 
   fromDate: NgbDateStruct;
   toDate: NgbDateStruct;
+
+  price : number;
+  priceList : any;
 
   minDate: Date;
   invalidDates: Array<Date>
@@ -40,16 +41,20 @@ export class AccomodationComponent implements OnInit {
     this.accomodation.city.country = {};
     this.accomodation.category = {};
 
+    this.datePicker.fromDate = this.accomodationService.fromDate;
+    this.datePicker.toDate = this.accomodationService.toDate;
     const id = this.route.snapshot.params['id'];
     this.getComments(id);
-    this.accomodationService.getPriceList(id).subscribe(data => {
-      this.priceList = data;
-    });
+
     this.accomodationService.getAccomodation(id).subscribe(data => {
       this.accomodation = data;
       const periods = this.accomodation.periods;
-      this.initCalendar(periods);
+      //this.initCalendar(periods);
     }, err => console.log(err));
+
+    this.accomodationService.getPriceList(id).subscribe(data =>{
+      this.priceList = data;
+    })
   }
 
   showDialog() {
@@ -60,13 +65,19 @@ export class AccomodationComponent implements OnInit {
 
     this.fromDate = this.datePicker.fromDate;
     this.toDate = this.datePicker.toDate;
-    this.price = 0;
-/*let d = this.fromDate;
-    while(d <= this.toDate){
 
-      price + = priceList[d.month];
+     this.price=0;
+    let d = new Date(this.fromDate.year, this.fromDate.month, this.fromDate.day);
+    let to = new Date(this.toDate.year, this.toDate.month, this.toDate.day)
+    while(d <= to){
+      this.priceList.forEach((monthPrice , index , arr) =>{
+        if(Number.parseInt (monthPrice.month) == d.getMonth()){
+
+          this.price +=  Number.parseInt (monthPrice.sum);
+        }
+      });
       d.setDate(d.getDate() + 1);
-    }*/
+    }
 
     this.displayDialog = true;
   }

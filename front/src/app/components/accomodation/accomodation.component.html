@@ -13,9 +13,9 @@
     <div class="ui-g-12 ui-md-4 ui-md-offset-4">
       <datepicker></datepicker>
 
-      <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [minDate]="minDate" [disabledDates]="invalidDates"
+      <!--<p-calendar [(ngModel)]="rangeDates" selectionMode="range" [minDate]="minDate" [disabledDates]="invalidDates"
       [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" readonlyInput="true"  [showIcon]="true"></p-calendar>
-      &nbsp;&nbsp;&nbsp;;&nbsp;;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;;&nbsp;;&nbsp;&nbsp;-->
       <button type="button" [disabled]="!datePicker.fromDate || !datePicker.toDate" (click)="showDialog()"
       pButton icon="pi pi-info-circle" label="Reserve"></button>
 
@@ -68,7 +68,7 @@
           [minWidth]="200" [minY]="70" [baseZIndex]="10000">
     <span>
       You want to reserve accomodation <b>{{accomodation.name}}</b> for period {{fromDate ? dateToString(fromDate) : 'no date'}} - {{toDate ? dateToString(toDate) : 'no date'}}
-      and price {{price}} ?
+      and price {{price}}$ ?
     </span>
   <p-footer>
     <button type="button" pButton icon="pi pi-check" (click)="reserve()" label="Yes"></button>
