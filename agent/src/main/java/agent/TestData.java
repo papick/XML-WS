@@ -79,8 +79,13 @@ public class TestData {
 		User user1 = new User("dejan", "dejan", "dejan@gmail.com", "");
 		userRepository.save(user1);
 		
-		
-		Agent agent1 = new Agent("marko","marko","marko","markovic","Narodnog Fronta 3");
+		// "sheraton", "sheraton", "Marko", "Markovic", "Novi Sad","1"
+		Agent agent1 = new Agent();
+		agent1.setUsername("sheraton");
+		agent1.setPassword("sheraton");
+		agent1.setName("Marko");
+		agent1.setSurname("Markovic");
+		agent1.setAddress("Novi Sad");
 		agentRepository.save(agent1);
 		
 		/*

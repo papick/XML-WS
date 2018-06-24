@@ -9,7 +9,7 @@ const httpOptions = {
 @Injectable()
 export class PeriodService {
 
-  private BASE_URL = 'http://localhost:809'+ localStorage.getItem('agentId') +'/api/period';
+  private BASE_URL = 'http://localhost:8091/api/period';
 
   constructor(private http: HttpClient) {
   }

@@ -53,7 +53,6 @@ import agent.service.dto.AgentDTO;
 @Service
 public class AgentService {
 	
-	
 	@Autowired 
 	private CountryRepository countryRepository;
 	
@@ -127,7 +126,17 @@ public class AgentService {
 		List<Country> countries = response.getCountry();
 		
 		for(Country c : countries) {
-			countryRepository.save(c);
+			
+			Country country = countryRepository.findOneByName(c.getName());
+			
+			if(country == null) {
+				
+				Country coun = new Country();
+				coun.setCode(c.getCode());
+				coun.setName(c.getName());
+				countryRepository.save(coun);
+			}
+			;
 		}
 		
 		
@@ -140,8 +149,22 @@ public class AgentService {
 		
 		List<City> cities = response2.getCities();
 		
-		for(City city : cities) {
-			cityRepository.save(city);
+		for(City c : cities) {
+			
+			City cit = cityRepository.findOneByName(c.getName());
+			
+			if(cit == null) {
+				
+				City city = new City();
+				city.setName(c.getName());
+				
+				Country country = countryRepository.findOneByName(c.getCountry().getName());
+				city.setCountry(country);
+				
+				cityRepository.save(city);
+			}
+			
+			
 		}
 		
 		
@@ -152,9 +175,19 @@ public class AgentService {
 		GetTypesAccomodationResponse response3 = accomodationServicePort.getTypesAccomodation(request3);
 		List<TypeAccomodation> types = response3.getTypesAccomodation();
 		
-		
-		for(TypeAccomodation type : types) {
-			typeAccomodationRepository.save(type);
+		for(TypeAccomodation t : types) {
+			
+			TypeAccomodation typ = typeAccomodationRepository.findOneByName(t.getName());
+			
+			if(typ == null) {
+				
+				TypeAccomodation type = new TypeAccomodation();
+				type.setName(t.getName());
+				
+				typeAccomodationRepository.save(type);
+			}
+			
+			
 		}
 		
 		// categories

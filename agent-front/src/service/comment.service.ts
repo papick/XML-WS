@@ -9,7 +9,7 @@ const httpOptions = {
 @Injectable()
 export class CommentService {
 
-  private BASE_URL = 'http://localhost:809'+ localStorage.getItem('agentId') +'/api/comment';
+  private BASE_URL = 'http://localhost:8091/api/comment';
 
   constructor(private http: HttpClient) {
   }
