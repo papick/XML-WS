@@ -393,7 +393,7 @@
     <xs:element name="getReservationsRequest">
     	<xs:complexType>
     		<xs:sequence>
-    			<xs:element name="id" type="xs:long"></xs:element>
+    			<xs:element name="username" type="xs:string"></xs:element>
     		</xs:sequence>
     	</xs:complexType>
     </xs:element>
