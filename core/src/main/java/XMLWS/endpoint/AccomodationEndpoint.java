@@ -1,5 +1,6 @@
 package XMLWS.endpoint;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,333 +49,381 @@ import XMLWS.model.ReservationAgent;
 import XMLWS.model.Response;
 import XMLWS.model.TypeAccomodation;
 import XMLWS.repository.AccomodationRepository;
+import XMLWS.repository.AdditionalServiceRepository;
 import XMLWS.repository.AgentRepository;
+import XMLWS.repository.CategoryRepository;
+import XMLWS.repository.CityRepository;
 import XMLWS.repository.MessageAgentRepository;
 import XMLWS.repository.PeriodRepository;
 import XMLWS.repository.PriceRepository;
 import XMLWS.repository.ReservationAgentRepository;
 import XMLWS.repository.ResponseRepository;
+import XMLWS.repository.TypeAccomodationRepository;
 import XMLWS.service.AdditionalServiceService;
 import XMLWS.service.CategoryService;
 import XMLWS.service.CityService;
 import XMLWS.service.CountryService;
 import XMLWS.service.TypeAccomodationService;
 
-
 @Endpoint
 public class AccomodationEndpoint {
-	
-	
+
 	@Autowired
 	private CountryService countryService;
-	
-	
+
 	@Autowired
 	private CityService cityService;
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private TypeAccomodationService typeAccomodationService;
-	
-	
+
 	@Autowired
 	private AccomodationRepository accomodationRepository;
-	
+
 	@Autowired
 	private PeriodRepository periodRepository;
-	
+
 	@Autowired
 	private AdditionalServiceService additionalServiceService;
-	
+
 	@Autowired
 	private PriceRepository priceRepository;
-	
-	
+
 	@Autowired
 	private AgentRepository agentRepository;
-	
-	
+
 	@Autowired
 	private MessageAgentRepository messageAgentRepository;
-	
-	
+
 	@Autowired
 	private ReservationAgentRepository reservationAgentRepository;
-	
-	
+
 	@Autowired
 	private ResponseRepository responseRepository;
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getCountriesRequest")
-    @ResponsePayload
-    public GetCountriesResponse getCountriesRequest(@RequestPayload GetCountriesRequest getCountriesRequest) {
-		
+	@ResponsePayload
+	public GetCountriesResponse getCountriesRequest(@RequestPayload GetCountriesRequest getCountriesRequest) {
+
 		GetCountriesResponse response = new GetCountriesResponse();
-		
+
 		List<Country> countries = countryService.getAll();
-	
-		for(Country country : countries) {
+
+		for (Country country : countries) {
 			response.getCountry().add(country);
 			System.out.println(country.getName());
 		}
-		
+
 		return response;
 	}
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getCitiesRequest")
-    @ResponsePayload
-    public GetCitiesResponse getCitiesRequest(@RequestPayload GetCitiesRequest getCitiesRequest) {
-		
+	@ResponsePayload
+	public GetCitiesResponse getCitiesRequest(@RequestPayload GetCitiesRequest getCitiesRequest) {
+
 		GetCitiesResponse response = new GetCitiesResponse();
-		
+
 		List<City> cities = cityService.getAll();
-	
-		for(City city : cities) {
+
+		for (City city : cities) {
 			response.getCities().add(city);
 		}
-		
+
 		return response;
 	}
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getCategoriesRequest")
-    @ResponsePayload
-    public GetCategoriesResponse getCategoriesRequest(@RequestPayload GetCategoriesRequest getCategoriesRequest) {
-		
+	@ResponsePayload
+	public GetCategoriesResponse getCategoriesRequest(@RequestPayload GetCategoriesRequest getCategoriesRequest) {
+
 		GetCategoriesResponse response = new GetCategoriesResponse();
-		
-		List<Category> categories= categoryService.getAllCategories();
-		
-		for(Category category : categories){
+
+		List<Category> categories = categoryService.getAllCategories();
+
+		for (Category category : categories) {
 			response.getCategory().add(category);
-			
+
 		}
-		
+
 		return response;
 	}
-	
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getTypesAccomodationRequest")
-    @ResponsePayload
-    public GetTypesAccomodationResponse getTypesAccomodationRequest(@RequestPayload GetTypesAccomodationRequest getTypesAccomodationRequest) {
-		
+	@ResponsePayload
+	public GetTypesAccomodationResponse getTypesAccomodationRequest(
+			@RequestPayload GetTypesAccomodationRequest getTypesAccomodationRequest) {
+
 		GetTypesAccomodationResponse response = new GetTypesAccomodationResponse();
-		
+
 		List<TypeAccomodation> typesAccomodation = typeAccomodationService.getAllTypes();
-		
-		for(TypeAccomodation typee : typesAccomodation) {
+
+		for (TypeAccomodation typee : typesAccomodation) {
 			response.getTypesAccomodation().add(typee);
 		}
-		
+
 		return response;
 	}
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getAdditionsRequest")
-    @ResponsePayload
-    public GetAdditionsResponse getAdditionsRequest(@RequestPayload GetAdditionsRequest getAdditionsRequest) {
-		
+	@ResponsePayload
+	public GetAdditionsResponse getAdditionsRequest(@RequestPayload GetAdditionsRequest getAdditionsRequest) {
+
 		GetAdditionsResponse response = new GetAdditionsResponse();
-		
+
 		List<Addition> additions = additionalServiceService.getAllServices();
-		
-		for(Addition addition : additions) {
+
+		for (Addition addition : additions) {
 			response.getAdditions().add(addition);
 		}
-		
+
 		return response;
 	}
-	
-	
-	
-	
-	
-	
+
+	@Autowired
+	private AdditionalServiceRepository additionRepository;
+
+	@Autowired
+	private CityRepository cityRepository;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
+
+	@Autowired
+	private TypeAccomodationRepository typeAccomodationRepository;
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "addAccomodationRequest")
-    @ResponsePayload
-    public AddAccomodationResponse addAccomodationRequest(@RequestPayload AddAccomodationRequest addAccomodationRequest) {
-		
+	@ResponsePayload
+	public AddAccomodationResponse addAccomodationRequest(
+			@RequestPayload AddAccomodationRequest addAccomodationRequest) {
+
 		AddAccomodationResponse response = new AddAccomodationResponse();
-		
+
+		System.out.println(addAccomodationRequest.getAccomodation().toString());
+
 		Accommodation accommodation = new Accommodation();
-		accommodation.setIdAgentApp(addAccomodationRequest.getAccomodation().getId());
-		accommodation.setAdditions(addAccomodationRequest.getAccomodation().getAdditions());
+		accommodation.setIdAgentApp(addAccomodationRequest.getAccomodation().getIdAgentApp());
+
+		List<Addition> additions = addAccomodationRequest.getAccomodation().getAdditions();
+
+		for (Addition addition : additions) {
+
+			Addition add = additionRepository.findOneByName(addition.getName());
+			ArrayList<Addition> aditions = new ArrayList<Addition>();
+			aditions.add(add);
+			// accommodation.getAdditions().add(add);
+		}
+		accommodation.setAdditions(additions);
 		accommodation.setAddress(addAccomodationRequest.getAccomodation().getAddress());
-		accommodation.setAgent(addAccomodationRequest.getAccomodation().getAgent());
+
+		Agent agent = agentRepository
+				.findOneByUsername(addAccomodationRequest.getAccomodation().getAgent().getUsername());
+		accommodation.setAgent(agent);
+
 		accommodation.setCapacity(addAccomodationRequest.getAccomodation().getCapacity());
-		accommodation.setCategory(addAccomodationRequest.getAccomodation().getCategory());
-		accommodation.setCity(addAccomodationRequest.getAccomodation().getCity());
+
+		Category category = categoryRepository
+				.findOneByName(addAccomodationRequest.getAccomodation().getCategory().getName());
+		accommodation.setCategory(category);
+
+		City city = cityRepository.findOneByName(addAccomodationRequest.getAccomodation().getCity().getName());
+		accommodation.setCity(city);
+
 		accommodation.setDescription(addAccomodationRequest.getAccomodation().getDescription());
 		accommodation.setImage(addAccomodationRequest.getAccomodation().getImage());
 		accommodation.setName(addAccomodationRequest.getAccomodation().getName());
-		accommodation.setType(addAccomodationRequest.getAccomodation().getType());
-		
+
+		TypeAccomodation type = typeAccomodationRepository
+				.findOneByName(addAccomodationRequest.getAccomodation().getName());
+		accommodation.setType(type);
+
 		accomodationRepository.save(accommodation);
-		
-		response.setMessage("Saved accommodation " + accommodation.getName());
-		
-		
+
 		return response;
 	}
-	
-	
-	
+
+	/*
+	 * @PayloadRoot(namespace = "http://bookingws.com/soap", localPart =
+	 * "addAccomodationRequest")
+	 * 
+	 * @ResponsePayload public AddAccomodationResponse
+	 * addAccomodationRequest(@RequestPayload AddAccomodationRequest
+	 * addAccomodationRequest) {
+	 * 
+	 * AddAccomodationResponse response = new AddAccomodationResponse();
+	 * 
+	 * Accommodation accommodation = new Accommodation();
+	 * accommodation.setIdAgentApp(addAccomodationRequest.getAccomodation().
+	 * getId());
+	 * accommodation.setAdditions(addAccomodationRequest.getAccomodation().
+	 * getAdditions());
+	 * accommodation.setAddress(addAccomodationRequest.getAccomodation().
+	 * getAddress());
+	 * accommodation.setAgent(addAccomodationRequest.getAccomodation().getAgent(
+	 * )); accommodation.setCapacity(addAccomodationRequest.getAccomodation().
+	 * getCapacity());
+	 * accommodation.setCategory(addAccomodationRequest.getAccomodation().
+	 * getCategory());
+	 * accommodation.setCity(addAccomodationRequest.getAccomodation().getCity())
+	 * ; accommodation.setDescription(addAccomodationRequest.getAccomodation().
+	 * getDescription());
+	 * accommodation.setImage(addAccomodationRequest.getAccomodation().getImage(
+	 * ));
+	 * accommodation.setName(addAccomodationRequest.getAccomodation().getName())
+	 * ;
+	 * accommodation.setType(addAccomodationRequest.getAccomodation().getType())
+	 * ;
+	 * 
+	 * accomodationRepository.save(accommodation);
+	 * 
+	 * response.setMessage("Saved accommodation " + accommodation.getName());
+	 * 
+	 * 
+	 * return response; }
+	 */
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "addPeriodRequest")
-    @ResponsePayload
+	@ResponsePayload
 	public AddPeriodResponse addPeriodRequest(@RequestPayload AddPeriodRequest addPeriodRequest) {
-		
-		
+
 		AddPeriodResponse response = new AddPeriodResponse();
-		
+
 		Period period = new Period();
-		
+
 		period.setFromDate(addPeriodRequest.getPeriod().getFromDate());
 		period.setToDate(addPeriodRequest.getPeriod().getToDate());
 		period.setAccomodation(addPeriodRequest.getPeriod().getAccomodation());
-		
+
 		periodRepository.save(period);
-		
+
 		response.setMessage("Saved reserved period from " + period.getFromDate() + " to " + period.getToDate());
-				
+
 		return response;
-		
+
 	}
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "setPricesRequest")
-    @ResponsePayload
+	@ResponsePayload
 	public SetPricesRespone setPricesRequest(@RequestPayload SetPricesRequest setPricesRequest) {
-		
+
 		SetPricesRespone response = new SetPricesRespone();
-		
-		for(Price p : setPricesRequest.getPrices()) {
-			
+
+		for (Price p : setPricesRequest.getPrices()) {
+
 			Price price = new Price();
-			
+
 			Accommodation accomodation = p.getAccomodation();
 			Agent agent = accomodation.getAgent();
-			
+
 			List<Accommodation> accommFromAgent = accomodationRepository.findByAgent(agent);
-			
-			for(Accommodation ac : accommFromAgent) {
-				
-				if(accomodation.getId().equals(ac.getIdAgentApp())) {
-					
+
+			for (Accommodation ac : accommFromAgent) {
+
+				if (accomodation.getId().equals(ac.getIdAgentApp())) {
+
 					price.setAccomodation(ac);
 					price.setMonth(p.getMonth());
 					price.setSum(p.getSum());
-					
+
 					priceRepository.save(price);
 				}
 			}
-					
+
 		}
-			
+
 		response.setMessage("Saved pricelist");
-		
+
 		return response;
 	}
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getMessagesForAgentRequest")
-    @ResponsePayload
-	public GetMessagesForAgentResponse getMessagesForAgentRequest(@RequestPayload GetMessagesForAgentRequest getMessagesForAgentRequest) {
-		
+	@ResponsePayload
+	public GetMessagesForAgentResponse getMessagesForAgentRequest(
+			@RequestPayload GetMessagesForAgentRequest getMessagesForAgentRequest) {
+
 		GetMessagesForAgentResponse response = new GetMessagesForAgentResponse();
-		
+
 		Agent agent = agentRepository.findByUsername(getMessagesForAgentRequest.getUsername());
-		
+
 		List<MessageAgent> messagesAgent = messageAgentRepository.findByAgent(agent);
-		
-		for(MessageAgent ma : messagesAgent) {
-			
+
+		for (MessageAgent ma : messagesAgent) {
+
 			response.getMessages().add(ma.getMessage());
 			messageAgentRepository.delete(ma);
 		}
-		
+
 		return response;
-		
+
 	}
-	
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getReservationsForAgentRequest")
-    @ResponsePayload
-	public GetReservationsForAgentResponse getReservationsForAgentRequest(@RequestPayload GetReservationsForAgentRequest getReservationsForAgentRequest) {
-		
+	@ResponsePayload
+	public GetReservationsForAgentResponse getReservationsForAgentRequest(
+			@RequestPayload GetReservationsForAgentRequest getReservationsForAgentRequest) {
+
 		GetReservationsForAgentResponse response = new GetReservationsForAgentResponse();
-		
+
 		Agent agent = agentRepository.findByUsername(getReservationsForAgentRequest.getUsername());
-		
+
 		List<ReservationAgent> reservationsAgent = reservationAgentRepository.findByAgent(agent);
-		
-		for(ReservationAgent ra : reservationsAgent) {
-			
+
+		for (ReservationAgent ra : reservationsAgent) {
+
 			response.getReservations().add(ra.getReservation());
 			reservationAgentRepository.delete(ra);
-			
+
 		}
-		
+
 		return response;
-		
+
 	}
-	
-	
 
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "sendResponseRequest")
-    @ResponsePayload
+	@ResponsePayload
 	public SendResponseResponse sendResponseRequest(@RequestPayload SendResponseRequest sendResponseRequest) {
-		
+
 		SendResponseResponse response = new SendResponseResponse();
-		
+
 		Response resp = new Response();
-		//resp.setMessage(sendResponseRequest.getResponse().getMessage());
-		
-		
+		// resp.setMessage(sendResponseRequest.getResponse().getMessage());
+
 		responseRepository.save(resp);
-		
-		
+
 		return response;
 	}
-	
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "getAgentRequest")
-    @ResponsePayload
+	@ResponsePayload
 	public GetAgentResponse getAgentRequest(@RequestPayload GetAgentRequest request) {
-		
+
 		GetAgentResponse response = new GetAgentResponse();
-		
+
 		Agent agent = agentRepository.findByUsername(request.getUsername());
 		response.setAgent(agent);
-		
-		
-		return response;  
-	} 
-	
-	
-	
+
+		return response;
+	}
+
 	///////////////
-	
+
 	@PayloadRoot(namespace = "http://bookingws.com/soap", localPart = "setCountryRequest")
-    @ResponsePayload
+	@ResponsePayload
 	public SetCountryResponse setCountryRequest(@RequestPayload SetCountryRequest request) {
-		
+
 		SetCountryResponse response = new SetCountryResponse();
-		
+
 		Country country = new Country();
 		country.setName(request.getCountry().getName());
 		country.setCode(request.getCountry().getCode());
-		
+
 		countryService.addCountry(country);
-		
+
 		response.setCountry(country.getName());
-		
-		return response;  
-	} 
-	
+
+		return response;
+	}
+
 }

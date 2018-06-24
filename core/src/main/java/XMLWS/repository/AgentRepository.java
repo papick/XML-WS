@@ -9,5 +9,7 @@ import XMLWS.model.Agent;
 public interface AgentRepository extends CrudRepository<Agent, Long>{
 	
 	Agent findByUsername(String username);
+	
+	Agent findOneByUsername(String username);
 
 }

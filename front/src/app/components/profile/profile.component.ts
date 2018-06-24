@@ -28,9 +28,9 @@ export class ProfileComponent implements OnInit {
   idAgent;
   idAccomodationForVore;
 
-  accomodation : any;
-  commentText : string;
-  displayDialogComment : boolean = false;
+  accomodation: any;
+  commentText: string;
+  displayDialogComment: boolean = false;
 
   public form: FormGroup;
   public text: AbstractControl;
@@ -152,12 +152,21 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  getVote;
+
   voteForAccomodation(accomodationName: any, accomodationId: any) {
     this.sendMessage = false;
     this.reservationShow = false;
     this.voteShow = true;
     this.accName = accomodationName;
     this.idAccomodationForVore = accomodationId;
+
+    const username = this.route.snapshot.params.username;
+
+    this.voteService.getVOte(username, accomodationId).subscribe(data => {
+        this.getVote = data;
+      }
+    );
   }
 
   confirmVote() {
@@ -178,7 +187,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  comment(){
+  comment() {
     const comment = {
       text: this.commentText,
       accommodation: this.accomodation,
@@ -191,7 +200,7 @@ export class ProfileComponent implements OnInit {
     this.displayDialogComment = false;
   }
 
-  showDialogComment(acc){
+  showDialogComment(acc) {
     this.accomodation = acc;
     this.displayDialogComment = true;
   }

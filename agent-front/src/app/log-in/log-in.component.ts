@@ -37,7 +37,7 @@ export class LogInComponent {
     );
     this.logInService.logIn(logIn).subscribe(data => {
       this.agent = data.agent;
-      this.agentId = 1;
+      this.agentId = data.agent.idCore;
       localStorage.setItem('agentId', this.agentId);
 
       if (this.agent == null) {
