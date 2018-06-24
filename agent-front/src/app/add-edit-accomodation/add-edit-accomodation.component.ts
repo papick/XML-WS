@@ -25,6 +25,7 @@ export class AddEditAccomodationComponent implements OnInit {
   public capacity: AbstractControl;
   public type: AbstractControl;
   public aditional: AbstractControl;
+  public image: AbstractControl;
 
   public method_name = 'DODAJ';
 
@@ -56,6 +57,7 @@ export class AddEditAccomodationComponent implements OnInit {
       'capacity': ['', Validators.compose([Validators.required])],
       'type': [''],
       'aditional': [''],
+      'image': ['']
 
     })
     this.name = this.form.controls['name'];
@@ -66,7 +68,7 @@ export class AddEditAccomodationComponent implements OnInit {
     this.city = this.form.controls['city'];
     this.type = this.form.controls['type'];
     this.aditional = this.form.controls['aditional'];
-
+    this.image = this.form.controls['image'];
 
   }
 
@@ -102,6 +104,7 @@ export class AddEditAccomodationComponent implements OnInit {
         this.form.controls['description'].setValue(data.description);
         this.form.controls['capacity'].setValue(data.capacity);
         this.form.controls['type'].setValue(data.type.name);
+        this.form.controls['image'].setValue(data.image);
 
         for (var i = 0; i < data.additions.length; i++) {
           this.listAditionalService.push(data.additions[i].name);
@@ -136,6 +139,7 @@ export class AddEditAccomodationComponent implements OnInit {
       this.category.value,
       this.capacity.value,
       this.listAditionalService,
+      this.image.value
     );
 
     const username = this.route.snapshot.params.username;
@@ -157,6 +161,7 @@ export class AddEditAccomodationComponent implements OnInit {
       this.category.value,
       this.capacity.value,
       this.listAditionalService,
+      this.image.value
     );
     const id = this.route.snapshot.params.id;
     this.accomodationService.editAccomodation(accomodation, 1, id).subscribe(data => {
