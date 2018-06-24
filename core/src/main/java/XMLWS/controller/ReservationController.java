@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import XMLWS.model.Agent;
 import XMLWS.model.Period;
 import XMLWS.model.Reservation;
 import XMLWS.model.ReservationAgent;
 import XMLWS.model.User;
+import XMLWS.repository.AgentRepository;
 import XMLWS.repository.ReservationAgentRepository;
 import XMLWS.repository.ReservationRepository;
 import XMLWS.repository.UserRepository;
@@ -48,6 +50,10 @@ public class ReservationController {
 	
 	@Autowired
 	private ReservationAgentRepository reservationAgentRepository;
+	
+	
+	@Autowired
+	private AgentRepository agentRepository;
 	
 
 	@GetMapping
@@ -106,11 +112,10 @@ public class ReservationController {
 		reservation.setPeriod(period);
 		Reservation newReservation = service.addReservation(reservation);
 		
+		/*
 		ReservationAgent resAgent = new ReservationAgent();
-		resAgent.setReservation(newReservation);
-		resAgent.setAgent(newReservation.getPeriod().getAccomodation().getAgent());
-		
-		reservationAgentRepository.save(resAgent);
+		resAgent.setReservation(newReservation);	
+		reservationAgentRepository.save(resAgent);v*/
 		
 		
 		

@@ -199,7 +199,18 @@ public class AgentService {
 		List<Category> categories = response4.getCategory();
 		
 		for(Category c : categories) {
-			categoryRepository.save(c);
+			
+			Category cat = categoryRepository.findOneByName(c.getName());
+			
+			if(cat == null) {
+				
+				Category category = new Category();
+				category.setName(c.getName());
+				
+				categoryRepository.save(category);
+			}
+			
+			
 		}
 		
 		// aditions
@@ -211,8 +222,17 @@ public class AgentService {
 		
 		List<Addition> services = response5.getAdditions();
 
-		for(Addition addition : services) {
-			aditionalServiceRepository.save(addition);
+		for(Addition a : services) {
+			
+			Addition add = aditionalServiceRepository.findOneByName(a.getName());
+			
+			if(add == null) {
+				
+				Addition addition = new Addition();
+				addition.setName(a.getName());
+				
+				aditionalServiceRepository.save(addition);
+			}
 		}
 		
 		

@@ -87,13 +87,13 @@ public class AccomodationService2 {
 
 		accomodation.setPrice(false);
 
-		accomodationRepository.save(accomodation);
+		Accommodation acc = accomodationRepository.save(accomodation);
 
 		AccomodationService accomodationService = new AccomodationService();
 		AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
 
 		AddAccomodationRequest request = new AddAccomodationRequest();
-		request.setAccomodation(accomodation);
+		request.setAccomodation(acc);
 		AddAccomodationResponse response = accomodationServicePort.addAccomodation(request);
 
 		return accomodation;

@@ -14,6 +14,8 @@ public interface AccomodationRepository extends JpaRepository<Accommodation, Lon
 	List<Accommodation> findByCityNameIgnoreCaseContainingAndCapacity(String cityName, int capacity);
 	
 	List<Accommodation> findByAgent(Agent agent);
+	
+	Accommodation findOneByIdAgentApp(Long id);
 
 
 }

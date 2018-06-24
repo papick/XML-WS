@@ -221,6 +221,7 @@ public class AccomodationEndpoint {
 		Agent agent = agentRepository
 				.findOneByUsername(addAccomodationRequest.getAccomodation().getAgent().getUsername());
 		accommodation.setAgent(agent);
+		accommodation.setIdAgentApp(addAccomodationRequest.getAccomodation().getId());
 
 		accommodation.setCapacity(addAccomodationRequest.getAccomodation().getCapacity());
 
@@ -235,9 +236,10 @@ public class AccomodationEndpoint {
 		accommodation.setImage(addAccomodationRequest.getAccomodation().getImage());
 		accommodation.setName(addAccomodationRequest.getAccomodation().getName());
 
-		TypeAccomodation type = typeAccomodationRepository
-				.findOneByName(addAccomodationRequest.getAccomodation().getName());
+		TypeAccomodation type = typeAccomodationRepository.findOneByName(addAccomodationRequest.getAccomodation().getType().getName());
 		accommodation.setType(type);
+		
+		accommodation.setImage(addAccomodationRequest.getAccomodation().getImage());
 
 		accomodationRepository.save(accommodation);
 
@@ -294,11 +296,31 @@ public class AccomodationEndpoint {
 
 		period.setFromDate(addPeriodRequest.getPeriod().getFromDate());
 		period.setToDate(addPeriodRequest.getPeriod().getToDate());
-		period.setAccomodation(addPeriodRequest.getPeriod().getAccomodation());
+		
+		Agent agent = agentRepository.findByUsername(addPeriodRequest.getPeriod().getAccomodation().getAgent().getUsername());
+		
+		List<Accommodation> accs = accomodationRepository.findByAgent(agent);
+		
+		if(accs != null) {
+			
+			System.out.println("cao");
+			
+			for(Accommodation ac : accs) {
+				
+				if(ac.getIdAgentApp().equals(addPeriodRequest.getPeriod().getAccomodation().getId())) {
+					
+					period.setAccomodation(ac);
+					periodRepository.save(period);
+				}
+			}
+		}
+		
+		
+	
+		
+	
 
-		periodRepository.save(period);
-
-		response.setMessage("Saved reserved period from " + period.getFromDate() + " to " + period.getToDate());
+		response.setMessage("Saved reserved period ");
 
 		return response;
 
@@ -368,12 +390,16 @@ public class AccomodationEndpoint {
 
 		Agent agent = agentRepository.findByUsername(getReservationsForAgentRequest.getUsername());
 
-		List<ReservationAgent> reservationsAgent = reservationAgentRepository.findByAgent(agent);
+		List<ReservationAgent> reservationsAgent = reservationAgentRepository.findAll();
 
 		for (ReservationAgent ra : reservationsAgent) {
 
-			response.getReservations().add(ra.getReservation());
-			reservationAgentRepository.delete(ra);
+			if(getReservationsForAgentRequest.getUsername().equals(ra.getReservation().getPeriod().getAccomodation().getAgent().getUsername())) {
+				
+				response.getReservations().add(ra.getReservation());
+				reservationAgentRepository.delete(ra);
+			}
+			
 
 		}
 

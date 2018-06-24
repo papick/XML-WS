@@ -84,13 +84,13 @@ public class ReservationService {
 
 			period.setAccomodation(accomodation);
 
-			periodRepository.save(period);
+			Period per = periodRepository.save(period);
 			
 			AccomodationService accomodationService = new AccomodationService();
 			AccomodationServicePort accomodationServicePort = accomodationService.getAccomodationServicePortSoap11();
 			
 			AddPeriodRequest request = new AddPeriodRequest();
-			request.setPeriod(period);
+			request.setPeriod(per);
 			AddPeriodResponse response = accomodationServicePort.addPeriod(request);
 			
 			
