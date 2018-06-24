@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import XMLWS.dto.ResDTO;
+import XMLWS.model.Accommodation;
 import XMLWS.model.Agent;
 import XMLWS.model.Period;
 import XMLWS.model.Reservation;
 import XMLWS.model.ReservationAgent;
 import XMLWS.model.User;
+import XMLWS.repository.AccomodationRepository;
 import XMLWS.repository.AgentRepository;
+import XMLWS.repository.PeriodRepository;
 import XMLWS.repository.ReservationAgentRepository;
 import XMLWS.repository.ReservationRepository;
 import XMLWS.repository.UserRepository;
@@ -47,14 +51,12 @@ public class ReservationController {
 
 	@Autowired
 	private ReservationRepository reservationRepository;
-	
+
 	@Autowired
 	private ReservationAgentRepository reservationAgentRepository;
-	
-	
+
 	@Autowired
 	private AgentRepository agentRepository;
-	
 
 	@GetMapping
 	public ResponseEntity<List<Reservation>> getAllReservationsByUser(HttpSession session) {
@@ -77,50 +79,69 @@ public class ReservationController {
 		return new ResponseEntity<List<Reservation>>(reservations, HttpStatus.OK);
 	}
 
-	@PostMapping()
-	public ResponseEntity<Reservation> newReservation(@RequestBody Reservation reservation, HttpSession session) {
+	@Autowired
+	private AccomodationRepository accR;
+	
+	@Autowired
+	private PeriodRepository pr;
+	@PostMapping("/new")
+	public ResponseEntity<Reservation> newReservation(@RequestBody ResDTO reservation) {
 		/*
 		 * User user = (User)session.getAttribute("loggedUser"); if(user ==
 		 * null) { return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); }
 		 */
-		if (reservation.getPeriod() == null || reservation.isConfirmed()) {
+	/*	if (reservation.getPeriod() == null || reservation.isConfirmed()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		// check avaibility!!! TODO
-		List<Period> allPeriods = periodService.getAllPeriodsByAccomodation(reservation.getPeriod().getAccomodation().getId());
-	
+		List<Period> allPeriods = periodService
+				.getAllPeriodsByAccomodation(reservation.getPeriod().getAccomodation().getId());
+
 		Date fromDate = null;
 		Date toDate = null;
 		try {
 			fromDate = Date.valueOf(reservation.getPeriod().getFromDate());
-		    toDate = Date.valueOf(reservation.getPeriod().getToDate());
-		}catch (Exception e) {
+			toDate = Date.valueOf(reservation.getPeriod().getToDate());
+		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		
-		for(Period period : allPeriods) {
-			Date from =  Date.valueOf(period.getFromDate());
-			Date to =  Date.valueOf(period.getToDate());
-			if( fromDate.compareTo(to) <= 0  &&  toDate.compareTo(from) >= 0 ) {
+
+		for (Period period : allPeriods) {
+			Date from = Date.valueOf(period.getFromDate());
+			Date to = Date.valueOf(period.getToDate());
+			if (fromDate.compareTo(to) <= 0 && toDate.compareTo(from) >= 0) {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
-		}
+		}*/
 		
-		User user = userService.getUser(reservation.getUser().getUsername());
-		reservation.setUser(user);
-		Period period = periodService.addPeriod(reservation.getPeriod());
-		reservation.setPeriod(period);
-		Reservation newReservation = service.addReservation(reservation);
+		Period p = new Period();
+		p.setFromDate(reservation.getFromDate());
+		p.setToDate(reservation.getToDate());
+		Accommodation acc = accR.findOne(Long.parseLong(reservation.getIdAccomodation()));
+		p.setAccomodation(acc);
+		pr.save(p);
 		
-		/*
-		ReservationAgent resAgent = new ReservationAgent();
-		resAgent.setReservation(newReservation);	
-		reservationAgentRepository.save(resAgent);v*/
-		
-		
-		
-		
-		return new ResponseEntity<Reservation>(newReservation, HttpStatus.CREATED);
+
+		Reservation r = new Reservation();
+		User user = userRepository.findByUsername(reservation.getUsername());
+		r.setUser(user);
+		r.setPeriod(p);
+		r.setConfirmed(false);
+	//	Period period = periodService.addPeriod(reservation.getPeriod());
+		System.out.println(
+				"aaaaaaa" + p.getAccomodation().getName() + p.getAccomodation().getAgent().getUsername());
+		//reservation.setPeriod(period);
+		//Reservation newReservation = service.addReservation(reservation);
+
+		reservationRepository.save(r);
+		  ReservationAgent resAgent = new ReservationAgent();
+		  resAgent.setReservation(r);
+		  resAgent.setAgent(p.getAccomodation().getAgent());
+		  reservationAgentRepository.save(resAgent);
+		  
+		 
+
+		return new ResponseEntity<Reservation>(r, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")

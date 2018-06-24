@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
+import {ReservationModel} from "../model/reservation.model";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'}),
@@ -14,9 +15,15 @@ export class ReservationService {
   constructor(private http: HttpClient) {
   }
 
-  public reserve(reservation) {
-    return this.http.post(this.url, reservation);
+  reserve(res: ReservationModel) {
+    const body = JSON.stringify(res);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post(`${this.url}/new`, body, {headers: headers})
   }
+
+ /* public reserve(reservation : ) {
+    return this.http.post(this.url, reservation);
+  }*/
 
   getReservationsByUser(username: any): Observable<any> {
     return this.http.get(`${this.url}/user/` + username, httpOptions);

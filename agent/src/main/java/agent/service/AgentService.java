@@ -247,10 +247,15 @@ public class AgentService {
 		
 		
 		if(reservations != null) {
+			System.out.println("aaa");
 			
-			for(Reservation res : reservations) {
+			for(int i= 0;i<reservations.size();i++){
+				System.out.println("aaaaaa " +reservations.get(i).getUser().getUsername());
+			}
+			
+			/*for(Reservation res : reservations) {
 				
-	
+				System.out.println("aaa " + res.getUser().getUsername());
 				Reservation reservation = new Reservation();
 				
 				User user = userRepository.findByUsername(res.getUser().getUsername());
@@ -287,7 +292,7 @@ public class AgentService {
 				
 				reservationRepository.save(reservation);
 				
-			}
+			}*/
 		}
 		
 		

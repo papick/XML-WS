@@ -6,6 +6,7 @@ import {UserService} from '../../services/user.service';
 import {DatePickerComponent} from '../datepicker/datepicker.component';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {CommentsService} from "../../services/commentsService";
+import {ReservationModel} from "../../model/reservation.model";
 
 
 @Component({
@@ -25,8 +26,8 @@ export class AccomodationComponent implements OnInit {
   fromDate: NgbDateStruct;
   toDate: NgbDateStruct;
 
-  price : number;
-  priceList : any;
+  price: number;
+  priceList: any;
 
   minDate: Date;
   invalidDates: Array<Date>
@@ -52,7 +53,7 @@ export class AccomodationComponent implements OnInit {
       //this.initCalendar(periods);
     }, err => console.log(err));
 
-    this.accomodationService.getPriceList(id).subscribe(data =>{
+    this.accomodationService.getPriceList(id).subscribe(data => {
       this.priceList = data;
     })
   }
@@ -66,14 +67,14 @@ export class AccomodationComponent implements OnInit {
     this.fromDate = this.datePicker.fromDate;
     this.toDate = this.datePicker.toDate;
 
-     this.price=0;
+    this.price = 0;
     let d = new Date(this.fromDate.year, this.fromDate.month, this.fromDate.day);
     let to = new Date(this.toDate.year, this.toDate.month, this.toDate.day)
-    while(d <= to){
-      this.priceList.forEach((monthPrice , index , arr) =>{
-        if(Number.parseInt (monthPrice.month) == d.getMonth()){
+    while (d <= to) {
+      this.priceList.forEach((monthPrice, index, arr) => {
+        if (Number.parseInt(monthPrice.month) == d.getMonth()) {
 
-          this.price +=  Number.parseInt (monthPrice.sum);
+          this.price += Number.parseInt(monthPrice.sum);
         }
       });
       d.setDate(d.getDate() + 1);
@@ -83,17 +84,21 @@ export class AccomodationComponent implements OnInit {
   }
 
   reserve() {
-    const period = {
-      fromDate: this.dateToString(this.fromDate),
-      toDate: this.dateToString(this.toDate),
-      accomodation: this.accomodation
-    }
+    const reservations = new ReservationModel(
+      this.userService.getLoggedUser().username,
+      this.route.snapshot.params.id,
+      this.dateToString(this.fromDate),
+      this.dateToString(this.toDate),
+    );
 
-    const reservation = {period: period, user: this.userService.getLoggedUser()};
+console.log( this.userService.getLoggedUser().username)
 
-    this.reservationService.reserve(reservation).subscribe(data => {
+
+
+
+    this.reservationService.reserve(reservations).subscribe(data => {
       this.closeDialog();
-    }, err =>{
+    }, err => {
       alert('Already reserved');
     });
 
@@ -104,15 +109,15 @@ export class AccomodationComponent implements OnInit {
     this.displayDialog = false;
   }
 
-   dateToString(date): string {
+  dateToString(date): string {
     let dateString: string;
     dateString = '' + date.year + '-' + date.month + '-' + date.day;
     return dateString;
   }
 
-  stringToDate(dateString:string):Date  {
+  stringToDate(dateString: string): Date {
     const splitted = dateString.split("-");
-    const date =  new Date(Number.parseInt( splitted[0]), Number.parseInt( splitted[1]),Number.parseInt(  splitted[2]));
+    const date = new Date(Number.parseInt(splitted[0]), Number.parseInt(splitted[1]), Number.parseInt(splitted[2]));
     return date;
   }
 
@@ -123,25 +128,23 @@ export class AccomodationComponent implements OnInit {
   }
 
 
-
-  initCalendar(periods){
+  initCalendar(periods) {
     this.minDate = new Date();
     this.invalidDates = [];
     let period;
-     periods.forEach( (period, index, arr)=>{
-       const reservedFromDate = this.stringToDate(period.fromDate);
-       const reservedToDate = this.stringToDate(period.toDate);
-       let d = reservedFromDate;
-       while(d <= reservedToDate){
+    periods.forEach((period, index, arr) => {
+      const reservedFromDate = this.stringToDate(period.fromDate);
+      const reservedToDate = this.stringToDate(period.toDate);
+      let d = reservedFromDate;
+      while (d <= reservedToDate) {
 
-         this.invalidDates.push(new Date(d));
+        this.invalidDates.push(new Date(d));
 
-         d.setDate(d.getDate() + 1);
-       }
-     });
+        d.setDate(d.getDate() + 1);
+      }
+    });
 
-    }
-
+  }
 
 
 }
